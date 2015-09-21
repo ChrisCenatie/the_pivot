@@ -1,1 +1,6 @@
-This is the item index
+<% @items.each do |item| %>
+<p><%= item.name %></p>
+<p><%= item.description %></p>
+<p><%= item.price %></p>
+
+<% end %>
