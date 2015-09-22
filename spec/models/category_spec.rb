@@ -18,4 +18,11 @@ RSpec.describe Category, type: :model do
     expect(category).to be_valid
   end
 
+  it "is invalid unless name is between 3 and 30 characters" do
+    category.update(name: "As")
+    expect(category).to be_invalid
+
+    category.update(name: "asdfasdfasdfasdfasdfasdfasdfasdf")
+    expect(category).to be_invalid
+  end
 end
