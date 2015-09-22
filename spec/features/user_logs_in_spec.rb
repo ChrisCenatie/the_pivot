@@ -16,4 +16,14 @@ RSpec.feature "user logs in" do
     expect(page).to have_content("Justin@example.com")
     expect(current_path).to eq("/users/#{user.id}")
   end
+
+  scenario "with invalid credentials" do
+    visit login_path
+    fill_in "Email", with: "Justin@example.com"
+    fill_in "Password", with: "passwor"
+    click_button "Login"
+
+    expect(page).to_not have_content("Justin@example.com")
+    expect(current_path).to eq(login_path)
+  end
 end
