@@ -1,0 +1,13 @@
+require 'rails_helper'
+
+describe 'the item show', type: :feature do
+
+  it 'can show one item' do
+    visit '/items/1'
+    expect(page).to have_content('Soda')
+    expect(page).to have_content('Teh bubbles')
+    expect(page).to have_content('100')
+    expect(page).to have_css("img[src*='wrench1.png']")
+  end
+end
+    

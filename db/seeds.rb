@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Item.create(name: 'Soda', description: 'Teh bubbles', price: 100)
+Item.create(name: 'Soda', description: 'Teh bubbles', price: 100, avatar: File.open("app/assets/images/wrench1.png"))
 Item.create(name: 'Pop', description: 'Teh', price: 200)
 Item.create(name: 'Colla', description: 'Supa fly', price: 100)
 Item.create(name: 'Burger', description: 'For a rabbi', price: 200)
