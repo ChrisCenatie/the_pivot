@@ -3,12 +3,15 @@
     <th> Name </th>
     <th> Description </th>
     <th> Price </th>
+    <th> Add To Cart </th>
   </tr>
   <% @items.each do |item| %>
   <tr>
+
     <td><%= item.name %></td>
     <td><%= item.description %></td>
     <td><%= item.price %></td>
+    <td><%= button_to "Add #{item.name}" , cart_items_path(item_id: item.id) %>
   </tr>
 <% end %>
 </table>
