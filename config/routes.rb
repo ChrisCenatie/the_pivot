@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get "cart",          to: "cart_items#index"
   post "cart_items",   to: "cart_items#create"
+  patch "cart_items",  to: "cart_items#update"
   delete "cart_items", to: "cart_items#destroy"
 
   resources :categories, only: [:index, :show]
