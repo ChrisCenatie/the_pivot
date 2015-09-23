@@ -9,9 +9,12 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)
+    elsif User.find_by(params[:email])
+      flash[:errors] = "That email address is taken"
+      redirect_to new_user_path
     else
-      flash.now[:errors] = "YOU ARE INVALID"
-      render :new
+      flash[:errors] = "Invalid login attempt"
+      redirect_to new_user_path
     end
   end
 
