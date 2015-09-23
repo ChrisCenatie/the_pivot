@@ -6,8 +6,7 @@ class Cart
   end
 
   def add_item(item_id)
-    item = Item.find(item_id)
-    cart_data[item.id.to_s] = cart_data[item.id.to_s].to_i + 1
+    cart_data[item_id.to_s] = cart_data[item_id.to_s].to_i + 1
   end
 
   def items
