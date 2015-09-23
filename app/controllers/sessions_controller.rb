@@ -14,4 +14,9 @@ class SessionsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    flash[:errors] = "You are now logged out"
+    redirect_to root_path
+  end
 end
