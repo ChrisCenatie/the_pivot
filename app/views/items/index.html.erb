@@ -29,17 +29,15 @@
 <body>
 
     <!-- Navigation -->
-      <%= link_to "Cart", cart_path %>
-      <%= link_to "View by category", categories_path %>
 
     <!-- Page Content -->
     <div class="container">
 
         <!-- Jumbotron Header -->
         <header class="jumbotron hero-spacer">
-            <h1>A Warm Welcome!</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
-            <p><a class="btn btn-primary btn-large">Call to action!</a>
+            <h1>All Items</h1>
+            <p>
+              <%= link_to "View by category", categories_path %>
             </p>
         </header>
 
@@ -60,7 +58,7 @@
             <div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
                     <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
+                    <div class="caption text-center">
                         <h3><%= item.name %></h3>
                         <p><%= item.description %></p>
                         <h4><%= item.price %></h4>
@@ -72,20 +70,7 @@
             </div>
 
         <% end %>
-
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
-        </footer>
-
+        
     </div>
     <!-- /.container -->
 
