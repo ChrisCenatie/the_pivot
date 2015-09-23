@@ -1,14 +1,25 @@
 require "rails_helper"
 
 RSpec.feature "user can add item to cart" do
-  it "has the item in the cart" do
+
+  scenario "on item index page" do
     visit items_path
 
     click_on("Add Fries")
-
-    visit cart_path
+    click_on("Cart")
 
     expect(page).to have_content("Fries 1")
+    expect(current_path).to eq(cart_path)
+  end
+
+  scenario "on cart page" do
+    visit items_path
+
+    click_on("Add Fries")
+    click_on("Cart")
+    click_on("Add Fries")
+
+    expect(page).to have_content("Fries 2")
     expect(current_path).to eq(cart_path)
   end
 end
