@@ -11,10 +11,11 @@ RSpec.feature "user can subtract item from cart" do
     visit root_path
     click_on("Cart")
 
-    expect(page).to have_content("Fries 1")
+    expect(page).to have_content("Fries")
+    expect(page).to have_content("1")
 
     click_on("Remove Fries")
 
-    expect(page).to_not have_content("Fries 1")
+    expect(page).to_not have_content("Fries")
   end
 end
