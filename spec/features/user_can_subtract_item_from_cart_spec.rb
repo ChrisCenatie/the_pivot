@@ -8,7 +8,6 @@ RSpec.feature "user can subtract item from cart" do
 
   it "can take an item out of the cart" do
     visit root_path
-
     click_on("Cart")
 
     expect(page).to have_content("Fries 1")
