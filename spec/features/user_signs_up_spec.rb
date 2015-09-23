@@ -30,12 +30,7 @@ RSpec.feature "user signs up" do
   end
 
   scenario "with an email already in use by another user" do
-    visit root_path
-    click_link("Sign up")
-
-    fill_in "Email", with: "Justin@example.com"
-    fill_in "Password", with: "password"
-    click_button "Create Account"
+    User.create(email: "Justin@example.com", password: "password")
 
     visit root_path
     click_link("Sign up")
