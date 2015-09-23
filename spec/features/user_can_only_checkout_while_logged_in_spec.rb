@@ -10,7 +10,7 @@ RSpec.feature "user can only checkout while logged in" do
 
     click_on("Check Out")
 
-    expect(current_path).to eq(signup_path)
-    expect(page).to have_content("Create Your Account")
+    expect(current_path).to eq(login_path)
+    expect(page).to have_content("Login")
   end
 end
