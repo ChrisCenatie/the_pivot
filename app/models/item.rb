@@ -1,4 +1,5 @@
 class Item < ActiveRecord::Base
+  belongs_to :category
   validates :name, :description, :price, presence: true
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" } #No default image
