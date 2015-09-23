@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   delete "cart_items", to: "cart_items#destroy"
 
   resources :categories, only: [:index, :show]
+  resources :users, only: [:new, :create, :show]
+  get "login", to: "sessions#new"
+  post "login", to: "sessions#create"
 end

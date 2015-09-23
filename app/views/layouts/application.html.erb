@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DroneDelivery</title>
+  <title>FasterFood</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= link_to "Login", login_path %>
+  <% if flash[:errors] %>
+    <%= flash[:errors] %>
+  <% end %>
+
+  <%= link_to "Sign up", new_user_path %>
 
 <%= yield %>
 
