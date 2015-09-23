@@ -1,3 +1,15 @@
-<% cart.items.each do |cart_item| %>
-  <%= cart_item.name %>: <%= cart_item.quantity %>
-<% end %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Quantity</th>
+    <th>Remove from Cart</th>
+  </tr>
+  <% cart.items.each do |cart_item| %>
+    <tr>
+      <td><%= cart_item.name %></td>
+      <td><%= cart_item.quantity %></td>
+      <td><%= link_to "Remove #{cart_item.name}", cart_items_path(item_id:
+        cart_item.id), method: :delete %></td>
+    </tr>
+  <% end %>
+</table>

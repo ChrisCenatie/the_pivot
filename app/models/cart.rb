@@ -9,6 +9,14 @@ class Cart
     cart_data[item_id.to_s] = cart_data[item_id.to_s].to_i + 1
   end
 
+  def remove_item(item_id)
+    if (cart_data[item_id.to_s] - 1) < 1
+      cart_data.delete_if { |k, _| k == item_id.to_s }
+    else
+      cart_data[item_id.to_s] = cart_data[item_id.to_s].to_i - 1
+    end
+  end
+
   def items
     cart_data.map do |item_id, quantity|
       item = Item.find(item_id)
