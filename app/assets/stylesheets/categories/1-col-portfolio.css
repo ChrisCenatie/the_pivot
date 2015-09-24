@@ -11,3 +11,12 @@ body {
 footer {
     margin: 50px 0;
 }
+
+.name {
+  padding-top: 70px;
+  padding-left: 100px;
+ }
+
+ #name{
+  font-size: 4em;
+}
