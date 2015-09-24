@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'paperclip', "~> 4.3"
 gem 'unicorn'
+gem 'bootstrap-sass', '~> 3.2.0'
 
 
 # Use ActiveModel has_secure_password
