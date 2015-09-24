@@ -2,12 +2,6 @@ require "rails_helper"
 
 RSpec.describe OrderCreator do
 
-  before(:each) do
-    Item.delete_all
-    Order.delete_all
-    User.delete_all
-  end
-
   let(:user) { User.create(email: "justin@example.com", password: "password") }
 
   it "assigns a user id to an order" do
