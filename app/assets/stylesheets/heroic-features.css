@@ -16,6 +16,15 @@ body {
     margin-bottom: 30px;
 }
 
+.name {
+  padding-top: 70px;
+  padding-left: 100px;
+ }
+
+ #name{
+  font-size: 4em;
+}
+
 footer {
     margin: 50px 0;
 }
