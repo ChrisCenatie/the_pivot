@@ -1,20 +1,77 @@
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Quantity</th>
-    <th>Add</th>
-    <th>Remove from Cart</th>
-  </tr>
-  <% cart.items.each do |cart_item| %>
-    <tr>
-      <td><%= cart_item.name %></td>
-      <td><%= cart_item.quantity %></td>
-      <td><%= link_to "Add #{cart_item.name}", cart_items_path(item_id:
-        cart_item.id), method: :patch %></td>
-      <td><%= link_to "Remove #{cart_item.name}", cart_items_path(item_id:
-        cart_item.id), method: :delete %></td>
-    </tr>
-  <% end %>
-</table>
+<!DOCTYPE html>
+<html lang="en">
 
-<%= button_to "Check Out", orders_path(current_user) %>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>1 Col Portfolio - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/1-col-portfolio.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Cart</h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Cart items -->
+        <% cart.items.each do |item| %>
+
+        <div class="row">
+            <div class="col-md-2">
+                <a href="#">
+                    <img class="img-responsive" src="http://placehold.it/100x100" alt="">
+                </a>
+            </div>
+            <div class="col-md-6">
+                <h3><%= link_to item.name, "#" %></h3>
+                <h4><%= item.description %></h4>
+            </div>
+            <div class="col-md-2">
+                <h3>QTY: <%= item.quantity %> </h3>
+                <h4><%= link_to "Add #{item.name}", cart_items_path(item_id: item.id), method: :patch %></h4>
+            </div>
+            <div class="col-md-2">
+              <!---take this calc out of view -->
+                <h3><%= item.price * item.quantity %></h3>
+                <h4><%= link_to "Remove #{item.name}", cart_items_path(item_id: item.id), method: :delete %></h4>
+            </div>
+        </div>
+
+        <hr>
+        <% end %>
+
+        <div class="row">
+          <div class="col-md-offset-9 col-md-2">
+            <%= button_to "Check Out", orders_path(current_user) %>
+          </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
