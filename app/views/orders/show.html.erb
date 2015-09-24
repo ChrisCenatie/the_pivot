@@ -1,6 +1,21 @@
 <h1>Check out your sweet order!</h1>
-<% @order_items.each do |order_item| %>
-  <%= order_item.item.name %>
-  <%= order_item.quantity %>
-  <%= order_item.price %>
-<% end %>
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Item Subtotal</th>
+  </tr>
+  <% total = 0 %>
+  <% @order_items.each do |order_item| %>
+    <tr>
+      <td><%= order_item.item.name %></td>
+      <td><%= order_item.price %></td>
+      <td><%= order_item.quantity %></td>
+      <td><%= order_item.quantity * order_item.price %>
+      <% total += (order_item.quantity * order_item.price ) %>
+    </tr>
+  <% end %>
+</table>
+<br>
+Total = $<%= total %>

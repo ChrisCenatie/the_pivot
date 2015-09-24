@@ -20,7 +20,7 @@ RSpec.feature "user can view completed order" do
       click_on("Login")
     end
 
-    expect(page).to have_content("Fries 2 400")
+    expect(page).to have_content("Fries 400 2")
 
     order = Order.last
     expect(current_path).to eq(order_path(order))
