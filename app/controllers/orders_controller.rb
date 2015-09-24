@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
 
   def create
     if current_user
-      byebug
       redirect_to order
     else
       flash[:errors] = "Create an account to complete your order"
