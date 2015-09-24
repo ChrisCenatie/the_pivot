@@ -23,6 +23,10 @@ class OrdersController < ApplicationController
     @order_items = @order.order_items
   end
 
+  def index
+    @orders = Order.all
+  end
+
   private
 
   def find_order
