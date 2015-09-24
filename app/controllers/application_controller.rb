@@ -13,5 +13,8 @@ class ApplicationController < ActionController::Base
     User.find(session[:user_id]) rescue nil
   end
 
+  def previous_path
+  end
+
   helper_method :cart, :current_user
 end
