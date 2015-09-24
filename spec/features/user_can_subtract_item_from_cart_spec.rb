@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.feature "user can subtract item from cart" do
   before(:each) do
+    Item.create(name: "Fries", description: "Salty", price: 400)
     visit items_path
     click_on("Add Fries")
   end
