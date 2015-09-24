@@ -16,9 +16,7 @@ RSpec.describe OrderCreator do
       item2 = Item.create(name: 'Fries', description: 'Salty', price: 400)
 
       cart_data = { item1.id => 3, item2.id => 2 }
-
       order_creator = OrderCreator.new(cart_data, user)
-
       order_creator.create_order_items
 
       expect(order_creator.order.order_items.last.quantity).to eq(2)
