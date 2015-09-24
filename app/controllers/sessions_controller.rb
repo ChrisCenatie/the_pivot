@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:sessions][:email])
     if user && user.authenticate(params[:sessions][:password])
       session[:user_id] = user.id
-      unless cart.data == {}
+      if !cart.data == {}
        order_creator = OrderCreator.new(cart.data, user)
        order_creator.create_order_items
 
