@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
-  before(:each) do
-    Order.delete_all
-    User.delete_all
-  end
 
   let(:user) { User.create(email: "justin@example.com", password: "password") }
   let(:order) { Order.new(user_id: user.id) }
