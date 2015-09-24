@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: drone_delivery_production
-  username: drone_delivery
-  password: <%= ENV['DRONE_DELIVERY_DATABASE_PASSWORD'] %>
