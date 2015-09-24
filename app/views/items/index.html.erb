@@ -1,75 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
+<%= stylesheet_link_tag 'heroic-features', media: 'all', 'data-turbolinks-track' => true %>
 
-<head>
+  <!-- Page Content -->
+  <div class="container">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+      <!-- Jumbotron Header -->
+      <header class="jumbotron hero-spacer">
+          <h1>All Items</h1>
+          <p>
+            <%= link_to "View by category", categories_path %>
+          </p>
+      </header>
 
-    <title>Heroic Features - Start Bootstrap Template</title>
+      <hr>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+      <!-- Title -->
+      <div class="row">
+          <div class="col-lg-12">
+              <h3> All Items </h3>
+          </div>
+      </div>
+      <!-- /.row -->
 
-    <!-- Custom CSS -->
-    <link href="css/heroic-features.css" rel="stylesheet">
+      <!-- Items -->
+      <% @items.each do |item| %>
 
-</head>
+          <div class="col-md-3 col-sm-6 hero-feature">
+              <div class="thumbnail">
+                  <img src="http://placehold.it/800x500" alt="">
+                  <div class="caption text-center">
+                      <h3><%= item.name %></h3>
+                      <p><%= item.description %></p>
+                      <h4><%= item.price %></h4>
+                      <p>
+                          <%= button_to "Add #{item.name}" , cart_items_path(item_id: item.id) %>
+                      </p>
+                  </div>
+              </div>
+          </div>
 
-<body>
+      <% end %>
+  </div>
+  <!-- /.container -->
 
-    <!-- Page Content -->
-    <div class="container">
+  <!-- jQuery -->
+  <script src="js/jquery.js"></script>
 
-        <!-- Jumbotron Header -->
-        <header class="jumbotron hero-spacer">
-            <h1>All Items</h1>
-            <p>
-              <%= link_to "View by category", categories_path %>
-            </p>
-        </header>
-
-        <hr>
-
-        <!-- Title -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h3> All Items </h3>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Items -->
-        <% @items.each do |item| %>
-
-            <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption text-center">
-                        <h3><%= item.name %></h3>
-                        <p><%= item.description %></p>
-                        <h4><%= item.price %></h4>
-                        <p>
-                            <%= button_to "Add #{item.name}" , cart_items_path(item_id: item.id) %>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        <% end %>
-        
-    </div>
-    <!-- /.container -->
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-</body>
-
-</html>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="js/bootstrap.min.js"></script>
