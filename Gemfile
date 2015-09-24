@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'paperclip', "~> 4.3"
 gem 'unicorn'
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'rails_12factor', group: :production
 
 
 # Use ActiveModel has_secure_password
