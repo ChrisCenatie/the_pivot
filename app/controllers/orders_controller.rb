@@ -19,8 +19,16 @@ class OrdersController < ApplicationController
     end
   end
 
-  def show
+  def show 
     @order_items = @order.order_items
+  end
+
+  def index
+    if current_user
+      @orders = Order.where(user_id: current_user.id)
+    else
+      redirect_to login_path
+    end
   end
 
   private
