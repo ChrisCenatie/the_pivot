@@ -20,7 +20,6 @@ RSpec.feature "is redireceted from login" do
       click_on("Login")
     end
 
-    expect(page).to have_content("Check Out")
     expect(current_path).to eq(cart_path)
   end
 end

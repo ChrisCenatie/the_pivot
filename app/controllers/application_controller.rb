@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  after_action :set_previous_path
 
   private
 
@@ -14,7 +15,12 @@ class ApplicationController < ActionController::Base
   end
 
   def previous_path
+    session[:previous_path]
   end
 
-  helper_method :cart, :current_user
+  def set_previous_path
+    session[:previous_path] = request.env["HTTP_REFERER"].gsub(/\w*\:\/\/[^\/]+/, '') rescue nil
+  end
+
+  helper_method :cart, :current_user, :previous_path
 end
