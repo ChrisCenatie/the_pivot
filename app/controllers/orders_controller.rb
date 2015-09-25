@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  def show
+  def show 
     @order_items = @order.order_items
   end
 
