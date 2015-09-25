@@ -19,3 +19,7 @@
 </table>
 <br>
 Total = $<%= total %>
+
+<p><%= @order.status %></p>
+
+<%= link_to "Past orders", orders_path(current_user) %>

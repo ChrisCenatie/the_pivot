@@ -1,5 +1,5 @@
 <% @orders.each do |order| %>
-Order ID: <%= order.id %>
+  <%= link_to "Order #{order.id}", order_path(order) %>
   <table class='table table-bordered'>
     <tr>
       <th>Item Name</th>

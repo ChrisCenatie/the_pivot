@@ -1,15 +1,12 @@
 require "rails_helper"
 
 RSpec.feature "user can view completed order" do
-  before(:each) do
-    User.create(email: "justin@example.com", password: "password")
-    Item.create(name: 'Fries', description: 'Fo Free', price: 400)
-  end
 
-  scenario "after clicking checkout and then logging in" do
+  def create_order
     visit items_path
 
     click_on("Add Fries")
+    click_on("Add Burger")
     click_on("Cart")
     click_on("Add Fries")
     click_on("Check Out")
@@ -19,12 +16,43 @@ RSpec.feature "user can view completed order" do
     within(:css, "div#login_form") do
       click_on("Login")
     end
-
-    expect(current_path).to eq(cart_path)
-
     click_on("Check Out")
+  end
+
+  before(:each) do
+    User.create(email: "justin@example.com", password: "password")
+    Item.create(name: 'Fries', description: 'Fo Free', price: 400)
+    Item.create(name: 'Burger', description: 'for a rabbi', price: 350)
+  end
+
+  scenario "after clicking checkout and then logging in" do
+    create_order
 
     order = Order.last
     expect(current_path).to eq(order_path(order))
+  end
+
+  scenario "show page, after completing the order and looking at all of their past orders" do
+    create_order
+
+    click_on("Past orders")
+    expect(current_path).to eq(orders_path(User.find_by(email: "justin@example.com")))
+
+    order = Order.last
+
+    click_on("Order #{order.id}")
+    expect(current_path).to eq(order_path(order))
+
+    save_and_open_page
+
+    expect(page).to have_content("Fries")
+    expect(page).to have_content("2")
+    expect(page).to have_content("800")
+    expect(page).to have_content("Ordered")
+    expect(page).to have_content("1150")
+    expect(page).to have_content("#{order.created_at}")
+
+    click_on("Fries")
+    expect(current_path).to eq(item_path(Item.find_by(name: "Fries")))
   end
 end

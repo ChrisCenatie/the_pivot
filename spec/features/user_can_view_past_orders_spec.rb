@@ -43,7 +43,7 @@ RSpec.feature "user can view past orders" do
 
     expect(page).to have_content("Burger")
     expect(page).to have_content("Steak")
-    expect(page).to have_content("Order ID: #{order.id}")
+    expect(page).to have_content("Order #{order.id}")
   end
 
   scenario "for only their own cart" do
