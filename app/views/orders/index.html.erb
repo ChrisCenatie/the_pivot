@@ -1,7 +1,17 @@
 <% @orders.each do |order| %>
-  <% order.order_items.each do |order_item| %>
-    <%= order_item.item.name %>
-    <%= order_item.quantity %>
-    <%= order_item.price %><br>
-  <% end %>
+Order ID:<%= order.id %>
+  <table class='table table-bordered'>
+    <tr>
+      <th>Item Name</th>
+      <th>Item Quantity</th>
+      <th>Item Price</th>
+    </tr>
+    <% order.order_items.each do |order_item| %>
+    <tr>
+      <td><%= order_item.item.name %></td>
+      <td><%= order_item.quantity %></td>
+      <td><%= order_item.price %></td>
+    </tr>
+    <% end %>
+  </table>
 <% end %>
