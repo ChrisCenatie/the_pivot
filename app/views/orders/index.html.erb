@@ -1,6 +1,7 @@
 <% @orders.each do |order| %>
   <% order.order_items.each do |order_item| %>
     <%= order_item.item.name %>
-    <%= order_item.price %>
+    <%= order_item.quantity %>
+    <%= order_item.price %><br>
   <% end %>
 <% end %>
