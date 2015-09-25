@@ -24,7 +24,11 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    if current_user
+      @orders = Order.where(user_id: current_user.id)
+    else
+      redirect_to login_path
+    end
   end
 
   private

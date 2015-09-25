@@ -10,8 +10,7 @@ RSpec.feature "user can view past orders" do
         description: "Fo Free", price: 400)
 
     @user = User.create(email: "david@example.com", password: "password")
-    mike = User.create(email: "mike@example.com", password: "password")
-    mike.orders.create
+    @user2 = User.create(email: "mike@example.com", password: "password")
   end
 
   scenario "when they visit /orders" do
@@ -33,22 +32,54 @@ RSpec.feature "user can view past orders" do
     expect(page).to have_content("Steak")
     expect(current_path).to eq(orders_path)
     expect(@user.orders.count).to eq(1)
+
+    visit items_path
+    click_on("Add Burger")
+    click_on("Cart")
+    click_on("Check Out")
+
+    visit orders_path
+    order = Order.last
+
+    expect(page).to have_content("Burger")
+    expect(page).to have_content("Steak")
+    expect(page).to have_content("Order ID: #{order.id}")
   end
 
-  xscenario "for only their own cart" do
+  scenario "for only their own cart" do
+    visit login_path
+    fill_in("Email", with: "david@example.com")
+    fill_in("Password", with: "password")
+    within(:css, "div#login_form") do
+      click_on("Login")
+    end
 
-        visit items_path
-        click_on("Meals")
-        click_on("Add Burger")
-        click_on("Cart")
-        click_on("Check Out")
+    visit items_path
+    click_on("Add Steak")
+    click_on("Cart")
+    click_on("Check Out")
+    click_on("Logout")
 
-        expect(page).to have_content("Burger 1 200")
-        expect(user.orders.count).to eq(2)
+    visit login_path
+    fill_in("Email", with: "mike@example.com")
+    fill_in("Password", with: "password")
+    within(:css, "div#login_form") do
+      click_on("Login")
+    end
 
-        visit orders_path
+    visit items_path
+    click_on("Add Burger")
+    click_on("Cart")
+    click_on("Remove Steak")
+    click_on("Check Out")
+    visit orders_path
 
-        expect(page).to have_content("Burger")
-        expect(page).to have_content("Steak")
+    expect(page).to have_content("Burger")
+    expect(page).to_not have_content("Steak")
+  end
+
+  scenario "only if logged in" do
+    visit orders_path
+    expect(current_path).to eq(login_path)
   end
 end
