@@ -6,7 +6,7 @@ RSpec.feature "user can view completed order" do
     Item.create(name: 'Fries', description: 'Fo Free', price: 400)
   end
 
-  xscenario "after clicking checkout and then logging in" do
+  scenario "after clicking checkout and then logging in" do
     visit items_path
 
     click_on("Add Fries")
@@ -20,7 +20,7 @@ RSpec.feature "user can view completed order" do
       click_on("Login")
     end
 
-    expect(page).to have_content("Check Out")
+    expect(current_path).to eq(cart_path)
 
     click_on("Check Out")
 
