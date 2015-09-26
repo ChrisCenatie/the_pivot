@@ -1,26 +1,64 @@
-<h1>Check out your sweet order!</h1>
-<table>
-  <tr>
-    <th>Item</th>
-    <th>Price</th>
-    <th>Quantity</th>
-    <th>Item Subtotal</th>
-  </tr>
-  <% total = 0 %>
-  <% @order_items.each do |order_item| %>
-    <tr>
-      <td><%= link_to order_item.item.name, item_path(order_item.item) %></td>
-      <td><%= order_item.price %></td>
-      <td><%= order_item.quantity %></td>
-      <td><%= order_item.quantity * order_item.price %>
-      <% total += (order_item.quantity * order_item.price ) %>
-    </tr>
-  <% end %>
-</table>
-<br>
-Total = $<%= total %>
+<%= stylesheet_link_tag 'heroic-features', media: 'all', 'data-turbolinks-track' => true %>
+<!-- Page Content -->
+  <div class="container">
 
-<p><%= @order.status.capitalize %></p>
-<p><%= @order.created_at %></p>
+      <!-- Page Heading -->
+      <div class="row">
+          <div class="col-md-2">
+            <h1><%= "Order #{@order.id}" %></h1>
+          </div>
+        <div class="col-md-offset-5 col-md-5">
+          <h4><%= "Status:  #{@order.status.capitalize}" %></h4>
+          <h4><%= "Created At: #{@order.created_at} " %></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <h4 class = "underline"><%= link_to "Past orders", orders_path %></h4>
+        </div>
+      </div>
 
-<%= link_to "Past orders", orders_path %>
+      <br>
+
+      <!-- /.row -->
+
+    <table class = 'table'>
+      <tr>
+        <th><h3>Item</h3></th>
+        <th><h3>Price</h3></th>
+        <th><h3>Quantity</h3></th>
+        <th><h3>Item Subtotal</h3></th>
+      </tr>
+      <!-- Cart items -->
+      <% @order_items.each do |order_item| %>
+      <tr>
+      <div class="row">
+          <div class="col-md-6">
+            <td><h4><%= link_to order_item.item.name, item_path(order_item.item) %></h4></td>
+            <td><h4><%= order_item.price %></h4>
+          </div>
+          <div class="col-md-2">
+            <td><h4><%= order_item.quantity %> </h4>
+          </div>
+          <div class="col-md-2">
+            <!---take this calc out of view -->
+            <td><h4><%= order_item.price * order_item.quantity %></h4>
+          </div>
+      </div>
+      </tr>
+      <% end %>
+    </table>
+
+      <div class="row">
+        <div class="col-md-offset-9 col-md-2">
+          <h3 class = "underline"><%="Total: #{@order.total_price}" %></h3>
+        </div>
+      </div>
+
+  </div>
+
+  <!-- jQuery -->
+  <script src="js/jquery.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="js/bootstrap.min.js"></script>
