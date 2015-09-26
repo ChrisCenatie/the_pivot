@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :verify_user, only: [:show]
 
   def new
     @user = User.new
@@ -19,14 +20,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    if session[:user_id].to_i == params[:id].to_i
-      @user = User.find(params[:id])
-      @orders = @user.orders
-    else
-      flash.now[:errors] =
-        "You are not authorized to view this page"
-      redirect_to login_path
-    end
+    @user = User.find(params[:id])
+    @orders = @user.orders
   end
 
   private
@@ -35,4 +30,11 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :password)
   end
 
+  def verify_user
+    if current_user && current_user.id == params[:id].to_i
+      true
+    else
+      render file: "#{Rails.root}/public/401.html", layout: false, status: 401
+    end
+  end
 end

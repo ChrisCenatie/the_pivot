@@ -48,7 +48,7 @@ RSpec.feature "user logs in" do
   scenario "cannot view profile if not logged in" do
     visit user_path(user.id)
 
-    expect(current_path).to eq(login_path)
+    expect(page.status_code).to eq(401)
     expect(page).to have_content
       ("You are not authorized to view this page")
   end
