@@ -8,12 +8,15 @@ Rails.application.routes.draw do
   patch "cart_items",  to: "cart_items#update"
   delete "cart_items", to: "cart_items#destroy"
 
+  get "dashboard",    to: "users#show"
+
   resources :categories, only: [:index, :show]
   resources :users, only: [:new, :create, :show]
 
   get "login",        to: "sessions#new"
   post "login",       to: "sessions#create"
   delete "logout",    to: "sessions#destroy"
+  get "dashboard",    to: "sessions#new"
 
   resources :orders, only: [:create, :show, :index]
 

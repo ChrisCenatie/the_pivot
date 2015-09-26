@@ -10,7 +10,7 @@ RSpec.feature "user logs out" do
     fill_in "Password", with: "password"
     click_button("Create Account")
 
-    expect(page).to have_content("Justin@example.com")
+    expect(page).to have_content("Hello, Justin")
     click_link("Logout")
     expect(current_path).to eq(root_path)
     expect(page).to have_content("You are now logged out")

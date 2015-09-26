@@ -18,7 +18,7 @@ RSpec.feature "user logs in" do
     fill_in "Password", with: "password"
     click_button("Login")
 
-    expect(page).to have_content("Justin@example.com")
+    expect(page).to have_content("Hello, Justin")
     expect(current_path).to eq("/users/#{user.id}")
   end
 
@@ -29,7 +29,7 @@ RSpec.feature "user logs in" do
     fill_in "Password", with: "passwor"
     click_button "Login"
 
-    expect(page).to_not have_content("Justin@example.com")
+    expect(page).to_not have_content("Hello, Justin")
     expect(current_path).to eq(login_path)
   end
 

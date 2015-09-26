@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to dashboard_path(id: @user.id)
     elsif User.find_by(params[:email])
       flash[:errors] = "That email address is taken"
       redirect_to new_user_path
