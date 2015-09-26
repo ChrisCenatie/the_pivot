@@ -19,6 +19,5 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "dashboard",    to: "users#show"
-    post "dashboard",   to: "sessions#create"
   end
 end
