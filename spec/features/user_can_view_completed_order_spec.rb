@@ -53,4 +53,13 @@ RSpec.feature "user can view completed order" do
     click_on("Fries")
     expect(current_path).to eq(item_path(Item.find_by(name: "Fries")))
   end
+
+   scenario "and cart is empied after checking out" do
+     create_order
+     click_on "Cart"
+
+     expect(page).to_not have_content("Fries")
+     expect(page).to_not have_content("Burger")
+   end
+  
 end
