@@ -7,7 +7,11 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:sessions][:email])
     if user && user.authenticate(params[:sessions][:password])
       session[:user_id] = user.id
-      redirect_to(redirect_path)
+      if user.admin?
+        redirect_to(admin_dashboard_path)
+      else
+        redirect_to(redirect_path)
+      end
     else
       flash.now[:errors] = "Invalid credentials, please try again"
       render :new
