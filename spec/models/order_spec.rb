@@ -13,4 +13,21 @@ RSpec.describe Order, type: :model do
     order.user_id = nil
     expect(order).to be_invalid
   end
+
+  it "has a default status of ordered" do
+    expect(order.status).to eq("ordered")
+  end
+
+  describe "#total_price" do
+    it "can calculate its total price" do
+      order.save
+      order.order_items.create(item_id: 1, quantity: 2, price: 100)
+      order.order_items.create(item_id: 2, quantity: 3, price: 200)
+      order.order_items.create(item_id: 3, quantity: 4, price: 200)
+
+      result = order.total_price
+
+      expect(result).to eql(1600)
+    end
+  end
 end

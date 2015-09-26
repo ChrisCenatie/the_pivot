@@ -9,7 +9,7 @@
   <% total = 0 %>
   <% @order_items.each do |order_item| %>
     <tr>
-      <td><%= order_item.item.name %></td>
+      <td><%= link_to order_item.item.name, item_path(order_item.item) %></td>
       <td><%= order_item.price %></td>
       <td><%= order_item.quantity %></td>
       <td><%= order_item.quantity * order_item.price %>
@@ -20,6 +20,7 @@
 <br>
 Total = $<%= total %>
 
-<p><%= @order.status %></p>
+<p><%= @order.status.capitalize %></p>
+<p><%= @order.created_at %></p>
 
-<%= link_to "Past orders", orders_path(current_user) %>
+<%= link_to "Past orders", orders_path %>

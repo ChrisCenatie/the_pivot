@@ -36,14 +36,12 @@ RSpec.feature "user can view completed order" do
     create_order
 
     click_on("Past orders")
-    expect(current_path).to eq(orders_path(User.find_by(email: "justin@example.com")))
+    expect(current_path).to eq(orders_path)
 
     order = Order.last
 
     click_on("Order #{order.id}")
     expect(current_path).to eq(order_path(order))
-
-    save_and_open_page
 
     expect(page).to have_content("Fries")
     expect(page).to have_content("2")
