@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
       /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+.[a-zA-Z0-9._%+-]+\z/ }
   has_many :orders
 
+  enum role: [ :guest, :user, :vendor, :admin ]
+
   def name
     email.gsub(/@.*/, '')
   end

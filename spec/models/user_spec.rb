@@ -37,4 +37,9 @@ RSpec.describe User, type: :model do
     expect(user).to be_invalid
   end
 
+  it "has a role of user by default" do
+    user = User.create(email: "Justin@example.com", password: "password")
+
+    expect(user.role).to eq("user")
+  end
 end
