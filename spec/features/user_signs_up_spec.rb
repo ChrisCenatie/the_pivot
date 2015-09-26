@@ -13,9 +13,9 @@ RSpec.feature "user signs up" do
     fill_in "Email", with: "Justin@example.com"
     fill_in "Password", with: "password"
     click_button "Create Account"
-
-    expect(page).to have_content("Justin@example.com")
-    expect(current_path).to eq("/users/#{user.id}")
+    
+    expect(page).to have_content("Hello, Justin")
+    expect(current_path).to eq(dashboard_path)
   end
 
   scenario "with invalid credentials" do
