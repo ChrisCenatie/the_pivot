@@ -10,6 +10,7 @@
     <div class = "col-md-7">
       <h3><%= image_tag @item.avatar.url(:medium) %></h3>
       <h4><%= link_to "Add #{@item.name}", cart_items_path(item_id: @item.id), method: :patch %>
+        <%= "QTY: #{cart.cart_data[@item.id.to_s]}" %>
 
       <%= link_to "Remove #{@item.name}", cart_items_path(item_id: @item.id), method: :delete %></h4>
     </div>
