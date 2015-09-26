@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   root "items#index"
 
-  get "items",         to: "items#index"
-  get "items/:id",     to: "items#show"
+  resources :items, only: [:index, :show]
 
   get "cart",          to: "cart_items#index"
   post "cart_items",   to: "cart_items#create"
