@@ -20,14 +20,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    if session[:user_id].to_i == params[:id].to_i
-      @user = User.find(params[:id])
-      @orders = @user.orders
-    else
-      flash.now[:errors] =
-        "You are not authorized to view this page"
-      redirect_to root_path
-    end
+    @user = User.find(params[:id])
+    @orders = @user.orders
   end
 
   private
