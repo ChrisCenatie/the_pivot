@@ -4,7 +4,9 @@ class OrdersController < ApplicationController
   def create
     if current_user
       if cart.data != {}
-       redirect_to OrderCreator.new(cart.data, current_user).order
+        order = OrderCreator.new(cart.data, current_user).order
+        session[:cart] = nil
+        redirect_to order
       else
         redirect_to cart_path
         flash[:errors] = "Cart it empty! Fill it up with some goodies"
