@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
     format: { with:
       /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+.[a-zA-Z0-9._%+-]+\z/ }
   has_many :orders
+
+  def name
+    email.gsub(/@.*/, '')
+  end
 end
