@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'can view an item show page', type: :feature do
-  let(:item) { item.create(name: "soda", description: "teh bubbles", price:100) }
+  let(:item) { Item.last }
 
   before(:each) do
    Item.create(name: "Soda", description: "Teh bubbles", price:100) 
@@ -23,6 +23,8 @@ describe 'can view an item show page', type: :feature do
     click_on "Add Soda" 
     click_on "Cart" 
     click_on "Soda"
+
+    expect(current_path).to eq(item_path(item))
 
     expect(page).to have_content('Soda')
     expect(page).to have_content('Teh bubbles')
