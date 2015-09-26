@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     else
       flash.now[:errors] =
         "You are not authorized to view this page"
-      redirect_to login_path
+      redirect_to root_path
     end
   end
 
@@ -37,11 +37,10 @@ class UsersController < ApplicationController
   end
 
   def verify_user
-    if current_user && current_user.id == session[:user_id].to_i
+    if current_user && current_user.id == params[:id].to_i
       true
     else
       render file: "#{Rails.root}/public/401.html", layout: false, status: 401
     end
   end
-
 end
