@@ -64,7 +64,6 @@ RSpec.feature "user can view past orders" do
     visit items_path
     click_on("Add Burger")
     click_on("Cart")
-    click_on("Remove Steak")
     click_on("Check Out")
     visit orders_path
 
