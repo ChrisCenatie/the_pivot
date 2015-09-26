@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :verify_user, only: [:show]
 
   def new
     @user = User.new
@@ -33,6 +34,14 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password)
+  end
+
+  def verify_user
+    if current_user && current_user.id == session[:user_id].to_i
+      true
+    else
+      render file: "#{Rails.root}/public/401.html", layout: false, status: 401
+    end
   end
 
 end
