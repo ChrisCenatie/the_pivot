@@ -2,7 +2,8 @@ class OrdersController < ApplicationController
   before_action :find_order, only: [:show]
 
   def create
-    if current_user
+    not_logged_in?("Create an account to complete your order") or return
+
       if cart.data != {}
         order = OrderCreator.new(cart.data, current_user).order
         session[:cart] = nil
@@ -11,10 +12,6 @@ class OrdersController < ApplicationController
         redirect_to cart_path
         flash[:errors] = "Cart it empty! Fill it up with some goodies"
       end
-    else
-      flash[:errors] = "Create an account to complete your order"
-      redirect_to login_path
-    end
   end
 
   def show 

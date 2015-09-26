@@ -22,5 +22,13 @@ class ApplicationController < ActionController::Base
     session[:previous_path] = request.env["HTTP_REFERER"].gsub(/\w*\:\/\/[^\/]+/, '') rescue nil
   end
 
+  def not_logged_in?(message)
+    if !current_user
+      flash[:errors] = message
+      redirect_to login_path and return
+    end
+    return true
+  end
+
   helper_method :cart, :current_user, :previous_path
 end
