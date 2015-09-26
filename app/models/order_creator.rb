@@ -4,6 +4,7 @@ class OrderCreator
   def initialize(cart_data, user)
     @cart_data = cart_data
     @user      = user
+    create_order_items
   end
 
   def order

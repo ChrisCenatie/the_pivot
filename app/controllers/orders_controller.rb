@@ -3,15 +3,11 @@ class OrdersController < ApplicationController
 
   def create
     if current_user
-      unless cart.data == {}
-       order_creator = OrderCreator.new(cart.data, current_user)
-       order_creator.create_order_items
-
-       order = order_creator.order
-
-       redirect_to order
+      if cart.data != {}
+       redirect_to OrderCreator.new(cart.data, current_user).order
       else
         redirect_to cart_path
+        flash[:errors] = "Cart it empty! Fill it up with some goodies"
       end
     else
       flash[:errors] = "Create an account to complete your order"
