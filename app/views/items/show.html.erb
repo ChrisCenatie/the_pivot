@@ -1,19 +1,33 @@
 <div class = "container">
 
   <div class = "row">
+
     <div class = "col-md-5">
       <h2><%= @item.name %> from VENDORNAME</h2>
       <div class = "big-spacer"></div>
       <h3><%= @item.description %></h3>
       <h3><%= @item.price %></h3>
     </div>
-    <div class = "col-md-7">
-      <h3><%= image_tag @item.avatar.url(:medium) %></h3>
-      <h4><%= link_to "Add #{@item.name}", cart_items_path(item_id: @item.id), method: :patch %>
-        <%= "QTY: #{cart.cart_data[@item.id.to_s]}" %>
 
-      <%= link_to "Remove #{@item.name}", cart_items_path(item_id: @item.id), method: :delete %></h4>
+    <div class = "col-md-7">
+      <h4 class = "text-right"><%= link_to "Back to CATEGORYNAME", "#" %></h4>
+      <h3><%= image_tag @item.avatar.url(:medium) %></h3>
+      <div class = "row">
+        <div class= "col-md-offset-2 col-md-3">
+          <h4><%= link_to "Add #{@item.name}", 
+            cart_items_path(item_id: @item.id), 
+            method: :patch %></h4>
+        </div>
+        <div class= "col-md-3">
+          <h4><%= "QTY: #{cart.cart_data[@item.id.to_s]}" %></h4>
+        </div>
+        <div class= "col-md-3">
+          <h4><%= link_to "Remove #{@item.name}", 
+            cart_items_path(item_id: @item.id), 
+            method: :delete %></h4>
+        </div>
+      </div> <!-- END OF ROW --!>
     </div>
-  </div>
+  </div><!-- END OF ROW --!>
 
 </div>
