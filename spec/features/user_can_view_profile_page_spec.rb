@@ -21,8 +21,8 @@ RSpec.feature "user can view profile page" do
 
   before(:each) do
     User.create(email: "justin@example.com", password: "password")
-    item1 = Item.create(name: 'Fries', description: 'Fo Free', price: 400)
-    item2 = Item.create(name: 'Burger', description: 'for a rabbi', price: 350)
+    item1 = Item.create(name: 'Fries', description: 'Fo Free', price: 4)
+    item2 = Item.create(name: 'Burger', description: 'for a rabbi', price: 3.5)
   end
 
   scenario "and see past orders" do

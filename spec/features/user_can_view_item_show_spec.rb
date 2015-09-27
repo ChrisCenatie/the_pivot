@@ -4,8 +4,8 @@ describe 'can view an item show page', type: :feature do
   let(:item) { Item.last }
 
   before(:each) do
-   Item.create(name: "Soda", description: "Teh bubbles", price:100)
-   User.create(email: "david@example.com", password: "password")
+    Item.create(name: "Soda", description: "Teh bubbles", price:1)
+    User.create(email: "david@example.com", password: "password")
   end
 
   def enter_address
@@ -25,7 +25,7 @@ describe 'can view an item show page', type: :feature do
 
     expect(page).to have_content('Soda')
     expect(page).to have_content('Teh bubbles')
-    expect(page).to have_content('100')
+    expect(page).to have_content('$1.00')
   end
 
   scenario 'from the cart' do
@@ -38,7 +38,7 @@ describe 'can view an item show page', type: :feature do
 
     expect(page).to have_content('Soda')
     expect(page).to have_content('Teh bubbles')
-    expect(page).to have_content('100')
+    expect(page).to have_content('$1.00')
   end
 
   scenario 'from past orders' do
@@ -54,9 +54,9 @@ describe 'can view an item show page', type: :feature do
     click_button("Check Out")
     enter_address
     click_on "Soda"
-    
+
     expect(page).to have_content('Soda')
     expect(page).to have_content('Teh bubbles')
-    expect(page).to have_content('100')
+    expect(page).to have_content('$1.00')
   end
 end

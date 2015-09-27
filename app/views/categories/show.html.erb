@@ -1,5 +1,5 @@
 <% @category.items.each do |i| %>
   <%= i.name %>
   <%= i.description %>
-  <%= i.price %>
+  <%= number_to_currency(i.price) %>
 <% end %>
