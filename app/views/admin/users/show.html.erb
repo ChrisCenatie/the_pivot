@@ -1,1 +1,6 @@
 <h1>Admin Dashboard</h1>
+<p>Ordered: <%= Order.ordered.count %></p>
+<p>Paid: <%= Order.paid.count %></p>
+<p>Cancelled: <%= Order.cancelled.count %></p>
+<p>Completed: <%= Order.completed.count %></p>
+<%= render partial: "order", collection: @orders %>

@@ -13,4 +13,19 @@ class Order < ActiveRecord::Base
     number_to_currency(price)
   end
 
+  def ordered
+    Order.where(status: "ordered")
+  end
+
+  def paid
+    Order.where(status: "paid")
+  end
+
+  def cancelled
+    Order.where(status: "cancelled")
+  end
+
+  def completed
+    Order.where(status: "completed")
+  end
 end

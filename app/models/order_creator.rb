@@ -19,10 +19,10 @@ class OrderCreator
     empty_cart
   end
 
-  private 
+  private
 
   def empty_cart
-    @cart = {} 
+    @cart = {}
   end
-  
+
 end
