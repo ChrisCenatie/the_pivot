@@ -10,7 +10,6 @@ class Order < ActiveRecord::Base
     price = order_items.reduce(0) do |sum, order_item|
       sum += order_item.quantity * order_item.price
     end
-    byebug
     number_to_currency(price)
   end
 
