@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :verify_user, only: [:show]
+  before_action :verify_user, only: [:show, :edit]
 
   def new
     @user = User.new
