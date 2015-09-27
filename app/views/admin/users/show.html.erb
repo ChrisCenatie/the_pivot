@@ -1,6 +1,8 @@
 <h1>Admin Dashboard</h1>
-<p>Ordered: <%= Order.ordered.count %></p>
-<p>Paid: <%= Order.paid.count %></p>
-<p>Cancelled: <%= Order.cancelled.count %></p>
-<p>Completed: <%= Order.completed.count %></p>
+<p><%= button_to "View All", admin_dashboard_path(filter: nil) %></p>
+<p><%= button_to "Ordered: #{Order.ordered.count}", admin_dashboard_path(filter: 0) %></p>
+<p><%= button_to "Paid: #{Order.paid.count}", admin_dashboard_path(filter: 1) %></p>
+<p><%= button_to "Cancelled: #{Order.cancelled.count}", admin_dashboard_path(filter: 2) %></p>
+<p><%= button_to "Completed: #{Order.completed.count}", admin_dashboard_path(filter: 3) %></p>
+
 <%= render partial: "order", collection: @orders %>

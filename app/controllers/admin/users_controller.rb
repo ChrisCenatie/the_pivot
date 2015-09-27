@@ -1,5 +1,15 @@
 class Admin::UsersController < AdminController
   def show
-    @orders = Order.all
+    if session[:filter]
+      @orders = Order.where(status: session[:filter])
+    else
+      @orders = Order.all
+    end
+    session[:filter] = nil
+  end
+
+  def update
+    session[:filter] = params[:filter]
+    redirect_to admin_dashboard_path
   end
 end

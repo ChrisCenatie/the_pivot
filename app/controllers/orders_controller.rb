@@ -9,8 +9,8 @@ class OrdersController < ApplicationController
         session[:cart] = nil
         redirect_to order
       else
-        redirect_to cart_path
         flash[:errors] = "Cart it empty! Fill it up with some goodies"
+        redirect_to cart_path
       end
   end
 
@@ -24,6 +24,12 @@ class OrdersController < ApplicationController
     else
       redirect_to login_path
     end
+  end
+
+  def update
+    @order = Order.find(params[:id])
+    @order.update(status: params[:status])
+    redirect_to admin_dashboard_path
   end
 
   private
