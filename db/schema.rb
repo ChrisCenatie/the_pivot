@@ -16,6 +16,17 @@ ActiveRecord::Schema.define(version: 20150927042229) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "street_address"
+    t.string   "apt"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip_code"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -58,6 +69,8 @@ ActiveRecord::Schema.define(version: 20150927042229) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "role",            default: 1
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_foreign_key "orders", "users"

@@ -17,6 +17,18 @@ RSpec.feature "user can view completed order" do
       click_on("Login")
     end
     click_on("Check Out")
+    enter_address
+  end
+
+  def enter_address
+    fill_in("First Name", with: "Josha")
+    fill_in("Last Name", with: "Mejia")
+    fill_in("Street", with: "1510 Blake Street")
+    fill_in("City", with: "Denver")
+    fill_in("State", with: "CO")
+    fill_in("Zip Code", with: "80010")
+    click_on("Update")
+    click_on("Check Out")
   end
 
   before(:each) do
@@ -61,5 +73,5 @@ RSpec.feature "user can view completed order" do
      expect(page).to_not have_content("Fries")
      expect(page).to_not have_content("Burger")
    end
-  
+
 end
