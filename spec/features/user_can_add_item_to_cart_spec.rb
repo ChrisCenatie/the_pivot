@@ -17,16 +17,19 @@ RSpec.feature "user can add item to cart" do
 
   scenario "on cart page" do
     Item.create(name: "Fries", description: "Salty", price: 4)
+    Item.create(name: "Burger", description: "Beef", price: 1)
 
     visit items_path
 
     click_on("Add Fries")
+    click_on("Add Burger")
     click_on("Cart")
     click_on("Add Fries")
 
+    expect(current_path).to eq(cart_path)
     expect(page).to have_content("Fries")
     expect(page).to have_content("2")
     expect(page).to have_content("$8.00")
-    expect(current_path).to eq(cart_path)
+    expect(page).to have_content("$9.00")
   end
 end
