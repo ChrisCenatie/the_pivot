@@ -17,12 +17,24 @@ RSpec.feature "user can view completed order" do
       click_on("Login")
     end
     click_on("Check Out")
+    enter_address
+  end
+
+  def enter_address
+    fill_in("First Name", with: "Josha")
+    fill_in("Last Name", with: "Mejia")
+    fill_in("Street", with: "1510 Blake Street")
+    fill_in("City", with: "Denver")
+    fill_in("State", with: "CO")
+    fill_in("Zip Code", with: "80010")
+    click_on("Update")
+    click_on("Check Out")
   end
 
   before(:each) do
     User.create(email: "justin@example.com", password: "password")
-    Item.create(name: 'Fries', description: 'Fo Free', price: 4)
-    Item.create(name: 'Burger', description: 'for a rabbi', price: 3.50)
+    Item.create(name: 'Fries', description: 'Fo Free', price: 4, category_id: 1)
+    Item.create(name: 'Burger', description: 'for a rabbi', price: 3.50, category_id: 1)
   end
 
   scenario "after clicking checkout and then logging in" do
@@ -61,5 +73,5 @@ RSpec.feature "user can view completed order" do
      expect(page).to_not have_content("Fries")
      expect(page).to_not have_content("Burger")
    end
-  
+
 end

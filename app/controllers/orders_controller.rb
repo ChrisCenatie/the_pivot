@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
 
   def create
     not_logged_in?("Create an account to complete your order") or return
+    no_address?("Please enter your address to complete your order") or return
 
       if cart.data != {}
         order = OrderCreator.new(cart.data, current_user).order

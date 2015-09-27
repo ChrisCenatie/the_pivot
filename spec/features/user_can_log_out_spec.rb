@@ -24,8 +24,8 @@ RSpec.feature "user logs out" do
   end
 
   scenario "and cart is cleared" do
-    Item.create(name: 'Fries', description: 'Fo Free', price: 4)
-    Item.create(name: 'Burger', description: 'for a rabbi', price: 3.50)
+    Item.create(name: 'Fries', description: 'Fo Free', price: 4, category_id: 1)
+    Item.create(name: 'Burger', description: 'for a rabbi', price: 3.50, category_id: 1)
 
     visit root_path 
     click_on("Sign up")

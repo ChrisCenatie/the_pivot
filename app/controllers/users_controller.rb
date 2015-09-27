@@ -24,10 +24,30 @@ class UsersController < ApplicationController
     @orders = @user.orders
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update_all(user_and_address_params)
+      redirect_to previous_path
+    else
+      flash.now[:errors] = "Invalid input params"
+      render :edit
+    end
+  end
+
   private
 
+  def user_and_address_params
+    params.require(:user_and_address).permit(:email, :password, :first_name,
+      :last_name, :street_address, :apt, :city, :state, :zip_code)
+  end
+
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :first_name, :last_name)
   end
 
   def verify_user

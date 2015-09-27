@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'the item view', type: :feature do
 
   it 'shows the items' do
-    Item.create(name: 'Fries', description: 'Fo Free', price: 4)
+    Item.create(name: 'Fries', description: 'Fo Free', price: 4, category_id: 1)
     visit root_path
     visit items_path
 
