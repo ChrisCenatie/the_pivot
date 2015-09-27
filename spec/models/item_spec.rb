@@ -40,4 +40,10 @@ RSpec.describe Item, type: :model do
 
     expect(item2).to be_invalid
   end
+
+  it 'has a default picture if not added' do
+    item.save
+
+    expect(item.image_url).to eql("http://questionarium.net/wp-content/uploads/sites/4/2014/01/Foods-That-Are-High-In-Cholesterol.jpg") 
+  end
 end
