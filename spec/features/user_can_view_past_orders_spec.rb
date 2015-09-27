@@ -5,9 +5,9 @@ RSpec.feature "user can view past orders" do
   before(:each) do
     category = Category.create(name: "Meals")
     Item.create(category_id: category.id, name: "Burger",
-        description: "For a rabbi", price: 200)
+        description: "For a rabbi", price: 2)
     Item.create(category_id: category.id, name: "Steak",
-        description: "Fo Free", price: 400)
+        description: "Fo Free", price: 4)
 
     @user = User.create(email: "david@example.com", password: "password")
     @user2 = User.create(email: "mike@example.com", password: "password")

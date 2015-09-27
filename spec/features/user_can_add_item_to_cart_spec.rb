@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "user can add item to cart" do
 
   scenario "on item index page" do
-    Item.create(name: "Fries", description: "Salty", price: 400)
+    Item.create(name: "Fries", description: "Salty", price: 4)
 
     visit items_path
 
@@ -16,7 +16,7 @@ RSpec.feature "user can add item to cart" do
   end
 
   scenario "on cart page" do
-    Item.create(name: "Fries", description: "Salty", price: 400)
+    Item.create(name: "Fries", description: "Salty", price: 4)
 
     visit items_path
 

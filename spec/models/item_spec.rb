@@ -23,5 +23,4 @@ RSpec.describe Item, type: :model do
     item.price=nil
     expect(item).to be_invalid
   end
-
 end
