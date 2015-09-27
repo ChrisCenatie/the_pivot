@@ -24,8 +24,20 @@ RSpec.feature "user can view past orders" do
     click_on("Add Steak")
     click_on("Cart")
     click_on("Check Out")
-
+    enter_address
+    
     @order1 = Order.last
+  end
+
+  def enter_address
+    fill_in("First Name", with: "Josha")
+    fill_in("Last Name", with: "Mejia")
+    fill_in("Street", with: "1510 Blake Street")
+    fill_in("City", with: "Denver")
+    fill_in("State", with: "CO")
+    fill_in("Zip Code", with: "80010")
+    click_on("Update")
+    click_on("Check Out")
   end
 
   scenario "when they visit /orders" do
@@ -65,8 +77,8 @@ RSpec.feature "user can view past orders" do
     click_on("Add Burger")
     click_on("Cart")
     click_on("Check Out")
+    enter_address
     visit orders_path
-
     @order2 = Order.last
 
     expect(page).to have_content("Order #{@order2.id}")
