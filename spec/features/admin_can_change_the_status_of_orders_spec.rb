@@ -4,7 +4,8 @@ RSpec.feature "admin can change the status of orders" do
   before(:each) do
     User.create(email: "admin@example.com", password: "password", role: 3)
     user = User.create(email: "david@example.com", password: "password")
-    item = Item.create(name: "Soda", description: "Teh bubbles", price:4)
+    category = Category.create(name: "Meals")
+    item = Item.create(category_id: category.id, name: "Soda", description: "Teh bubbles", price:4)
     @order1 = Order.create(user_id: user.id, status: 0)
     @order2 = Order.create(user_id: user.id, status: 1)
     OrderItem.create(order_id: @order1.id, quantity: 3, price: 4, item_id: item.id)

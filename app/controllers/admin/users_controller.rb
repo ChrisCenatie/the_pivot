@@ -5,7 +5,6 @@ class Admin::UsersController < AdminController
     else
       @orders = Order.all
     end
-    session[:filter] = nil
   end
 
   def update
