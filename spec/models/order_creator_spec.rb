@@ -12,8 +12,8 @@ RSpec.describe OrderCreator do
 
   describe "#create_order_items" do
     it "populates the order items table with order items" do
-      item1 = Item.create(name: 'Soda', description: 'Sugary', price: 350)
-      item2 = Item.create(name: 'Fries', description: 'Salty', price: 400)
+      item1 = Item.create(name: 'Soda', description: 'Sugary', price: 350, category_id: 1)
+      item2 = Item.create(name: 'Fries', description: 'Salty', price: 400, category_id: 1)
 
       cart_data = { item1.id => 3, item2.id => 2 }
       order_creator = OrderCreator.new(cart_data, user)
