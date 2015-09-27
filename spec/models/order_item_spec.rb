@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe OrderItem do
 
-  let(:item) { Item.create(name: "Fries", description: "Yummy", price: 400) }
+  let(:item) { Item.create(name: "Fries", description: "Yummy", price: 400, category_id: 1) }
   let(:user) { User.create(email: "justin@example.com", password: "password") }
   let(:order) { Order.create(user_id: user.id) }
 

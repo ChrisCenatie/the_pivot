@@ -4,8 +4,8 @@ describe 'can view an item show page', type: :feature do
   let(:item) { Item.last }
 
   before(:each) do
-    Item.create(name: "Soda", description: "Teh bubbles", price:1)
-    User.create(email: "david@example.com", password: "password")
+   Item.create(name: "Soda", description: "Teh bubbles", price: 1, category_id: 1) 
+   User.create(email: "david@example.com", password: "password")
   end
 
   def enter_address
