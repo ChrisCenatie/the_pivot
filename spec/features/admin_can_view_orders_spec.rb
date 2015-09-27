@@ -41,6 +41,6 @@ RSpec.feature "admin can view orders" do
 
     click_on("Order ID: #{@order1.id}")
 
-    expect(current_path).to eq(orders_path(@order1))
+    expect(current_path).to eq(order_path(@order1))
   end
 end
