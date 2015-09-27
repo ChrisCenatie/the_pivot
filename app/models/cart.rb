@@ -1,8 +1,16 @@
 class Cart
+  include ActionView::Helpers::NumberHelper
   attr_reader :cart_data
 
   def initialize(cart_data = {})
     @cart_data = cart_data || {}
+  end
+
+  def total_price
+    price = items.reduce(0) do |sum, cart_item|
+      sum += cart_item.price * cart_item.quantity
+    end
+    number_to_currency(price)
   end
 
   def add_item(item_id)

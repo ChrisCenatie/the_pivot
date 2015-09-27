@@ -10,8 +10,8 @@ RSpec.feature "user can view categories" do
 
   it "can view categories as a guest" do
     category = Category.create(name: "Meals")
-    Item.create(category_id: category.id, name: "Burger", description: "For a rabbi", price: 200)
-    Item.create(category_id: category.id, name: "Steak", description: "Fo Free", price: 400)
+    Item.create(category_id: category.id, name: "Burger", description: "For a rabbi", price: 2)
+    Item.create(category_id: category.id, name: "Steak", description: "Fo Free", price: 4)
 
     visit items_path
 
@@ -28,7 +28,7 @@ RSpec.feature "user can view categories" do
     expect(page).to have_content("Burger")
     expect(page).to have_content("Steak")
     expect(page).to have_content("For a rabbi")
-    expect(page).to have_content("200")
+    expect(page).to have_content("$2.00")
   end
 
 end

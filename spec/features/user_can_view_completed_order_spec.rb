@@ -21,8 +21,8 @@ RSpec.feature "user can view completed order" do
 
   before(:each) do
     User.create(email: "justin@example.com", password: "password")
-    Item.create(name: 'Fries', description: 'Fo Free', price: 400)
-    Item.create(name: 'Burger', description: 'for a rabbi', price: 350)
+    Item.create(name: 'Fries', description: 'Fo Free', price: 4)
+    Item.create(name: 'Burger', description: 'for a rabbi', price: 3.50)
   end
 
   scenario "after clicking checkout and then logging in" do
@@ -45,9 +45,9 @@ RSpec.feature "user can view completed order" do
 
     expect(page).to have_content("Fries")
     expect(page).to have_content("2")
-    expect(page).to have_content("800")
+    expect(page).to have_content("$8.00")
     expect(page).to have_content("Ordered")
-    expect(page).to have_content("1150")
+    expect(page).to have_content("$11.50")
     expect(page).to have_content("#{order.created_at}")
 
     click_on("Fries")

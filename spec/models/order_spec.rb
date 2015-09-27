@@ -21,13 +21,13 @@ RSpec.describe Order, type: :model do
   describe "#total_price" do
     it "can calculate its total price" do
       order.save
-      order.order_items.create(item_id: 1, quantity: 2, price: 100)
-      order.order_items.create(item_id: 2, quantity: 3, price: 200)
-      order.order_items.create(item_id: 3, quantity: 4, price: 200)
+      order.order_items.create(item_id: 1, quantity: 2, price: 1)
+      order.order_items.create(item_id: 2, quantity: 3, price: 2)
+      order.order_items.create(item_id: 3, quantity: 4, price: 2)
 
       result = order.total_price
 
-      expect(result).to eql(1600)
+      expect(result).to eq("$16.00")
     end
   end
 end

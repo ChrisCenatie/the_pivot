@@ -6,7 +6,7 @@
       <h2><%= @item.name %> from VENDORNAME</h2>
       <div class = "big-spacer"></div>
       <h3><%= @item.description %></h3>
-      <h3><%= @item.price %></h3>
+      <h3><%= number_to_currency(@item.price) %></h3>
     </div>
 
     <div class = "col-md-7">
