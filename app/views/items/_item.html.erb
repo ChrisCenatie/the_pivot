@@ -1,0 +1,17 @@
+<div class="col-md-3 col-sm-6 hero-feature">
+    <div class="thumbnail">
+      <img src=<%= item.image_url %> alt="">
+        <div class="caption text-center">
+            <h3><%= item.name %></h3>
+            <p><%= item.description %></p>
+            <h4><%= number_to_currency(item.price) %></h4>
+            <p>
+                <%= button_to "Add #{item.name}" , cart_items_path(item_id: item.id) %>
+            </p>
+
+            <% if current_user && current_user.admin? %>
+              <%= link_to "Edit", edit_item_path(item) %>
+            <% end %>
+        </div>
+    </div>
+</div>

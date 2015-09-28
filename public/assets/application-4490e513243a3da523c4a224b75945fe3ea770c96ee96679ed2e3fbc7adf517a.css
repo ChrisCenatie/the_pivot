@@ -35,6 +35,14 @@ body {
 footer {
     margin: 50px 0;
 }
+
+.underline {
+  text-decoration: underline;
+}
+
+.big-spacer {
+  padding-top: 50px;
+}
 /* This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *

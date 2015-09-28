@@ -1,10 +1,11 @@
 class ItemsController < ApplicationController
+  before_action :find_item, only: [:show, :edit, :update]
+
   def index
     @items = Item.all
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def create
@@ -12,12 +13,31 @@ class ItemsController < ApplicationController
     if @item.save
      redirect_to previous_path
     else
-     render :new 
+     render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @item.update(item_params)
+      flash[:notice] = "Successfully Updated"
+      redirect_to items_path
+    else
+      flash[:errors] = "Invalid update params"
+      redirect_to edit_item_path(@item)
     end
   end
 
   def new
     @item = Item.new
+  end
+
+  private
+
+  def find_item
+    @item = Item.find(params[:id])
   end
 
   def item_params

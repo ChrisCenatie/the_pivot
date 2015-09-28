@@ -1,37 +1,38 @@
 <%= stylesheet_link_tag 'heroic-features', media: 'all', 'data-turbolinks-track' => true %>
-<br>
-<br>
   <!-- Page Content -->
   <div class="container">
 
   <div class="row">
     <div class="col-lg-12 ">
-      <h1> Hello <%= @user.email %> </h1>
+      <h2>Hello <%= @user.email %></h1>
+      <h3><%= link_to "Past Orders", orders_path %>
     </div>
   </div>
 
-  <hr>
-  <div>
-      <%= link_to "Order History", orders_path%>
-  </div>
+  <hr style="clear:both;"/>
   <br>
 
-  <!-- <div class="row"> -->
+  <div class="row">
   <div class="col-md-4">
       <div class="well">
-        <h2>Address</h2>
+        <h2>Profile</h2>
+        <h6><%= link_to "Edit Profile", edit_user_path(@user) %></h6>
+        <hr>
 
+        <h4>Full Name</h4>
+        <%= @user.full_name %>
+        <br>
         <br>
 
+        <h4>Address</h4>
         <% if @user.address %>
           <%= @user.address.street_address %>
           <%= @user.address.apt if @user.address.apt %>
-          <%= @user.address.city %>
+          <br>
+          <%= @user.address.city %>,
           <%= @user.address.state %>
           <%= @user.address.zip_code %>
         <% end %>
-        <%= link_to "Change Address", edit_user_path(@user) %>
-
       </div>
 
   </div>
