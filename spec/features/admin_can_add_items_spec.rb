@@ -39,7 +39,7 @@ RSpec.feature 'admin adds item' do
     fill_in("Price", with: "11.50")
     fill_in("Image Url", with: "http://www.reservoirhillsfamilybutchery.co.za/wp-content/uploads/2015/03/RoastChicken.jpg")
     select("Meals", from: "item[category_id]")
-    
+
     click_on("Create Item")
     expect(current_path).to eq(items_path)
 
