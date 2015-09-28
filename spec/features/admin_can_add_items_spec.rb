@@ -15,6 +15,13 @@ RSpec.feature 'admin adds item' do
     end
   end
 
+  def user_signs_up
+    visit new_user_path
+    fill_in("Email", with: "ryan@example.com")
+    fill_in("Password", with: "password")
+    click_on("Create Account")
+  end
+
   it 'with valid params' do
     Category.create(name: "Meals")
     Category.create(name: "Drinks")
@@ -39,5 +46,13 @@ RSpec.feature 'admin adds item' do
     expect(page).to have_content('Roast Chicken')
     expect(page).to have_content("$11.50")
   end
+
+  it 'user cannot see add item link' do
+    user_signs_up
+    visit items_path
+
+    expect(page).to_not have_content('Add Item')
+  end
+
 
 end

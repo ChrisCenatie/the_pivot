@@ -32,12 +32,12 @@ RSpec.feature "admin can view orders" do
     expect(current_path).to eq(admin_dashboard_path)
     expect(page).to have_content("Order ID: #{@order1.id}")
     expect(page).to have_content("Order ID: #{@order2.id}")
-    expect(page).to have_button("Ordered: 1")
-    expect(page).to have_button("Paid: 1")
+    expect(page).to have_link("Ordered: 1")
+    expect(page).to have_link("Paid: 1")
     expect(page).to have_content("$12.00")
     expect(page).to have_content("$175.00")
 
-    click_button("Ordered: #{Order.ordered.count}")
+    click_link("Ordered: #{Order.ordered.count}")
 
     expect(page).to_not have_content("Order ID: #{@order2.id}")
 
