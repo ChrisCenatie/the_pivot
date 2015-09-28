@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "user can view profile page" do 
+RSpec.feature "user can view profile page" do
   def create_order
     visit items_path
 
@@ -28,13 +28,9 @@ RSpec.feature "user can view profile page" do
     create_order
     user = User.first
     order = Order.last
-
     click_on("Hello, justin")
-
     expect(current_path).to eq(user_path(user.id))
-    expect(page).to have_content("Order History")
-
-    click_on("Order History")
+    click_on("Past Orders")
 
     expect(current_path).to eq(orders_path)
   end
