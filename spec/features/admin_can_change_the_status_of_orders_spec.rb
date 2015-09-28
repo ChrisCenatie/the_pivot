@@ -21,29 +21,29 @@ RSpec.feature "admin can change the status of orders" do
       click_on("Login")
     end
 
-    expect(page).to have_button("Ordered: 1")
-    expect(page).to have_button("Paid: 1")
+    expect(page).to have_link("Ordered: 1")
+    expect(page).to have_link("Paid: 1")
 
     within(:css, "div#order_#{@order1.id}") do
       click_on("Mark as paid")
     end
 
-    expect(page).to_not have_button("Ordered: 1")
-    expect(page).to have_button("Paid: 2")
+    expect(page).to_not have_link("Ordered: 1")
+    expect(page).to have_link("Paid: 2")
 
     within(:css, "div#order_#{@order2.id}") do
       click_on("Mark as completed")
     end
 
-    expect(page).to have_button("Paid: 1")
-    expect(page).to have_button("Completed: 1")
+    expect(page).to have_link("Paid: 1")
+    expect(page).to have_link("Completed: 1")
 
     within(:css, "div#order_#{@order1.id}") do
       click_on("Cancel")
     end
 
-    expect(page).to_not have_button("Paid: 1")
-    expect(page).to have_button("Cancelled: 1")
+    expect(page).to_not have_link("Paid: 1")
+    expect(page).to have_link("Cancelled: 1")
 
   end
 end

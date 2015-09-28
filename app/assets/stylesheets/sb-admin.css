@@ -225,3 +225,17 @@ ul.alert-dropdown {
 .panel-yellow > a:hover {
     color: #df8a13;
 }
+
+.order-filter {
+  color: white;
+}
+
+td {
+  vertical-align: center;
+  text-align: center;
+}
+
+th {
+  vertical-align: center;
+  text-align: center;
+}
