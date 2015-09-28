@@ -13,6 +13,14 @@ class User < ActiveRecord::Base
     email.gsub(/@.*/, '')
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def full_address
+    "#{address.street_address}, #{address.apt} #{address.city}, #{address.state} #{address.zip_code}"
+  end
+
   def update_all(u_a_params)
     user_params = {email: u_a_params[:email],
       password: u_a_params[:password],

@@ -42,4 +42,21 @@ RSpec.describe User, type: :model do
 
     expect(user.role).to eq("user")
   end
+
+  describe "#full_name" do
+    it "calculates its full name from its first and last name" do
+      user = User.create(email: "Justin@example.com", password: "password",
+        first_name: "Justin", last_name: "Holzmann")
+      expect(user.full_name).to eq("Justin Holzmann")
+    end
+  end
+
+  describe "#full_address" do
+    it "calculates its full address from its components" do
+      user = User.create(email: "Justin@example.com", password: "password")
+      Address.create(user_id: user.id, street_address: "1510 Blake street",
+        apt: "basement", city: "Denver", state: "CO", zip_code: "80110")
+      expect(user.full_address).to eq("1510 Blake street, basement Denver, CO 80110")
+    end
+  end
 end
