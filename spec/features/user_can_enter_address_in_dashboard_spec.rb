@@ -26,7 +26,7 @@ RSpec.feature "user can enter address in dashboard" do
     end
 
     click_on("Hello, #{user.name}")
-    click_on("Change Address")
+    click_on("Edit Profile")
     enter_name_and_address
 
     expect(current_path).to eq(user_path(user))
