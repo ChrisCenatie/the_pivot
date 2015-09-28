@@ -1,3 +1,5 @@
+<div class="container">
+  <div class="well">
 <%= form_for :user_and_address, url: user_path, method: :patch do |f| %>
   <div class="form-group">
     <%= f.text_field :first_name, class: "form-control input-md", placeholder: "First Name" %>
@@ -21,6 +23,7 @@
       <%= f.text_field :zip_code, class: "form-control input-md", placeholder: "Zip Code" %>
     </div>
   <div class="form-group">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", class: "btn btn-primary" %>
   </div>
 <% end %>
+</div>
