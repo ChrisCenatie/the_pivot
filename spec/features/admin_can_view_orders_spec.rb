@@ -4,6 +4,8 @@ RSpec.feature "admin can view orders" do
   before(:each) do
     User.create(email: "admin@example.com", password: "password", role: 3)
     user = User.create(email: "david@example.com", password: "password")
+    Address.create(user_id: user.id, street_address: "1510 Blake street",
+      apt: "basement", city: "Denver", state: "CO", zip_code: "80110")
     user2 = User.create(email: "justin@example.com", password: "password")
     category = Category.create(name: "Meals")
     item = Item.create(category_id: category.id, name: "Soda", description: "Teh bubbles", price:4)
