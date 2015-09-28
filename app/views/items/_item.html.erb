@@ -1,7 +1,7 @@
 <div class="col-md-3 col-sm-6 hero-feature">
     <div class="thumbnail">
       <img src=<%= item.image_url %> alt="">
-        <div class="caption text-center">
+        <div class="caption text-center" id="item">
             <h3><%= item.name %></h3>
             <p><%= item.description %></p>
             <h4><%= number_to_currency(item.price) %></h4>
@@ -11,7 +11,7 @@
 
             <% if current_user && current_user.admin? %>
               <%= link_to "Edit", edit_item_path(item) %>
-              <%= link_to "Delete", item_path(item), method: :delete, data: { confirm: "Are you sure?" } %>
+              <%= link_to "Delete", item_path(item), method: :delete %>
             <% end %>
         </div>
     </div>

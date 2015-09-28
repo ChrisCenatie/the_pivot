@@ -4,8 +4,13 @@ RSpec.feature "admin can" do
 
   before(:each) do
     category = Category.create(name: "Meals")
-    Item.create(category_id: category.id, name: "Roast Chicken", description: "Just like grandma's", price: "11.50")
+  Item.create(category_id: category.id, name: "Roast Chicken", description: "Just like grandma's", price: "11.50")
   end
+
+#
+#  after(:all) do
+#    Capybara.use_default_driver 
+#  end
 
   def create_admin
     User.create(email: "admin@example.com", password: "password", role: 3)
@@ -28,9 +33,6 @@ RSpec.feature "admin can" do
 
     expect(page).to have_content("Delete")
     click_on("Delete")
-
-    expect(page).to have_content("Are you sure?")
-    click_on("Yes")
 
     expect(current_path).to eq(items_path)
 
