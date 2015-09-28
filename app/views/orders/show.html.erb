@@ -3,61 +3,53 @@
   <div class="container">
 
       <!-- Page Heading -->
-      <div class="row">
-          <div class="col-md-2">
+        <div class="col-md-5">
             <h1><%= "Order #{@order.id}" %></h1>
-            <h4><%= "#{@order.user.full_name}" %></h4>
-            <h4><%= "#{@order.user.full_address}" %></h4>
-          </div>
-        <div class="col-md-offset-5 col-md-5">
-          <h4><%= "Status:  #{@order.status.humanize}" %></h4>
-          <h4><%= "Created At: #{@order.created_at} " %></h4>
+            <h4 class = "underline"><%= link_to "Past orders", orders_path %></h4>
+            <br>
+            <div class='well'>
+                <h4><%= "#{@order.user.full_name}" %></h4>
+                <hr>
+                <h4><%= "#{@order.user.address.street_address}" %><%= "#{@order.user.address.apt}" %></h4>
+                <h4><%= "#{@order.user.address.city}, #{@order.user.address.state} #{@order.user.address.zip_code}"%></h4>
+                <hr>
+                <h4><%= "Status:  #{@order.status.humanize}" %></h4>
+                <h4><%= "Date Ordered: #{@order.date} " %></h4>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <h4 class = "underline"><%= link_to "Past orders", orders_path %></h4>
-        </div>
-      </div>
 
-      <br>
-
-      <!-- /.row -->
-
-    <table class = 'table'>
+    <table class='table'>
       <tr>
-        <th><h3>Item</h3></th>
-        <th><h3>Price</h3></th>
-        <th><h3>Quantity</h3></th>
-        <th><h3>Item Subtotal</h3></th>
+          <th class="text-center"><h3>Item</h3></th>
+          <th class="text-center"><h3>Price</h3></th>
+          <th class="text-center"><h3>Quantity</h3></th>
+          <th class="text-center"><h3>Item Subtotal</h3></th>
       </tr>
       <!-- Cart items -->
       <% @order_items.each do |order_item| %>
       <tr>
-      <div class="row">
-          <div class="col-md-6">
-            <td><h4><%= link_to order_item.item.name, item_path(order_item.item) %></h4></td>
-            <td><h4><%= number_to_currency(order_item.price) %></h4>
+          <div class="col-md-2">
+            <td class="text-center"><h4><%= link_to order_item.item.name, item_path(order_item.item) %></h4></td>
+            <td class="text-center"><h4><%= number_to_currency(order_item.price) %></h4>
           </div>
           <div class="col-md-2">
-            <td><h4><%= order_item.quantity %> </h4>
+            <td class="text-center"><h4><%= order_item.quantity %> </h4>
           </div>
           <div class="col-md-2">
-            <!---take this calc out of view -->
-            <td><h4><%= number_to_currency(order_item.price * order_item.quantity) %></h4>
+            <td class="text-center"><h4><%= number_to_currency(order_item.price * order_item.quantity) %></h4>
           </div>
-      </div>
       </tr>
       <% end %>
     </table>
 
       <div class="row">
-        <div class="col-md-offset-9 col-md-2">
-          <h3 class = "underline"><%="Total: #{@order.total_price}" %></h3>
+        <div class="col-md-offset-9">
+          <h3><%="Total: #{@order.total_price}" %></h3>
         </div>
       </div>
-
+    </div>
   </div>
+  <br>
 
   <!-- jQuery -->
   <script src="js/jquery.js"></script>
