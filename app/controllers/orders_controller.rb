@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :find_order, only: [:show]
+  before_action :find_order, only: [:show, :update]
 
   def create
     not_logged_in?("Create an account to complete your order") or return
@@ -10,8 +10,8 @@ class OrdersController < ApplicationController
         session[:cart] = nil
         redirect_to order
       else
-        redirect_to cart_path
         flash[:errors] = "Cart it empty! Fill it up with some goodies"
+        redirect_to cart_path
       end
   end
 
@@ -25,6 +25,11 @@ class OrdersController < ApplicationController
     else
       redirect_to login_path
     end
+  end
+
+  def update
+    @order.update(status: params[:status])
+    redirect_to admin_dashboard_path
   end
 
   private

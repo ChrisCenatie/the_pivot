@@ -17,9 +17,10 @@ Rails.application.routes.draw do
   post "login",       to: "sessions#create"
   delete "logout",    to: "sessions#destroy"
 
-  resources :orders, only: [:create, :show, :index]
+  resources :orders, only: [:create, :show, :index, :update]
 
   namespace :admin do
     get "dashboard",    to: "users#show"
+    post "dashboard",    to: "users#update"
   end
 end
