@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :find_item, only: [:show, :edit, :update]
+  before_action :find_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.all
@@ -28,6 +28,11 @@ class ItemsController < ApplicationController
       flash[:errors] = "Invalid update params"
       redirect_to edit_item_path(@item)
     end
+  end
+
+  def destroy
+    @item.update(status: 1)
+    redirect_to items_path
   end
 
   def new
