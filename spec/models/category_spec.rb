@@ -25,4 +25,10 @@ RSpec.describe Category, type: :model do
     category.update(name: "asdfasdfasdfasdfasdfasdfasdfasdf")
     expect(category).to be_invalid
   end
+
+  it 'has a default picture if not added' do
+    category.save
+
+    expect(category.image_url).to eql("http://questionarium.net/wp-content/uploads/sites/4/2014/01/Foods-That-Are-High-In-Cholesterol.jpg")
+  end
 end
