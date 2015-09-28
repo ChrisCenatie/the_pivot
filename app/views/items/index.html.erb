@@ -14,9 +14,11 @@
       <hr>
       <!-- Title -->
       <div class="row">
-          <div class="col-lg-12">
+        <div class="col-lg-12">
+          <% if current_user && current_user.admin? %>
             <h3><%= link_to "Add Item", new_item_path %></h3>
-          </div>
+          <% end %>
+        </div>
       </div>
       <!-- /.row -->
 
