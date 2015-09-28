@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :find_order, only: [:show]
+  before_action :find_order, only: [:show, :update]
 
   def create
     not_logged_in?("Create an account to complete your order") or return
@@ -28,7 +28,6 @@ class OrdersController < ApplicationController
   end
 
   def update
-    @order = Order.find(params[:id])
     @order.update(status: params[:status])
     redirect_to admin_dashboard_path
   end
