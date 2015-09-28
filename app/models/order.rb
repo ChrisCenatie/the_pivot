@@ -13,10 +13,9 @@ class Order < ActiveRecord::Base
     number_to_currency(price)
   end
 
-
-    def date
-      created_at.strftime("%b %e %Y")
-    end
+  def date
+    created_at.strftime("%b %e %Y")
+  end
 
   def ordered
     Order.where(status: "ordered")
