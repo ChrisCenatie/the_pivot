@@ -28,7 +28,7 @@ RSpec.feature "admin can view completed order" do
 
     expect(page).to have_content(@order.date)
     expect(page).to have_content(@user.full_name)
-    expect(page).to have_content(@user.full_address)
+    expect(page).to have_content(@user.address.street_address)
     expect(page).to have_content(@order_item.quantity)
     expect(page).to have_content(@item.price)
     expect(page).to have_content(@order.total_price)

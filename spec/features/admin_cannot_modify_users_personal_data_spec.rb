@@ -37,7 +37,7 @@ RSpec.feature "admin cannot modify users personal data" do
 
   scenario "from their profile" do
     log_in_user
-    click_on("Change Address")
+    click_on("Edit Profile")
     enter_name_and_address
     click_on("Logout")
     admin_logs_in
