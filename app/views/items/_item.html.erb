@@ -10,8 +10,8 @@
             </p>
 
             <% if current_user && current_user.admin? %>
-              <%= link_to "Edit", edit_item_path(item) %>
-              <%= link_to "Delete", item_path(item, category_id:
+              <%= link_to "Edit", edit_admin_item_path(item) %>
+              <%= link_to "Delete", admin_item_path(item, category_id:
                 item.category.id), method: :delete %>
             <% end %>
         </div>
