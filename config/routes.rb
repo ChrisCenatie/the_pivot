@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "static#index"
 
+  get "vendors",    to: "static#show"
+
   resources :categories, only: [:index, :show] do
     resources :items, only: [:show, :index]
   end

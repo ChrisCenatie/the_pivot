@@ -13,7 +13,7 @@ RSpec.feature "guest has to enter address" do
   end
 
   scenario "after clicking check out in cart page" do
-    visit root_path
+    visit category_items_path(Category.first) 
     click_on("Add Burger")
     click_on("Cart")
     click_on("Check Out")
