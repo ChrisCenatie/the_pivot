@@ -8,7 +8,6 @@ RSpec.feature "all users" do
 
     expect(page).to have_content("This is Faster Food")
     expect(page).to have_content("Login")
-    expect(page).to have_content("Sign Up")
-    expect(page).to have_content("Crazy Fast")
+    expect(page).to have_content("Sign up")
   end
 end
