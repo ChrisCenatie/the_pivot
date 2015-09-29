@@ -16,6 +16,7 @@ RSpec.feature "user can subtract item from cart" do
 
     click_on("Remove Fries")
 
-    expect(page).to_not have_content("Fries")
+    expect(page).to have_content("Successfully removed Fries")
+    expect(page).to_not have_content("1")
   end
 end
