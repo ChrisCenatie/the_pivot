@@ -10,7 +10,7 @@ class CartItemsController < ApplicationController
     cart.add_item(item.id)
     session[:cart] = cart.data
     flash[:notice] = "Successfully added #{item.name} to cart"
-    redirect_to redirect_path 
+    redirect_to redirect_path
   end
 
   def destroy
@@ -27,7 +27,7 @@ class CartItemsController < ApplicationController
 
   def redirect_path
     if previous_path == category_item_path(item.category, item)
-       previous_path 
+       previous_path
     else
       cart_path
     end
