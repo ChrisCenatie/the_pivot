@@ -22,7 +22,7 @@
     <div class="col-md-3 col-sm-6">
       <div class="thumbnail caption text-center">
         <img src=<%= i.image_url %> alt="">
-        <h3><%= i.name %></h3>
+        <h3><%= link_to i.name, category_item_path(@category.id, i.id) %></h3>
         <p><%= i.description %></p>
         <h4><%= number_to_currency(i.price) %></h4>
         <p>
