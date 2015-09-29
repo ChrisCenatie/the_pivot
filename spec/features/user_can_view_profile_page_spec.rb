@@ -34,4 +34,9 @@ RSpec.feature "user can view profile page" do
 
     expect(current_path).to eq(orders_path)
   end
+
+  scenario "and change their password" do
+    
+
+  end
 end

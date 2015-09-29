@@ -1,1 +1,11 @@
-<%= render partial: "form" %>
+<div class="container">
+<h1>Edit Profile</h1>
+<% if previous_path == cart_path %>
+  <%= render partial: "name_and_address_form" %>
+<% else %>
+  <%= render partial: "email_form" %>
+  <%= render partial: "name_form" %>
+  <%= render partial: "password_form" %>
+  <%= render partial: "address_form" %>
+<% end %>
+</div>

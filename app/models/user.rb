@@ -42,6 +42,6 @@ class User < ActiveRecord::Base
   end
 
   def update_or_create_address(params)
-    address ? addess.update(params) : Address.create(params)
+    address ? address.update(params) : Address.create(params)
   end
 end
