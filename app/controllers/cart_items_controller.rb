@@ -38,7 +38,11 @@ class CartItemsController < ApplicationController
   end
 
   def category
-    Category.find(params[:category_id])
+    if params[:category_id]
+      Category.find(params[:category_id])
+    else
+      item.category
+    end
   end
 
 end
