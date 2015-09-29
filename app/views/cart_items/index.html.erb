@@ -28,11 +28,11 @@
               <br>
               <h5>Unit Price: <%= number_to_currency(item.price) %></h5>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3" id="item_<%= item.id %>">
               <h2>
-                  <%= link_to '<i class="glyphicon glyphicon-minus"></i>'.html_safe, cart_items_path(item_id: item.id), method: :delete, class: 'btn btn-primary btn-sm' %>
+                  <%= link_to "-", cart_items_path(item_id: item.id), method: :delete, class: 'btn btn-primary btn-sm' %>
                   <%= item.quantity %>
-                  <%= link_to '<i class="glyphicon glyphicon-plus"></i>'.html_safe, cart_items_path(item_id: item.id), method: :patch, class: 'btn btn-primary btn-sm' %>
+                  <%= link_to "+", cart_items_path(item_id: item.id), method: :patch, class: 'btn btn-primary btn-sm' %>
               </h2>
           </div>
           <div class="col-md-3">

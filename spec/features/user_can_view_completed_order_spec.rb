@@ -8,7 +8,9 @@ RSpec.feature "user can view completed order" do
     click_on("Add Fries")
     click_on("Add Burger")
     click_on("Cart")
-    click_on("Add Fries")
+    within(:css, "div#item_#{@item.id}") do
+      click_on("+")
+    end
     click_on("Check Out")
 
     fill_in("Email", with: "justin@example.com")
@@ -33,7 +35,7 @@ RSpec.feature "user can view completed order" do
 
   before(:each) do
     User.create(email: "justin@example.com", password: "password")
-    Item.create(name: 'Fries', description: 'Fo Free', price: 4, category_id: 1)
+    @item = Item.create(name: 'Fries', description: 'Fo Free', price: 4, category_id: 1)
     Item.create(name: 'Burger', description: 'for a rabbi', price: 3.50, category_id: 1)
   end
 
