@@ -7,7 +7,9 @@ RSpec.feature "user can view profile page" do
     click_on("Add Fries")
     click_on("Add Burger")
     click_on("Cart")
-    click_on("Add Fries")
+    within(:css, "div#item_#{@item.id}") do
+      click_on("+")
+    end
     click_on("Check Out")
   end
 
@@ -34,7 +36,7 @@ RSpec.feature "user can view profile page" do
   before(:each) do
     @category = Category.create(name: "Meals")
     User.create(email: "justin@example.com", password: "password")
-    Item.create(name: 'Fries', description: 'Fo Free', price: 4, category_id: @category.id)
+    @item = Item.create(name: 'Fries', description: 'Fo Free', price: 4, category_id: @category.id)
     Item.create(name: 'Burger', description: 'for a rabbi', price: 3.5, category_id: @category.id)
     @user = User.first
   end
