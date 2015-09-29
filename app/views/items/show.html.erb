@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "row">
 
-    <div class="col-md-5">
+    <div class="col-md-5 well">
         <h2><%= link_to "Back to TGI Friday's", categories_path %> </h2>
         <h4><%= link_to "#{@item.category.name}", @item.category %></h4>
         <div class="big-spacer"></div>
@@ -36,6 +36,9 @@
             method: :delete, :class => "btn btn-primary" %></h4>
         </div>
       </div>
+
+
+      <!-- END OF md 7 -->
     </div>
 
   </div>
