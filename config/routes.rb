@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "items#index"
+  root "static#index"
 
   resources :categories, only: [:index, :show] do
     resources :items, only: [:show, :index]
