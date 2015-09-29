@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root "static#index"
+  
+  get "vendors",      to: "static#show"
 
   get "vendors",    to: "static#show"
 

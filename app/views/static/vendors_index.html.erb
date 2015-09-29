@@ -1,0 +1,31 @@
+<%= stylesheet_link_tag 'heroic-features', media: 'all', 'data-turbolinks-track' => true %>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron hero-spacer">
+        <h1>All Vendors</h1>
+    </header>
+
+    <hr>
+
+    <!-- Categories -->
+    <% @vendors.each do |vendor| %>
+
+    <div class="col-md-4 col-sm-6 hero-feature">
+        <div class="thumbnail">
+            <img src=<%= vendor.image_url%> alt="">
+            <div class="caption text-center">
+              <h3><%= link_to vendor.name, categories_path  %></h3>
+            </div>
+        </div>
+    </div>
+    <% end %>
+</div>
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
