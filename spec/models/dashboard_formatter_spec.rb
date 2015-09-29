@@ -17,4 +17,16 @@ RSpec.describe DashboardFormatter do
     expect(DashboardFormatter.cancelled?).to eq(10)
     expect(DashboardFormatter.completed?).to eq(10)
   end
+
+  it "figures out the correct link(s) for an order to show" do
+    ordered_links = DashboardFormatter.new(Order.where(status: 0).take).find_links
+    paid_links = DashboardFormatter.new(Order.where(status: 1).take).find_links
+    cancelled_links = DashboardFormatter.new(Order.where(status: 2).take).find_links
+    completed_links = DashboardFormatter.new(Order.where(status: 3).take).find_links
+
+    expect(ordered_links).to eq({"Cancel" => "cancelled", "Mark as paid" => "paid" })
+    expect(paid_links).to eq({"Cancel" => "cancelled", "Mark as completed" => "completed" })
+    expect(cancelled_links).to eq({})
+    expect(completed_links).to eq({})
+  end
 end
