@@ -1,9 +1,9 @@
 class Admin::UsersController < AdminController
   def show
     if session[:filter]
-      @orders = Order.where(status: session[:filter])
+      @orders = Order.where(status: session[:filter]).order(:id)
     else
-      @orders = Order.all
+      @orders = Order.all.order(:id)
     end
   end
 
