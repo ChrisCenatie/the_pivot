@@ -31,7 +31,7 @@ RSpec.feature 'admin adds item' do
     visit category_items_path(@category)
     click_on("Add Item")
 
-    expect(current_path).to eq(new_item_path)
+    expect(current_path).to eq(new_admin_item_path)
 
     expect(page).to have_content('New Item')
 
