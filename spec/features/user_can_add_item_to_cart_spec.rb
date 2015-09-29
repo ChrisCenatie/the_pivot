@@ -23,6 +23,7 @@ RSpec.feature "user can add item to cart" do
     visit items_path
 
     click_on("Add Fries")
+    expect(page).to have_content("Successfully added Fries")
     click_on("Add Burger")
     click_on("Cart")
     click_on("Add Fries")
