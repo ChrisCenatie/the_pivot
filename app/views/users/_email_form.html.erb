@@ -1,0 +1,8 @@
+<div class="well">
+  <%= form_for :user_and_address, url: user_path, method: :patch do |f| %>
+    <div class="form-group">
+      <%= f.text_field :email, class: "form-control input-md", placeholder: "#{@user.email}" %>
+    </div>
+    <%= f.submit "Update Email", class: "btn btn-primary" %>
+</div>
+<% end %>

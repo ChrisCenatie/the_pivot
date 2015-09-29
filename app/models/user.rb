@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   end
 
   def full_address
-    "#{address.street_address}, #{address.apt} #{address.city}, #{address.state} #{address.zip_code}"
+    "#{address.street_address} #{address.apt} #{address.city}, #{address.state} #{address.zip_code}"
   end
 
   def update_all(u_a_params)
@@ -42,6 +42,6 @@ class User < ActiveRecord::Base
   end
 
   def update_or_create_address(params)
-    address ? addess.update(params) : Address.create(params)
+    address ? address.update(params) : Address.create(params)
   end
 end
