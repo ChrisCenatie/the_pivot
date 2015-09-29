@@ -13,7 +13,7 @@ RSpec.feature "user can view categories" do
     Item.create(category_id: category.id, name: "Burger", description: "For a rabbi", price: 2)
     Item.create(category_id: category.id, name: "Steak", description: "Fo Free", price: 4)
 
-    visit items_path
+    visit category_items_path(category)
 
     click_link("View by category")
 

@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "user can view completed order" do
 
   def create_order
-    visit items_path
+    visit category_items_path(@category)
 
     click_on("Add Fries")
     click_on("Add Burger")
@@ -35,8 +35,9 @@ RSpec.feature "user can view completed order" do
 
   before(:each) do
     User.create(email: "justin@example.com", password: "password")
-    @item = Item.create(name: 'Fries', description: 'Fo Free', price: 4, category_id: 1)
-    Item.create(name: 'Burger', description: 'for a rabbi', price: 3.50, category_id: 1)
+    @category = Category.create(name: "Meals")
+    @items = Item.create(name: 'Fries', description: 'Fo Free', price: 4, category_id: @category.id)
+    Item.create(name: 'Burger', description: 'for a rabbi', price: 3.50, category_id: @category.id)
   end
 
   scenario "after clicking checkout and then logging in" do
@@ -65,7 +66,7 @@ RSpec.feature "user can view completed order" do
     expect(page).to have_content("#{order.date}")
 
     click_on("Fries")
-    expect(current_path).to eq(item_path(Item.find_by(name: "Fries")))
+    expect(current_path).to eq(category_item_path(@category, Item.find_by(name: "Fries")))
   end
 
   scenario "and cart is empied after checking out" do

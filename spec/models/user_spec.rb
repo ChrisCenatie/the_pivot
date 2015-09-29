@@ -56,7 +56,7 @@ RSpec.describe User, type: :model do
       user = User.create(email: "Justin@example.com", password: "password")
       Address.create(user_id: user.id, street_address: "1510 Blake street",
         apt: "basement", city: "Denver", state: "CO", zip_code: "80110")
-      expect(user.full_address).to eq("1510 Blake street, basement Denver, CO 80110")
+      expect(user.full_address).to eq("1510 Blake street basement Denver, CO 80110")
     end
   end
 end
