@@ -10,6 +10,7 @@ body {
 
 .hero-spacer {
     margin-top: 50px;
+    color: white;
 }
 
 .hero-feature {
@@ -36,3 +37,4 @@ footer {
 .big-spacer {
   padding-top: 50px;
 }
+
