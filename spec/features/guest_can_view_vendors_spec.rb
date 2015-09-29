@@ -6,10 +6,10 @@ RSpec.feature "all users" do
     visit root_path
     click_on("Our Vendors")
 
-    expect(current_pth).to eq(vendors_path)
+    expect(current_path).to eq(vendors_path)
 
     expect(page).to have_link("McDonalds")
     expect(page).to have_link("Hapa")
-    expect(page).to have_link("Alinea")
+    expect(page).to have_link("TGI Friday's")
   end
 end

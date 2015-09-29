@@ -15,10 +15,9 @@
 
     <div class="col-md-4 col-sm-6 hero-feature">
         <div class="thumbnail">
-            <img src=<%= vendor[:image_url] %> alt="">
+            <img src=<%= vendor.image_url%> alt="">
             <div class="caption text-center">
-              p
-              <h3><%= vendor.name %></h3>
+              <h3><%= link_to vendor.name, categories_path  %></h3>
             </div>
         </div>
     </div>
