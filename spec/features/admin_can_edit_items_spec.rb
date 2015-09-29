@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.feature "admin can" do
 
   before(:each) do
-    category = Category.create(name: "Meals")
-    Item.create(category_id: category.id, name: "Roast Chicken", description: "Just like grandma's", price: "11.50")
+    @category = Category.create(name: "Meals")
+    Item.create(category_id: @category.id, name: "Roast Chicken", description: "Just like grandma's", price: "11.50")
   end
 
   def create_admin
@@ -24,7 +24,7 @@ RSpec.feature "admin can" do
   scenario "edit items with valid params" do
     create_admin
     admin_logs_in
-    visit items_path
+    visit category_items_path(@category)
 
     expect(page).to have_content("Edit")
 
@@ -36,10 +36,9 @@ RSpec.feature "admin can" do
     fill_in("Description", with: "Just like Pa's")
     fill_in("Price", with: "15.00")
     fill_in("Image Url", with: "http://www.reservoirhillsfamilybutchery.co.za/wp-content/uploads/2015/03/RoastChicken.jpg")
-    select("Meals", from: "item[category_id]")
     click_on("Update Item")
 
-    expect(current_path).to eq(items_path)
+    expect(current_path).to eq(category_items_path(@category))
     expect(page).to have_content("Roast Beef")
     expect(page).to have_content("Pa's")
     expect(page).to have_content("$15.00")
@@ -48,13 +47,12 @@ RSpec.feature "admin can" do
   scenario "edit item with invalid params" do
     create_admin
     admin_logs_in
-    visit items_path
+    visit category_items_path(@category)
     click_on("Edit")
     fill_in("Name", with: "Roast Beef")
     fill_in("Description", with: "Just like Pa's")
     fill_in("Price", with: "hello")
     fill_in("Image Url", with: "http://www.reservoirhillsfamilybutchery.co.za/wp-content/uploads/2015/03/RoastChicken.jpg")
-    select("Meals", from: "item[category_id]")
     click_on("Update Item")
 
     expect(current_path).to eq(edit_item_path(Item.last))

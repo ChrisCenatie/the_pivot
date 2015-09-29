@@ -6,12 +6,13 @@
             <p><%= item.description %></p>
             <h4><%= number_to_currency(item.price) %></h4>
             <p>
-                <%= button_to "Add #{item.name}" , cart_items_path(item_id: item.id), class: "btn btn-primary" %>
+                <%= button_to "Add #{item.name}" , cart_items_path(item_id: item.id, category_id: item.category.id), class: "btn btn-primary" %>
             </p>
 
             <% if current_user && current_user.admin? %>
               <%= link_to "Edit", edit_item_path(item) %>
-              <%= link_to "Delete", item_path(item), method: :delete %>
+              <%= link_to "Delete", item_path(item, category_id:
+                item.category.id), method: :delete %>
             <% end %>
         </div>
     </div>

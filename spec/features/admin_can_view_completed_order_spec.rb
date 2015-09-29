@@ -7,8 +7,8 @@ RSpec.feature "admin can view completed order" do
     Address.create(user_id: @user.id, street_address: "1510 Blake street",
       apt: "basement", city: "Denver", state: "CO", zip_code: "80110")
     @order = Order.create(user_id: @user.id, status: 2)
-    category = Category.create(name: "Meals")
-    @item = Item.create(category_id: category.id, name: "Roast Chicken", description: "Just like grandma's", price: "11.50")
+    @category = Category.create(name: "Meals")
+    @item = Item.create(category_id: @category.id, name: "Roast Chicken", description: "Just like grandma's", price: "11.50")
     @order_item = OrderItem.create(order_id: @order.id, quantity: 5, price: @item.price,
       item_id: @item.id)
   end
@@ -38,6 +38,6 @@ RSpec.feature "admin can view completed order" do
 
     click_on(@item.name)
 
-    expect(current_path).to eq(item_path(@item))
+    expect(current_path).to eq(category_item_path(@category, @item))
   end
 end
