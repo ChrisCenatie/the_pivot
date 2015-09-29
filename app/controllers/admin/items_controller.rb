@@ -28,7 +28,7 @@ class Admin::ItemsController < AdminController
 
   def destroy
     @item.update(status: 1)
-    redirect_to category_items_path(Category.find(params[:category_id]))
+    redirect_to category_items_path(@item.category)
   end
 
   def new
