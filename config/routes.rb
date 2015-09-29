@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root "items#index"
 
-  resources :items
+  resources :categories, only: [:index, :show] do
+    resources :items, only: [:show, :index]
+  end
+  resources :items, except: [:show, :index]
 
   get "cart",          to: "cart_items#index"
   post "cart_items",   to: "cart_items#create"
@@ -10,7 +13,6 @@ Rails.application.routes.draw do
 
   get "dashboard",    to: "users#show"
 
-  resources :categories, only: [:index, :show]
   resources :users, only: [:new, :create, :show, :edit, :update, :patch]
 
   get "login",        to: "sessions#new"

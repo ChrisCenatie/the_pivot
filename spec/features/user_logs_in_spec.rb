@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.feature "user logs in" do
   before(:each) do
+    @category = Category.create(name: "Meals")
     User.create(email: "Justin@example.com", password: "password")
   end
 
@@ -39,7 +40,8 @@ RSpec.feature "user logs in" do
     fill_in "Email", with: "Justin@example.com"
     fill_in "Password", with: "password"
     click_button("Login")
-    visit items_path
+    visit category_items_path(@category)
+
     visit user_path(user.id)
 
     expect(current_path).to eq("/users/#{user.id}")

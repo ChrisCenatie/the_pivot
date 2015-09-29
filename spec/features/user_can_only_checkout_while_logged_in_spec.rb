@@ -1,10 +1,14 @@
 require "rails_helper"
 
 RSpec.feature "user can only checkout while logged in" do
-  it "directs user to login page from cart checkout" do
-    Item.create(name: "Fries", description: "Salty", price: 4, category_id: 1)
+  before(:each) do
+    @category = Category.create(name: "Meals")
+  end
 
-    visit items_path
+  it "directs user to login page from cart checkout" do
+    Item.create(name: "Fries", description: "Salty", price: 4, category_id: @category.id)
+
+    visit category_items_path(@category)
     click_on("Add Fries")
 
     visit cart_path
@@ -15,9 +19,9 @@ RSpec.feature "user can only checkout while logged in" do
   end
 
   it "clears cart on logout" do
-    Item.create(name: "Fries", description: "Salty", price: 4, category_id: 1)
+    Item.create(name: "Fries", description: "Salty", price: 4, category_id: @category.id)
 
-    visit items_path
+    visit category_items_path(@category)
     click_on("Add Fries")
 
     visit cart_path

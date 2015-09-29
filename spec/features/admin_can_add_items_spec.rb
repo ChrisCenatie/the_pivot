@@ -1,6 +1,10 @@
 require 'rails_helper'
 RSpec.feature 'admin adds item' do
 
+  before(:each) do
+    @category = Category.create(name: "Meals")
+  end
+
   def create_admin
     User.create(email: "admin@example.com", password: "password", role: 3)
   end
@@ -23,36 +27,29 @@ RSpec.feature 'admin adds item' do
   end
 
   it 'with valid params' do
-    Category.create(name: "Meals")
-    Category.create(name: "Drinks")
     admin_logs_in
-    visit items_path
+    visit category_items_path(@category)
     click_on("Add Item")
 
     expect(current_path).to eq(new_item_path)
 
     expect(page).to have_content('New Item')
-    expect(page).to have_content('Category')
 
     fill_in("Name", with: "Roast Chicken")
     fill_in("Description", with: "Just like grandma's")
     fill_in("Price", with: "11.50")
     fill_in("Image Url", with: "http://www.reservoirhillsfamilybutchery.co.za/wp-content/uploads/2015/03/RoastChicken.jpg")
-    select("Meals", from: "item[category_id]")
-
     click_on("Create Item")
-    expect(current_path).to eq(items_path)
 
+    expect(current_path).to eq(category_items_path(@category))
     expect(page).to have_content('Roast Chicken')
     expect(page).to have_content("$11.50")
   end
 
   it 'user cannot see add item link' do
     user_signs_up
-    visit items_path
+    visit category_items_path(@category)
 
     expect(page).to_not have_content('Add Item')
   end
-
-
 end

@@ -1,11 +1,14 @@
 require "rails_helper"
 
 RSpec.feature "user can add item to cart" do
+  before(:each) do
+    @category = Category.create(name: "Meals")
+  end
 
   scenario "on item index page" do
-    Item.create(name: "Fries", description: "Salty", price: 4, category_id: 1)
+    Item.create(name: "Fries", description: "Salty", price: 4, category_id: @category.id)
 
-    visit items_path
+    visit category_items_path(@category)
 
     click_on("Add Fries")
     expect(page).to have_content("Successfully added Fries")
@@ -17,10 +20,10 @@ RSpec.feature "user can add item to cart" do
   end
 
   scenario "on cart page" do
-    Item.create(name: "Fries", description: "Salty", price: 4, category_id: 1)
-    Item.create(name: "Burger", description: "Beef", price: 1, category_id: 1)
+    Item.create(name: "Fries", description: "Salty", price: 4, category_id: @category.id)
+    Item.create(name: "Burger", description: "Beef", price: 1, category_id: @category.id)
 
-    visit items_path
+    visit category_items_path(@category)
 
     click_on("Add Fries")
     expect(page).to have_content("Successfully added Fries")
