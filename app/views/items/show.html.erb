@@ -8,6 +8,7 @@
         <div class="big-spacer"></div>
         <div class="big-spacer"></div>
 
+        <h2><%= @item.name%></h2>
         <h3><%= @item.description %></h3>
         <div class="big-spacer"></div>
         <h2 class="text-center"><%= number_to_currency(@item.price) %></h2>
@@ -15,22 +16,24 @@
 
     <div class = "col-md-7">
       <div class = "row">
-      <div class= "img-responsive center-block">
-        <img src=<%= @item.image_url %> alt="">
+        <div class= "img-responsive center-block">
+          <img src=<%= @item.image_url %> alt="">
+        </div>
       </div>
+      <div class="row">
         <div class="big-spacer"></div>
-        <div class= "col-md-offset-2 col-md-3">
+        <div class= "col-md-offset-3 col-md-3">
           <h4><%= link_to "Add",
             cart_items_path(item_id: @item.id),
-            method: :patch %></h4>
+            method: :patch, :class => "btn btn-primary" %></h4>
         </div>
         <div class= "col-md-3">
-          <h4><%= "Cart Qty: #{cart.cart_data[@item.id.to_s]}" %></h4>
+          <h3><%= "Qty: #{cart.cart_data[@item.id.to_s]}" %></h3>
         </div>
         <div class= "col-md-3">
           <h4><%= link_to "Remove",
             cart_items_path(item_id: @item.id),
-            method: :delete %></h4>
+            method: :delete, :class => "btn btn-primary" %></h4>
         </div>
       </div>
     </div>
