@@ -6,7 +6,7 @@
             <p><%= item.description %></p>
             <h4><%= number_to_currency(item.price) %></h4>
             <p>
-                <%= button_to "Add #{item.name}" , cart_items_path(item_id: item.id) %>
+                <%= button_to "Add #{item.name}" , cart_items_path(item_id: item.id), class: "btn btn-primary" %>
             </p>
 
             <% if current_user && current_user.admin? %>
