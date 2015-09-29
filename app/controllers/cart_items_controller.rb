@@ -2,6 +2,7 @@ class CartItemsController < ApplicationController
   def create
     cart.add_item(params[:item_id])
     session[:cart] = cart.data
+    flash[:notice] = "Successfully added #{Item.find(params[:item_id]).name} to cart"
     redirect_to items_path
   end
 
