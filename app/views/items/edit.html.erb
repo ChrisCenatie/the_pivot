@@ -11,11 +11,7 @@
 
         <br>
 
-        <%= form_for @item, url: item_path, method: :patch do |f| %>
-          <div class="form-group">
-            <%= f.label :category %>
-            <%= collection_select :item, :category_id, Category.all, :id, :name, class: "form-control input-md", placeholder: "Category" %>
-          </div>
+        <%= form_for [@category, @item], url: item_path, method: :patch do |f| %>
           <div class="form-group">
             <%= f.text_field :name, class: "form-control input-md", placeholder: "Name" %>
           </div>
