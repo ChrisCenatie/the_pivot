@@ -23,20 +23,20 @@
             </div>
           </div>
           <div class="col-md-3">
-              <h3><%= link_to item.name, item_path(item) %></h3>
+              <h2><%= link_to item.name, item_path(item) %></h2>
               <h4><%= item.description %></h4>
               <br>
               <h5>Unit Price: <%= number_to_currency(item.price) %></h5>
           </div>
           <div class="col-md-3">
-              <h3>
+              <h2>
                   <%= link_to '<i class="glyphicon glyphicon-minus"></i>'.html_safe, cart_items_path(item_id: item.id), method: :delete, class: 'btn btn-primary btn-sm' %>
                   <%= item.quantity %>
                   <%= link_to '<i class="glyphicon glyphicon-plus"></i>'.html_safe, cart_items_path(item_id: item.id), method: :patch, class: 'btn btn-primary btn-sm' %>
-              </h3>
+              </h2>
           </div>
           <div class="col-md-3">
-            <h3><%= number_to_currency(item.price * item.quantity) %></h3>
+            <h2><%= number_to_currency(item.price * item.quantity) %></h2>
           </div>
       </div>
 
@@ -45,8 +45,8 @@
 
       <div class="row">
         <div class="col-md-offset-9 col-md-2">
-          <h3><u><%= "Total" %></u></h3>
-          <h3><%= "#{cart.total_price}" %></h3>
+          <h2><u><%= "Total" %></u></h2>
+          <h2><%= "#{cart.total_price}" %></h2>
           <br>
           <%= button_to "Check Out", orders_path(current_user), class: "btn btn-success" %>
         </div>
