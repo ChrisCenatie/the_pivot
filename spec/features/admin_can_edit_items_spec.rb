@@ -30,7 +30,7 @@ RSpec.feature "admin can" do
 
     click_on("Edit")
 
-    expect(current_path).to eq(edit_item_path(Item.last))
+    expect(current_path).to eq(edit_admin_item_path(Item.last))
 
     fill_in("Name", with: "Roast Beef")
     fill_in("Description", with: "Just like Pa's")
@@ -55,7 +55,7 @@ RSpec.feature "admin can" do
     fill_in("Image Url", with: "http://www.reservoirhillsfamilybutchery.co.za/wp-content/uploads/2015/03/RoastChicken.jpg")
     click_on("Update Item")
 
-    expect(current_path).to eq(edit_item_path(Item.last))
+    expect(current_path).to eq(edit_admin_item_path(Item.last))
     expect(page).to have_content("Invalid update params")
   end
 end

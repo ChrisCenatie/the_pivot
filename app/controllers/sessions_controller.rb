@@ -22,14 +22,13 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     flash[:notice] = "You are now logged out"
     session[:cart] = nil
-    
     redirect_to root_path
   end
 
   private
 
   def redirect_path
-    if previous_path == cart_path || previous_path == items_path
+    if previous_path == cart_path || previous_path == "/categories/*/items"
       cart_path
     else
       user_path(current_user)

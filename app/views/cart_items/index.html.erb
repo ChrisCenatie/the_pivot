@@ -17,7 +17,7 @@
       <div class="row">
           <div class="col-sm-3">
             <div class="thumbnail"
-              <a href=<%= item_path(item) %>>
+              <a href=<%= category_item_path(item.category, item) %>>
                   <img src=<%= item.image_url %> alt="">
               </a>
             </div>
@@ -32,7 +32,7 @@
               <h2>
                   <%= link_to "-", cart_items_path(item_id: item.id), method: :delete, class: 'btn btn-primary btn-sm' %>
                   <%= item.quantity %>
-                  <%= link_to "+", cart_items_path(item_id: item.id), method: :patch, class: 'btn btn-primary btn-sm' %>
+                  <%= link_to "+", cart_items_path(category_id: item.category.id, item_id: item.id), method: :patch, class: 'btn btn-primary btn-sm' %>
               </h2>
           </div>
           <div class="col-md-3">
