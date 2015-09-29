@@ -29,7 +29,7 @@
       <% @order_items.each do |order_item| %>
       <tr>
           <div class="col-md-2">
-            <td class="text-center"><h4><%= link_to order_item.item.name, item_path(order_item.item) %></h4></td>
+            <td class="text-center"><h4><%= link_to order_item.item.name, category_item_path(order_item.item.category, order_item.item) %></h4></td>
             <td class="text-center"><h4><%= number_to_currency(order_item.price) %></h4>
           </div>
           <div class="col-md-2">

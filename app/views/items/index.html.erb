@@ -7,10 +7,10 @@
       <header class="jumbotron hero-spacer">
           <h1>All Items</h1>
           <p>
-            <%= link_to "View by category", categories_path %>
+            <%= link_to "View by category", categories_path, class: "btn btn-primary" %>
           </p>
           <% if current_user && current_user.admin? %>
-            <p><%= link_to "Add Item", new_item_path %></p>
+            <p><%= link_to "Add Item", new_item_path(category_id: @category.id) %></p>
           <% end %>
       </header>
 

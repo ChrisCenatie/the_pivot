@@ -13,10 +13,6 @@
 
         <%= form_for @item do |f| %>
           <div class="form-group">
-            <%= f.label :category %>
-            <%= collection_select :item, :category_id, Category.all, :id, :name, class: "form-control input-md", placeholder: "Category" %>
-          </div>
-          <div class="form-group">
             <%= f.text_field :name, class: "form-control input-md", placeholder: "Name" %>
           </div>
           <div class="form-group">
@@ -28,6 +24,7 @@
           <div class="form-group">
             <%= f.text_field :image_url, class: "form-control input-md", placeholder: "Image Url" %>
           </div>
+          <%= f.hidden_field :category_id, value: @category.id %>
           <div class="form-group">
             <%= f.submit "Create Item" %>
           </div>

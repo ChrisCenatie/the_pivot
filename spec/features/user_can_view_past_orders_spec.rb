@@ -3,10 +3,10 @@ require "rails_helper"
 RSpec.feature "user can view past orders" do
 
   before(:each) do
-    category = Category.create(name: "Meals")
-    Item.create(category_id: category.id, name: "Burger",
+    @category = Category.create(name: "Meals")
+    Item.create(category_id: @category.id, name: "Burger",
         description: "For a rabbi", price: 2)
-    Item.create(category_id: category.id, name: "Steak",
+    Item.create(category_id: @category.id, name: "Steak",
         description: "Fo Free", price: 4)
 
     @user = User.create(email: "david@example.com", password: "password")
@@ -20,12 +20,12 @@ RSpec.feature "user can view past orders" do
     within(:css, "div#login_form") do
       click_on("Login")
     end
-    visit items_path
+    visit category_items_path(@category)
     click_on("Add Steak")
     click_on("Cart")
     click_on("Check Out")
     enter_address
-    
+
     @order1 = Order.last
   end
 
@@ -50,7 +50,7 @@ RSpec.feature "user can view past orders" do
     expect(current_path).to eq(orders_path)
     expect(@user.orders.count).to eq(1)
 
-    visit items_path
+    visit category_items_path(@category)
     click_on("Add Burger")
     click_on("Cart")
     click_on("Check Out")
@@ -73,7 +73,7 @@ RSpec.feature "user can view past orders" do
       click_on("Login")
     end
 
-    visit items_path
+    visit category_items_path(@category)
     click_on("Add Burger")
     click_on("Cart")
     click_on("Check Out")

@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "user can view profile page" do
   def create_order
-    visit items_path
+    visit category_items_path(@category)
 
     click_on("Add Fries")
     click_on("Add Burger")
@@ -32,9 +32,10 @@ RSpec.feature "user can view profile page" do
   end
 
   before(:each) do
+    @category = Category.create(name: "Meals")
     User.create(email: "justin@example.com", password: "password")
-    item1 = Item.create(name: 'Fries', description: 'Fo Free', price: 4, category_id: 1)
-    item2 = Item.create(name: 'Burger', description: 'for a rabbi', price: 3.5, category_id: 1)
+    Item.create(name: 'Fries', description: 'Fo Free', price: 4, category_id: @category.id)
+    Item.create(name: 'Burger', description: 'for a rabbi', price: 3.5, category_id: @category.id)
     @user = User.first
   end
 

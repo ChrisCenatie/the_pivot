@@ -3,14 +3,9 @@ require "rails_helper"
 RSpec.feature "admin can" do
 
   before(:each) do
-    category = Category.create(name: "Meals")
-  Item.create(category_id: category.id, name: "Roast Chicken", description: "Just like grandma's", price: "11.50")
+    @category = Category.create(name: "Meals")
+  Item.create(category_id: @category.id, name: "Roast Chicken", description: "Just like grandma's", price: "11.50")
   end
-
-#
-#  after(:all) do
-#    Capybara.use_default_driver 
-#  end
 
   def create_admin
     User.create(email: "admin@example.com", password: "password", role: 3)
@@ -29,12 +24,12 @@ RSpec.feature "admin can" do
   scenario "edit items with valid params" do
     create_admin
     admin_logs_in
-    visit items_path
+    visit category_items_path(@category)
 
     expect(page).to have_content("Delete")
     click_on("Delete")
 
-    expect(current_path).to eq(items_path)
+    expect(current_path).to eq(category_items_path(@category))
 
     expect(page).to_not have_content("Roast Chicken")
     expect(page).to_not have_content("grandma")
