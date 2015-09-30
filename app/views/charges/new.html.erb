@@ -1,15 +1,21 @@
-<%= form_tag charges_path do %>
-  <article>
-    <label class="amount">
-      <span>Amount: $<%= @total_price %></span>
-      <h3><%="Estimated delivery time: #{@delivery_time} minutes." %></label>
-  </article>
-  <%= hidden_field_tag "price_in_pennies", @price_in_pennies %>
-  <%= hidden_field_tag "order_id", @order.id %>
+<div class="container summary">
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6 text-center">
+      <div class="well">
+        <h2>Order Total: $<%= @total_price %></h2>
+        <h4><%="Estimated delivery time: #{@delivery_time} minutes." %></h4>
+        <div class="big-spacer"></div>
+          <%= form_tag charges_path do %>
+            <%= hidden_field_tag "price_in_pennies", @price_in_pennies %>
+            <%= hidden_field_tag "order_id", @order.id %>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="<%= current_user.full_name %>'s order"
-          data-amount=<%= @price_in_pennies %>
-          data-locale="auto"></script>
-<% end %>
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                    data-description="<%= current_user.full_name %>'s order"
+                    data-amount=<%= @price_in_pennies %>
+                    data-locale="auto"></script>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
