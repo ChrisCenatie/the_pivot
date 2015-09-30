@@ -5,6 +5,13 @@ class OrderCompleter
     @cart = cart
   end
 
+  def process_order
+    create_order_items
+    delivery_time = calculate_delivery_time
+    phone_number = order.user.phone_number
+    Notification.new.send_confirmation_message(phone_number, delivery_time)
+  end
+
   def create_order_items
     cart.data.each do |item_id, quantity|
       price = Item.find(item_id).price

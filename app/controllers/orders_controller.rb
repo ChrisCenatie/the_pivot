@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
 
   def already_paid?(order)
     if order.paid?
-      OrderCompleter.new(order, cart).create_order_items
+      OrderCompleter.new(order, cart).process_order
       session[:cart] = nil
       redirect_to order and return
     end
