@@ -9,8 +9,8 @@ class DeliveryTime
   end
 
   def time
-# 0.05hr is abritrary food "prep" time
-    hr = ((distance)/70.0 + 0.05)
+    # 0.05hr is abritrary food "prep" time
+    hr = ((distance)/70.0 + 0.15)
     min = (hr * 60).round(2)
   end
 
@@ -21,7 +21,7 @@ class DeliveryTime
     d_lon = format(raw_lat_lon)[1].to_f
 
     dist = GeoDistance::Haversine.geo_distance( turing_lat, turing_lon, d_lat, d_lon)
-    miles = dist.miles.to_s.split[0].to_f.round(2)
+    dist.miles.to_s.split[0].to_f.round(2)
   end
 
   def format(string)
@@ -36,7 +36,4 @@ class DeliveryTime
 
     `curl http://rpc.geocoder.us/service/csv?address=#{st_address},+#{city}+#{state}+#{zip}`.chomp
   end
-
-  
-
 end
