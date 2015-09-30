@@ -15,7 +15,7 @@
       <!-- Cart items -->
       <% cart.items.each do |item| %>
 
-      <div class="row">
+      <div class="row well">
           <div class="col-sm-3">
             <div class="thumbnail"
               <a href=<%= category_item_path(item.category, item) %>>
@@ -41,7 +41,6 @@
           </div>
       </div>
 
-      <hr>
       <% end %>
 
       <div class="row">
