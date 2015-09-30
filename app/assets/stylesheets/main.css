@@ -31,19 +31,28 @@ body {
 .player {font-size: 1px;}
 
 #background {
-      position: fixed;
-          top: 50%;
-              left: 50%;
-                  min-width: 100%;
-                      min-height: 100%;
-                          width: auto;
-                              height: auto;
-                                  z-index: -100;
-                                      -webkit-transform: translateX(-50%) translateY(-50%);
-                                          transform: translateX(-50%) translateY(-50%);
-                                              background: url(polina.jpg) no-repeat;
-                                                  background-size: cover;
-                                                }
-                                                .container h1 {
-                                                      color: white;
-                                                    }
+position: fixed;
+top: 50%;
+left: 50%;
+min-width: 100%;
+min-height: 100%;
+width: auto;
+height: auto;
+z-index: -100;
+-webkit-transform: translateX(-50%) translateY(-50%);
+transform: translateX(-50%) translateY(-50%);
+background: url(polina.jpg) no-repeat;
+background-size: cover;
+}
+.container h1 {
+color: white;
+}
+
+.outline {
+  -webkit-text-stroke: 1px black;
+}
+
+.tagline {
+  font-size: 3em;
+  font-weight: bold;
+}
