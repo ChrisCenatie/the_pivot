@@ -18,6 +18,10 @@ RSpec.describe Order, type: :model do
     expect(order.status).to eq("ordered")
   end
 
+  it "has a default notification of unsent" do
+    expect(order.notification).to eq("unsent")
+  end
+
   describe "#total_price" do
     it "can calculate its total price" do
       order.save
