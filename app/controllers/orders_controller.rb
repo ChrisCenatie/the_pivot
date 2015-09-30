@@ -15,8 +15,6 @@ class OrdersController < ApplicationController
   end
 
   def show
-    byebug
-    @delivery_time = DeliveryTime.calculate(@order)
     @order_items = @order.order_items
   end
 

@@ -11,6 +11,7 @@ class DeliveryTime
   def time
 # 0.05hr is abritrary food "prep" time
     hr = ((distance)/70.0 + 0.05)
+    byebug
     min = (hr * 60).round(2)
   end
 
@@ -19,9 +20,11 @@ class DeliveryTime
     turing_lon = -105.000504
     d_lat = format(raw_lat_lon)[0].to_f
     d_lon = format(raw_lat_lon)[1].to_f
+    byebug
 
-    dist = GeoDistance.distance( turing_lat, turing_lon, d_lat, d_lon)
-    dist.miles.to_s.split[0].to_f
+    dist = GeoDistance::Haversine.geo_distance( turing_lat, turing_lon, d_lat, d_lon)
+    byebug
+    miles = dist.miles.to_s.split[0].to_f.round(2)
   end
 
   def format(string)
@@ -29,12 +32,15 @@ class DeliveryTime
   end
 
   def get_lat_lon
-    st_no = @address.street_address.split(' ')[0]
-    st_name = @address.street_address.split(' ')[1]
-    st_label = @address.street_address.split(' ')[2]
+    st_address = @address.street_address.split(' ').join('+')
+    byebug
     city = @address.city
     state = @address.state
-      text = `curl http://rpc.geocoder.us/service/csv?address=#{st_no}+#{st_name}+#{st_label},+#{city}+#{state}`.chomp
+
+      input = "curl http://rpc.geocoder.us/service/csv?address=#{st_address},+#{city}+#{state}"
+    byebug
+      text = `curl http://rpc.geocoder.us/service/csv?address=#{st_address},+#{city}+#{state}`.chomp
+      text
   end
 
   
