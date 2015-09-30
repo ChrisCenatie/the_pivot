@@ -4,10 +4,9 @@
 <div class="container">
 
   <!-- Title -->
-  <header class="jumbotron hero-spacer">
-    <body id="category">
-      <h1><%= @category.name %></h1>
-    </body>
+
+  <header class="jumbotron hero-spacer" id='categories'>
+    <h1><%= @category.name %></h1>
     <div class="row">
       <div class="col-lg-12">
         <% if current_user && current_user.admin? %>
