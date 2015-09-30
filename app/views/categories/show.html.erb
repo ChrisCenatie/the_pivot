@@ -5,7 +5,9 @@
 
   <!-- Title -->
   <header class="jumbotron hero-spacer">
-    <h1><%= @category.name %></h1>
+    <body id="category">
+      <h1><%= @category.name %></h1>
+    </body>
     <div class="row">
       <div class="col-lg-12">
         <% if current_user && current_user.admin? %>

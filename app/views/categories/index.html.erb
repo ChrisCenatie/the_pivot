@@ -1,12 +1,9 @@
 <%= stylesheet_link_tag 'heroic-features', media: 'all', 'data-turbolinks-track' => true %>
 
 <!-- Page Content -->
-<div class="container">
+<%= render partial: "carousel" %>
 
-    <!-- Jumbotron Header -->
-    <header class="jumbotron hero-spacer">
-    <h2>Categories for </h2><h1>TGI Friday's</h1>
-    </header>
+<div class="container">
 
     <hr>
 
@@ -25,7 +22,14 @@
 </div>
 
 <!-- jQuery -->
-<script src="js/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<!-- Script to Activate the Carousel -->
+<script>
+$('.carousel').carousel({
+    interval: 3000 //changes the speed
+})
+</script>

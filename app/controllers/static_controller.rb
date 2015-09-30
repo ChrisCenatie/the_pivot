@@ -4,13 +4,12 @@ class StaticController < ApplicationController
    @disable_nav = true
   end
   def show
-    vendor_data = [ { name: "McDonalds", image_url: "http://www.walnet.ca/sites/default/files/styles/portfolio-thumbnail/public/portfolio/mcdonalds.jpg?itok=nC_5t4cQ"},
-      {name: "Hapa Sushi", image_url: "http://denver.cities2night.com/public/place_images/place_4156.jpg"},
-      {name: "TGI Friday's", image_url: "http://www.microsoftproductreviews.com/wp-content/uploads/2015/01/Video-Production-Birmingham-London-TGI-Fridays-Promo-Video-13.png"} ]
+    vendor_data = [ { name: "Fontana", image_url: "http://static1.squarespace.com/static/5292c961e4b09bd017955724/529587bde4b01d85129152d0/529587c3e4b05d949cd64b17/1402483795792/20-Fontana_Logo_Hall_and_Lien.jpg"},
+      {name: "Sushi Supply", image_url: "http://orig04.deviantart.net/9b5f/f/2010/220/d/9/sushi_supply_by_gustavitos.png"},
+      {name: "El Mexican Restaurant", image_url: "http://www.blankisthenewblack.com/img/ourwork/3-1_EL-Logo_K1b.jpg"} ]
 
     @vendors = vendor_data.map { |v| Vendor.new(v) }
 
     render :vendors_index
   end
 end
-
