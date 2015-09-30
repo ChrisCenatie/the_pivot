@@ -7,8 +7,8 @@ RSpec.feature "user can enter address in dashboard" do
   end
 
   def enter_name
-    fill_in("First Name", with: "Josha")
-    fill_in("Last Name", with: "Mejia")
+    fill_in("user_and_address[first_name]", with: "Josha")
+    fill_in("user_and_address[last_name]", with: "Mejia")
     click_on("Update Name")
   end
 

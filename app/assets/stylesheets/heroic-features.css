@@ -57,3 +57,7 @@ footer {
 #orders h1 {
   color: black;
 }
+
+#cart, #page-header {
+  color: black;
+}
