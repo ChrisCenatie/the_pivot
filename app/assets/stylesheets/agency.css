@@ -867,12 +867,16 @@ body {
     webkit-tap-highlight-color: #fed136;
 }
 .main-link {
-  color: #33CCC; 
+  color: #33CCC;
 
 }
-.white { 
+.white {
   color: #DDD;
 }
 .intro-heading {
-  letter-spacing: 6px; 
+  letter-spacing: 6px;
+}
+
+.hidden-nav {
+  opacity: 0;
 }

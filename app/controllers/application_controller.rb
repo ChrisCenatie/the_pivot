@@ -30,13 +30,5 @@ class ApplicationController < ActionController::Base
     return true
   end
 
-  def no_address?(message)
-    if !current_user.address
-      flash[:errors] = message
-      redirect_to edit_user_path(current_user) and return
-    end
-    return true
-  end
-
   helper_method :cart, :current_user, :previous_path
 end

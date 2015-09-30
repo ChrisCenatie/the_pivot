@@ -46,6 +46,7 @@ RSpec.feature "user can view profile page" do
     create_order
     user_info
     click_on("Check Out")
+
     click_on("Past orders")
     order = Order.last
 

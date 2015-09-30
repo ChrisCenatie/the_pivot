@@ -13,7 +13,7 @@ RSpec.feature "user logs out" do
     expect(page).to have_content("Hello, Justin")
     click_link("Logout")
     expect(current_path).to eq(root_path)
-    expect(page).to have_content("You are now logged out")
+    expect(page).to have_content("This is Faster Food")
     expect(page).to_not have_content("Logout")
   end
 
