@@ -3,34 +3,25 @@
 <br>
   <!-- Page Content -->
   <div class="container">
-  <br>
+    <br>
+  <div class ="row">
 
-  <!-- <div class="row"> -->
-  <div class="col-md-4">
-        <h2>Edit Item</h2>
-
+    <div class="col-md-4">
+      <div class="well">
+        <h2>Item</h2>
         <br>
-
         <%= form_for @item, url: admin_item_path, method: :patch do |f| %>
-          <div class="form-group">
             <%= f.text_field :name, class: "form-control input-md", placeholder: "Name" %>
-          </div>
-          <div class="form-group">
             <%= f.text_field :description, class: "form-control input-md", placeholder: "Description" %>
-          </div>
-          <div class="form-group">
             <%= f.text_field :price, class: "form-control input-md", placeholder: "Price" %>
-          </div>
-          <div class="form-group">
             <%= f.text_field :image_url, class: "form-control input-md", placeholder: "Image Url" %>
-          </div>
-          <%= f.hidden_field :category_id, value: @category.id %>
-          <div class="form-group">
-            <%= f.submit "Update Item" %>
-          </div>
+            <%= f.hidden_field :category_id, value: @category.id %>
+            <%= f.submit "Update Item", class: "btn btn-default" %>
         <% end %>
+      </div>
+    </div><!-- col -->
 
-  </div>
+  </div> <!-- row -->
 
 </div>
   <!-- /.container -->
