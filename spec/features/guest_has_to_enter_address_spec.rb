@@ -13,7 +13,7 @@ RSpec.feature "guest has to enter address" do
   end
 
   scenario "after clicking check out in cart page" do
-    visit category_items_path(Category.first) 
+    visit category_items_path(Category.first)
     click_on("Add Burger")
     click_on("Cart")
     click_on("Check Out")
@@ -36,6 +36,6 @@ RSpec.feature "guest has to enter address" do
     click_on("Check Out")
 
     expect(current_path).to eq(order_path(order))
-    expect(page).to have_content("Status: Ordered")
+    expect(page).to have_content("Status: Paid")
   end
 end

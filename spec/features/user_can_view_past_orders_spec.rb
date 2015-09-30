@@ -25,7 +25,6 @@ RSpec.feature "user can view past orders" do
     click_on("Cart")
     click_on("Check Out")
     enter_address
-
     @order1 = Order.last
   end
 
