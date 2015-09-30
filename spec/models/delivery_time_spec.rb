@@ -1,4 +1,3 @@
-
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -28,7 +27,7 @@ RSpec.describe User, type: :model do
     expect(time).to eq(4.33)
   end
 
-  it "can calculate another time" do #passing
+  it "can calculate another time" do
     user2 = User.create(email: "justin@example.com", password: "password")
     Address.create(user_id: user2.id, street_address: "344 S Clarkson st",
       apt: "", city: "Denver", state: "CO", zip_code: "80209")
@@ -39,7 +38,7 @@ RSpec.describe User, type: :model do
     expect(time).to eq(5.54)
   end
 
-  it "can calculate a third time" do #passing
+  it "can calculate a third time" do
     user2 = User.create(email: "justin@example.com", password: "password")
     Address.create(user_id: user2.id, street_address: "7927 S Pontiac way",
       apt: "", city: "Centennial", state: "CO", zip_code: "80112")
@@ -50,7 +49,7 @@ RSpec.describe User, type: :model do
     expect(time).to eq(14.31)
   end
 
-  it "can calculate a fourth time" do #passing
+  it "can calculate a fourth time" do
     user2 = User.create(email: "justin@example.com", password: "password")
     Address.create(user_id: user2.id, street_address: "2822 W 28th Ave",
       apt: "", city: "Denver", state: "CO", zip_code: "80211")
