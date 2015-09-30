@@ -1,13 +1,15 @@
 <%= form_tag charges_path do %>
   <article>
     <label class="amount">
-      <span>Amount: $5.00</span>
+      <span>Amount: $<%= @total_price %></span>
     </label>
   </article>
+  <%= hidden_field_tag "price_in_pennies", @price_in_pennies %>
+  <%= hidden_field_tag "order_id", @order.id %>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="500"
+          data-description="<%= current_user.full_name %>'s order"
+          data-amount=<%= @price_in_pennies %>
           data-locale="auto"></script>
 <% end %>

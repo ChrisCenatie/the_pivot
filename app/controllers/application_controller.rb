@@ -38,5 +38,15 @@ class ApplicationController < ActionController::Base
     return true
   end
 
+  def not_paid?(order, order_price, cart_data, message)
+    if order.paid?
+      true
+    else
+      flash[:errors] = message
+      redirect_to new_charge_path(order_id: order.id, order_price: order_price,
+      cart_data: cart_data) and return
+    end
+  end
+
   helper_method :cart, :current_user, :previous_path
 end
