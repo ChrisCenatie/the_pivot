@@ -11,7 +11,6 @@ class DeliveryTime
   def time
 # 0.05hr is abritrary food "prep" time
     hr = ((distance)/70.0 + 0.05)
-    byebug
     min = (hr * 60).round(2)
   end
 
@@ -20,10 +19,8 @@ class DeliveryTime
     turing_lon = -105.000504
     d_lat = format(raw_lat_lon)[0].to_f
     d_lon = format(raw_lat_lon)[1].to_f
-    byebug
 
     dist = GeoDistance::Haversine.geo_distance( turing_lat, turing_lon, d_lat, d_lon)
-    byebug
     miles = dist.miles.to_s.split[0].to_f.round(2)
   end
 
@@ -33,14 +30,11 @@ class DeliveryTime
 
   def get_lat_lon
     st_address = @address.street_address.split(' ').join('+')
-    byebug
     city = @address.city
     state = @address.state
+    zip = @address.zip_code
 
-      input = "curl http://rpc.geocoder.us/service/csv?address=#{st_address},+#{city}+#{state}"
-    byebug
-      text = `curl http://rpc.geocoder.us/service/csv?address=#{st_address},+#{city}+#{state}`.chomp
-      text
+      text = `curl http://rpc.geocoder.us/service/csv?address=#{st_address},+#{city}+#{state}+#{zip}`.chomp
   end
 
   
