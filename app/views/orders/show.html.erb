@@ -1,22 +1,26 @@
 <%= stylesheet_link_tag 'heroic-features', media: 'all', 'data-turbolinks-track' => true %>
 <!-- Page Content -->
   <div class="container">
+    <div class="well">
 
       <!-- Page Heading -->
-        <div class="col-md-5">
-            <h1><%= "Order #{@order.id}" %></h1>
-            <h4 class = "underline"><%= link_to "Past orders", orders_path %></h4>
-            <br>
-            <div class='well'>
-                <h4><%= "#{@order.user.full_name}" %></h4>
-                <hr>
-                <h4><%= "#{@order.user.address.street_address}" %><%= "#{@order.user.address.apt}" %></h4>
-                <h4><%= "#{@order.user.address.city}, #{@order.user.address.state} #{@order.user.address.zip_code}"%></h4>
-                <hr>
-                <h4><%= "Status:  #{@order.status.humanize}" %></h4>
-                <h4><%= "Date Ordered: #{@order.date} " %></h4>
+          <h1><%= "Order #{@order.id}" %></h1>
+          <h4 class = "underline"><%= link_to "Past orders", orders_path %></h4>
+          <br>
+          <div class ="row">
+            <div class="col-md-6">
+              <h3>Shipping Address </h3>
+              <h4><%= "#{@order.user.full_name}" %></h4>
+              <h4><%= "#{@order.user.address.street_address}" %><%= "#{@order.user.address.apt}" %></h4>
+              <h4><%= "#{@order.user.address.city}, #{@order.user.address.state} #{@order.user.address.zip_code}"%></h4>
             </div>
-        </div>
+            <div class="col-md-6 text-right">
+              <h4><%= "Status:  #{@order.status.humanize}" %></h4>
+              <h4><%= "Date Ordered: #{@order.date} " %></h4>
+            </div>
+          </div>
+
+        <div class="order-spacer"></div>
 
     <table class='table'>
       <tr>
@@ -47,9 +51,10 @@
           <h3><%="Total: #{@order.total_price}" %></h3>
         </div>
       </div>
+
     </div>
   </div>
-  <br>
+
 
   <!-- jQuery -->
   <script src="js/jquery.js"></script>

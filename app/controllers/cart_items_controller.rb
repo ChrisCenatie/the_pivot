@@ -3,7 +3,7 @@ class CartItemsController < ApplicationController
     cart.add_item(item.id)
     session[:cart] = cart.data
     flash[:notice] = "Successfully added #{item.name} to cart"
-    redirect_to category_items_path(category)
+    redirect_to category_path(category)
   end
 
   def update
@@ -17,7 +17,7 @@ class CartItemsController < ApplicationController
     cart.remove_item(item.id)
     session[:cart] = cart.data
     flash[:notice] = "Successfully removed #{item.name} from cart"
-    redirect_to cart_path
+    redirect_to redirect_path
   end
 
   def index

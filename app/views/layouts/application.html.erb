@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<%= render "layouts/navbar" %>
+<%= render "layouts/navbar" unless @disable_nav %>
 
 <%= yield %>
 

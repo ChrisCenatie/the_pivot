@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :find_category, only: [:show, :index, :new]
 
   def index
-    @items = Item.where(status: "Active")
+    @items = Item.where(status: "Active").order(:id)
   end
 
   def show
