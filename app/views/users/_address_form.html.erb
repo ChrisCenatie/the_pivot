@@ -1,19 +1,19 @@
 <div class="well">
 <%= form_for :user_and_address, url: user_path, method: :patch do |f| %>
   <div class="form-group">
-    <%= f.text_field :street_address, class: "form-control input-md", placeholder: "#{current_user.address.street_address}" %>
+    <%= f.text_field :street_address, class: "form-control input-md", placeholder: "Street" %>
   </div>
   <div class="form-group">
-    <%= f.text_field :apt, class: "form-control input-md", placeholder: "#{current_user.address.apt}" %>
+    <%= f.text_field :apt, class: "form-control input-md", placeholder: "APT" %>
   </div>
   <div class="form-group">
-    <%= f.text_field :city, class: "form-control input-md", placeholder:  "#{current_user.address.city}"%>
+    <%= f.text_field :city, class: "form-control input-md", placeholder:  "City" %>
   </div>
   <div class="form-group">
-    <%= f.text_field :state, class: "form-control input-md", placeholder:  "#{current_user.address.state}"%>
+    <%= f.text_field :state, class: "form-control input-md", placeholder:  "State"%>
   </div>
   <div class="form-group">
-    <%= f.text_field :zip_code, class: "form-control input-md", placeholder:  "#{current_user.address.zip_code}"%>
+    <%= f.text_field :zip_code, class: "form-control input-md", placeholder:  "Zip Code"%>
   </div>
     <%= f.submit "Update Address", class: "btn btn-primary" %>
   <% end %>

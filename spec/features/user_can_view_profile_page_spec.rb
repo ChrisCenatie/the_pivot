@@ -24,8 +24,8 @@ RSpec.feature "user can view profile page" do
   end
 
   def user_info
-    fill_in("First Name", with: "Justin")
-    fill_in("Last Name", with: "Example")
+    fill_in("user_and_address[first_name]", with: "Justin")
+    fill_in("user_and_address[last_name]", with: "Example")
     fill_in("Street", with: "1501 Blake St")
     fill_in("City", with: "Denver")
     fill_in("State", with: "CO")
@@ -78,8 +78,8 @@ RSpec.feature "user can view profile page" do
   scenario "and change their name" do
     login_user
     click_on("Edit Profile")
-    fill_in("First Name", with: "Ryan")
-    fill_in("Last Name", with: "Example")
+    fill_in("user_and_address[first_name]", with: "Ryan")
+    fill_in("user_and_address[last_name]", with: "Example")
     click_on("Update Name")
 
     expect(User.first.full_name).to eq("Ryan Example")
