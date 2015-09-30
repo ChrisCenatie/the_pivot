@@ -8,8 +8,8 @@ RSpec.feature "all users" do
 
     expect(current_path).to eq(vendors_path)
 
-    expect(page).to have_link("McDonalds")
-    expect(page).to have_link("Hapa")
-    expect(page).to have_link("TGI Friday's")
+    expect(page).to have_link("Fontana")
+    expect(page).to have_link("Sushi Supply")
+    expect(page).to have_link("El Mexican Restaurant")
   end
 end
