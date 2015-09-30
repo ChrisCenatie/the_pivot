@@ -58,6 +58,5 @@ describe 'can view an item show page', type: :feature do
 
     expect(page).to have_content('Soda')
     expect(page).to have_content('Teh bubbles')
-    expect(page).to have_content('$1.00')
   end
 end

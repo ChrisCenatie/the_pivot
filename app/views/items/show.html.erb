@@ -1,45 +1,40 @@
+<div class="big-spacer"></div>
+
 <div class = "container">
   <div class = "row">
-
     <div class="col-md-5 well">
-        <h2><%= link_to "Back to TGI Friday's", categories_path %> </h2>
-        <h4><%= link_to "#{@item.category.name}", @item.category %></h4>
-        <div class="big-spacer"></div>
-        <div class="big-spacer"></div>
-        <div class="big-spacer"></div>
-
         <h2><%= @item.name%></h2>
-        <br>
         <h4><%= @item.description %></h4>
+
         <div class="big-spacer"></div>
-        <h2 class="text-center"><%= number_to_currency(@item.price) %></h2>
+        <br>
+
+        <div class = "row">
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <h2><%= link_to "-",
+                cart_items_path(item_id: @item.id),
+                method: :delete, :class => "btn btn-primary btn-sm" %>
+                <%= "#{cart.cart_data[@item.id.to_s]}" %>
+                <%= link_to "+",
+                cart_items_path(item_id: @item.id),
+                method: :patch, :class => "btn btn-primary btn-sm" %></h2>
+              </div>
+              <div class="col-md-6">
+                <h2><%= number_to_currency(@item.price * ("#{cart.cart_data[@item.id.to_s]}").to_i) %></h2>
+              </div>
+          </div>
+        </div>
+
+        <div class="big-spacer"></div>
+        <br>
+
+        <h4><%= link_to "Back to Fontana", categories_path %> </h4>
+        <h4><%= link_to "#{@item.category.name}", @item.category %></h4>
     </div>
 
     <div class = "col-md-7">
-      <div class = "row">
-        <div class= "img-responsive center-block">
-          <img src=<%= @item.image_url %> alt="">
-        </div>
-      </div>
-      <div class="row">
-        <div class="big-spacer"></div>
-        <div class= "col-md-offset-3 col-md-3">
-          <h4><%= link_to "Add",
-            cart_items_path(item_id: @item.id),
-            method: :patch, :class => "btn btn-primary" %></h4>
-        </div>
-        <div class= "col-md-3">
-          <h3><%= "Qty: #{cart.cart_data[@item.id.to_s]}" %></h3>
-        </div>
-        <div class= "col-md-3">
-          <h4><%= link_to "Remove",
-            cart_items_path(item_id: @item.id),
-            method: :delete, :class => "btn btn-primary" %></h4>
-        </div>
-      </div>
-
-
-      <!-- END OF md 7 -->
+        <img class="img-responsive" src=<%= @item.image_url %> alt="">
     </div>
 
   </div>
