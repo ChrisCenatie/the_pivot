@@ -34,7 +34,7 @@ class DeliveryTime
     state = @address.state
     zip = @address.zip_code
 
-      text = `curl http://rpc.geocoder.us/service/csv?address=#{st_address},+#{city}+#{state}+#{zip}`.chomp
+    `curl http://rpc.geocoder.us/service/csv?address=#{st_address},+#{city}+#{state}+#{zip}`.chomp
   end
 
   
