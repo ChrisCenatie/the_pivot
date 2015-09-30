@@ -2,7 +2,7 @@
   <article>
     <label class="amount">
       <span>Amount: $<%= @total_price %></span>
-    </label>
+      <h3><%="Estimated delivery time: #{@delivery_time} minutes." %></label>
   </article>
   <%= hidden_field_tag "price_in_pennies", @price_in_pennies %>
   <%= hidden_field_tag "order_id", @order.id %>
