@@ -17,8 +17,8 @@ RSpec.feature "admin cannot modify users personal data" do
   end
 
   def enter_name
-    fill_in("First Name", with: "Ryan")
-    fill_in("Last Name", with: "da-Man")
+    fill_in("user_and_address[first_name]", with: "Ryan")
+    fill_in("user_and_address[last_name]", with: "da-Man")
     click_on("Update Name")
   end
 
