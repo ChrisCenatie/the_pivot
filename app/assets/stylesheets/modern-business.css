@@ -93,5 +93,10 @@ footer {
 }
 
 .carousel-caption h2 {
-  font-size: 3em;
+  font-size: 5em;
+}
+
+#myCarousel {
+  width: 1500px;
+  height: 400px;
 }

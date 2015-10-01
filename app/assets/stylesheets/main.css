@@ -68,5 +68,15 @@ color: white;
 #categories {
   font-size: 90px;
   color: red;
-  
 }
+
+.carousel-container {
+  padding-top: 100px;
+}
+
+#less-padding {
+  padding: 0;
+  margin: 70px;
+}
+
+

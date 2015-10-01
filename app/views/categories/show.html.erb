@@ -18,7 +18,7 @@
 
   <!-- Items -->
   <% @category.items.each do |i| %>
-    <div class="col-md-3 col-sm-6">
+    <div class="col-sm-4">
       <div class="thumbnail caption text-center">
         <img src=<%= i.image_url %> alt="">
         <h3><%= link_to i.name, category_item_path(@category.id, i.id) %></h3>
