@@ -1,21 +1,24 @@
 <div class="container text-center">
 
-  <h2>Create Your Account</h2>
 
   <br>
 
-  <%= form_for @user do |f| %>
-    <div class="form-group">
-      <%= f.text_field :email, class: "form-control input-md", placeholder: "Email" %>
-    </div>
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4 well">
+      <h2>Create Your Account</h2>
+      <%= bootstrap_form_for @user do |f| %>
+        <div class="form-group">
+          <%= f.text_field :email, class: "form-control input-md", placeholder: "Email" %>
+        </div>
 
-    <div class="form-group">
-      <%= f.password_field :password, class: "form-control input-md", placeholder: "Password" %>
-    </div>
+        <div class="form-group">
+          <%= f.password_field :password, class: "form-control input-md", placeholder: "Password" %>
+        </div>
 
-    <div class="form-group">
-      <%= f.submit "Create Account", class: "btn btn-primary" %>
+        <div class="form-group">
+          <%= f.submit "Create Account", class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
+  </div>
 </div>
