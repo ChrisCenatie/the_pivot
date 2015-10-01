@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   def update_all(u_a_params)
     user_params = {email: u_a_params[:email],
       password: u_a_params[:password],
+      phone_number: u_a_params[:phone_number],
       first_name: u_a_params[:first_name],
       last_name: u_a_params[:last_name] }.select {|_,v| v }.to_h
 

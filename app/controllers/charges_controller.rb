@@ -26,7 +26,7 @@ class ChargesController < ApplicationController
 
     order = Order.find(params[:order_id])
     order.update(status: 1)
-    OrderCompleter.new(order, cart).create_order_items
+    OrderCompleter.new(order, cart).process_order
     session[:cart] = nil
     redirect_to order
 

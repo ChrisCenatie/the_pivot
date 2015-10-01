@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   post "login",       to: "sessions#create"
   delete "logout",    to: "sessions#destroy"
 
+  post "notifications/notify", to: "notifications#notify"
+
   resources :users, except: [:delete, :put]
   resources :orders, only: [:create, :show, :index, :update]
   resources :charges

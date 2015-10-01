@@ -11,10 +11,10 @@ class DeliveryTime
   def time
     # 0.05hr is abritrary food "prep" time
     hr = ((distance)/70.0 + 0.05)
-    min = (hr * 60).round(2)
+    (hr * 60).round(2)
   end
 
-  def distance 
+  def distance
     turing_lat = 39.749498
     turing_lon = -105.000504
     d_lat = format(raw_lat_lon)[0].to_f
