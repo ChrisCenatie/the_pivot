@@ -57,7 +57,7 @@ RSpec.feature "user can view past orders" do
     visit orders_path
     order = Order.last
     expect(page).to have_content("Order #{order.id}")
-    expect(page).to have_content("#{order.created_at}")
+    expect(page).to have_content("#{order.date}")
     expect(page).to have_content("#{order.total_price}")
   end
 
