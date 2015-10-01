@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
   end
 
   def full_address
-    "#{address.street_address} #{address.apt} #{address.city}, #{address.state} #{address.zip_code}"
+    "#{address.street_address} #{address.apt} #{address.city}, " +
+      "#{address.state} #{address.zip_code}"
   end
 
   def update_all(u_a_params)
