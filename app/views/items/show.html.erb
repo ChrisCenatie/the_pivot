@@ -21,7 +21,7 @@
                 method: :patch, :class => "btn btn-primary btn-sm" %></h2>
               </div>
               <div class="col-md-6">
-                <h2><%= number_to_currency(@item.price * ("#{cart.cart_data[@item.id.to_s]}").to_i) %></h2>
+                <h2><%= number_to_currency(@item.price) %></h2>
               </div>
           </div>
         </div>
