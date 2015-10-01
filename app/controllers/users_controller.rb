@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:edit, :update, :show]
   before_action :verify_user, only: [:show, :edit]
 
   def new
@@ -20,17 +21,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @orders = @user.orders
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
-
     if @user.update_all(user_and_address_params)
       redirect_to previous_path
     else
@@ -41,13 +38,18 @@ class UsersController < ApplicationController
 
   private
 
+  def find_user
+    @user = User.find(params[:id])
+  end
+
   def user_and_address_params
-    params.require(:user_and_address).permit(:email, :password, :phone_number, :first_name,
-      :last_name, :street_address, :apt, :city, :state, :zip_code)
+    params.require(:user_and_address).permit(:email, :password, :phone_number,
+      :first_name, :last_name, :street_address, :apt, :city, :state, :zip_code)
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :phone_number, :first_name, :last_name)
+    params.require(:user).permit(:email, :password, :phone_number, :first_name,
+      :last_name)
   end
 
   def verify_user
