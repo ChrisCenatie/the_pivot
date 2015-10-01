@@ -43,6 +43,6 @@ RSpec.feature "user can receive a confirmation text message" do
   scenario "after placing order" do
     create_order
 
-    expect(Order.last.notification).to be("sent")
+    expect(Order.last.notification).to eq("sent")
   end
 end

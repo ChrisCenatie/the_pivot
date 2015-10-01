@@ -42,12 +42,12 @@ class UsersController < ApplicationController
   private
 
   def user_and_address_params
-    params.require(:user_and_address).permit(:email, :password, :first_name,
+    params.require(:user_and_address).permit(:email, :password, :phone_number, :first_name,
       :last_name, :street_address, :apt, :city, :state, :zip_code)
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :first_name, :last_name)
+    params.require(:user).permit(:email, :password, :phone_number, :first_name, :last_name)
   end
 
   def verify_user

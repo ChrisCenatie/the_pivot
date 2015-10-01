@@ -7,9 +7,15 @@ class OrderCompleter
 
   def process_order
     create_order_items
-    delivery_time = calculate_delivery_time
-    phone_number = order.user.phone_number
-    Notification.new.send_confirmation_message(phone_number, delivery_time)
+    delivery_time = "soon"
+    if ENV["RAILS_ENV"] != "test"
+      delivery_time = DeliveryTime.new(order).time
+    end
+    if !@order.user.phone_number.blank?
+      phone_number = order.user.phone_number
+      Notification.new.send_confirmation_message(phone_number, delivery_time)
+      order.update(notification: 1)
+    end
   end
 
   def create_order_items

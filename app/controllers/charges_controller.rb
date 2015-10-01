@@ -4,6 +4,9 @@ class ChargesController < ApplicationController
     @items_by_quantity = items_by_quantity(params[:cart_data])
     @total_price = params[:order_price]
     @price_in_pennies = (params[:order_price].to_f * 100).to_i
+    if ENV["RAILS_ENV"] != 'test' 
+      @delivery_time = DeliveryTime.new(@order).time
+    end
   end
 
   def create
