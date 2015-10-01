@@ -20,7 +20,8 @@ class DeliveryTime
     d_lat = format(raw_lat_lon)[0].to_f
     d_lon = format(raw_lat_lon)[1].to_f
 
-    dist = GeoDistance::Haversine.geo_distance( turing_lat, turing_lon, d_lat, d_lon)
+    dist = GeoDistance::Haversine.geo_distance( turing_lat, turing_lon, d_lat,
+      d_lon)
     dist.miles.to_s.split[0].to_f.round(2)
   end
 
