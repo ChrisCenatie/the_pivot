@@ -8,11 +8,11 @@
       <h2>Create Your Account</h2>
       <%= bootstrap_form_for @user do |f| %>
         <div class="form-group">
-          <%= f.text_field :email, class: "form-control input-md", placeholder: "Email" %>
+          <%= f.text_field :email %>
         </div>
 
         <div class="form-group">
-          <%= f.password_field :password, class: "form-control input-md", placeholder: "Password" %>
+          <%= f.password_field :password, icon: "lock" %>
         </div>
 
         <div class="form-group">
