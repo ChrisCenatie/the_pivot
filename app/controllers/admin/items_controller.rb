@@ -35,17 +35,18 @@ class Admin::ItemsController < AdminController
     @item = Item.new
   end
 
-  private
+    private
 
-  def find_item
-    @item = Item.find(params[:id])
-  end
+    def find_item
+      @item = Item.find(params[:id])
+    end
 
-  def find_category
-    @category = Category.find(params[:category_id]) if params[:category_id]
-  end
+    def find_category
+      @category = Category.find(params[:category_id]) if params[:category_id]
+    end
 
-  def item_params
-    params.require(:item).permit(:name, :description, :price, :category_id, :image_url)
-  end
+    def item_params
+      params.require(:item).permit(:name, :description, :price, :category_id,
+        :image_url)
+    end
 end
