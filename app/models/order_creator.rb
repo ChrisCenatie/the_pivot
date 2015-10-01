@@ -11,12 +11,8 @@ class OrderCreator
   end
 
   def total_price
-    cart_items = cart_data.map do |item_id, quantity|
-      [Item.find(item_id.to_i).price, quantity.to_i]
-    end
-    cart_items.reduce(0) do |sum, cart_item|
-      sum += cart_item[0] * cart_item[1]
+    cart_items = cart_data.reduce(0) do |sum, id_quantity|
+      sum += Item.find(id_quantity[0]).price * id_quantity[1]
     end
   end
-
 end
