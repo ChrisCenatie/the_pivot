@@ -947,6 +947,10 @@ footer {
 #orders h1 {
   color: black;
 }
+
+#cart, #page-header {
+  color: black;
+}
 body {
   background-image: url("https://s3-us-west-2.amazonaws.com/idea-box-rasensio/45degreee_fabric.png")
 }
@@ -1004,6 +1008,10 @@ color: white;
 .tagline {
   font-size: 3em;
   font-weight: bold;
+}
+
+.summary {
+  padding-top: 50px;
 }
 /*!
  * Start Bootstrap - Modern Business HTML Template (http://startbootstrap.com)
