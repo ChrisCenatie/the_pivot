@@ -32,6 +32,7 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem 'database_cleaner'
+  gem 'simplecov', :require => false
 end
 
 group :development do
