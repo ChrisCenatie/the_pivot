@@ -23,11 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def update_all(user_information)
-    user_information = user_information.merge( { user_id: self.id } )
-    informer = UserInformationWrapper.new(user_information)
-    user_params = informer.user_params
-    address_params = informer.address_params
-
+    user_params, address_params = get_params(user_information)
     if update(user_params) && update_or_create_address(address_params)
       return true
     else
@@ -38,4 +34,13 @@ class User < ActiveRecord::Base
   def update_or_create_address(params)
     address ? address.update(params) : Address.create(params)
   end
+
+    private
+
+    def get_params(user_information)
+      user_information = user_information.merge( { user_id: self.id } )
+      informer = UserInformationWrapper.new(user_information)
+      return informer.user_params, informer.address_params
+    end
+
 end
