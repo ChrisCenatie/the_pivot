@@ -11,6 +11,14 @@
 
 <%= render "layouts/navbar" unless @disable_nav %>
 
+<% if flash[:errors] %>
+ <div class="alert alert-danger text-center"><%= flash[:errors] %></div>
+<% end %>
+
+<% if flash[:notice] %>
+  <div class="alert alert-success text-center"><%= flash[:notice] %></div>
+<% end %>
+
 <%= yield %>
 
 </body>
