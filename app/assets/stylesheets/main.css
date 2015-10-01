@@ -60,3 +60,13 @@ color: white;
 .summary {
   padding-top: 50px;
 }
+
+.page-title {
+  font-size: 4em;
+}
+
+#categories {
+  font-size: 90px;
+  color: red;
+  
+}
