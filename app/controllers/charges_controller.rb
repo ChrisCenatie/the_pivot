@@ -1,12 +1,11 @@
 class ChargesController < ApplicationController
+
   def new
     @order = Order.find(params[:order_id])
     @items_by_quantity = items_by_quantity(params[:cart_data])
     @total_price = params[:order_price]
-    @price_in_pennies = (params[:order_price].to_f * 100).to_i
-    if ENV["RAILS_ENV"] != 'test' 
-      @delivery_time = DeliveryTime.new(@order).time
-    end
+    @price_in_pennies = price_in_pennies(params[:order_price])
+    @delivery_time = delivery_time(@order)
   end
 
   def create
@@ -20,12 +19,11 @@ class ChargesController < ApplicationController
     Stripe::Charge.create(
       customer: customer.id,
       amount: @amount,
-      description: "Faster Food customer",
+      description: "Faster Food inc.",
       currency: "usd"
     )
 
     order = Order.find(params[:order_id])
-    order.update(status: 1)
     OrderCompleter.new(order, cart).process_order
     session[:cart] = nil
     redirect_to order
@@ -35,12 +33,25 @@ class ChargesController < ApplicationController
     redirect_to charges_path
   end
 
+    private
 
-  def items_by_quantity(cart_data)
-    items_by_quantity = {}
-    cart_data.each do |item_id, quantity|
-      items_by_quantity[Item.find(item_id)] = quantity
+    def items_by_quantity(cart_data)
+      items_by_quantity = {}
+      cart_data.each do |item_id, quantity|
+        items_by_quantity[Item.find(item_id)] = quantity
+      end
+      items_by_quantity
     end
-    items_by_quantity
-  end
+
+    def price_in_pennies(price)
+      (price.to_f * 100).to_i
+    end
+
+    def delivery_time(order)
+      if ENV["RAILS_ENV"] != 'test'
+        @delivery_time = DeliveryTime.new(order).time
+      else
+        @delivery_time = "soon"
+      end
+    end
 end
