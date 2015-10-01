@@ -35,12 +35,12 @@
               <% else %>
                 <li><%= link_to "Login", login_path %></li>
                 <li><%= link_to "Sign up", new_user_path %></li>
-                <li><span class="glyphicon glyphicon-shopping-cart"></span></li>
                 <li>
-                  <%= link_to "Cart", cart_path %>
-                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                  <%= link_to cart_path, class: "cart" do %>
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Cart
+                  <% end %>
                 </li>
-              <% end %>
+            <% end %>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
