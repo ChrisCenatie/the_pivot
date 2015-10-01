@@ -34,4 +34,14 @@ RSpec.describe Order, type: :model do
       expect(result).to eq("$16.00")
     end
   end
+
+  it "returns the correct status" do
+    expect(order.status).to eq("ordered")
+    order.update(status: 'paid')
+    expect(order.status).to eq("paid")
+    order.update(status: 'cancelled')
+    expect(order.status).to eq("cancelled")
+    order.update(status: 'completed')
+    expect(order.status).to eq("completed")
+  end
 end
