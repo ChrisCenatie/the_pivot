@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
     private
 
     def get_params(user_information)
-      user_information = user_information.merge( { user_id: self.id } )
+      user_information = user_information.merge(user_id: id)
       informer = UserInformationWrapper.new(user_information)
       return informer.user_params, informer.address_params
     end
