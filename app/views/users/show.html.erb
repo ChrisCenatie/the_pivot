@@ -24,6 +24,11 @@
         <br>
         <br>
 
+        <h4>Phone Number</h4>
+        <%= number_to_phone(@user.phone_number, area_code: true) %>
+        <br>
+        <br>
+
         <h4>Address</h4>
         <% if @user.address %>
           <%= @user.address.street_address %>
