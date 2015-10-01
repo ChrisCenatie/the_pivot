@@ -27,12 +27,20 @@
                 <% end %>
                 <li><%= link_to "Hello, #{current_user.name}", user_path(current_user.id) %></li>
                 <li><%= link_to 'Logout', logout_path, method: :delete %></li>
-                <li><%= link_to "Cart", cart_path %></li>
+                <li>
+                  <%= link_to cart_path, class: "cart" do %>
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Cart
+                  <% end %>
+                </li>
               <% else %>
                 <li><%= link_to "Login", login_path %></li>
                 <li><%= link_to "Sign up", new_user_path %></li>
-                <li><%= link_to "Cart", cart_path %></li>
-              <% end %>
+                <li>
+                  <%= link_to cart_path, class: "cart" do %>
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Cart
+                  <% end %>
+                </li>
+            <% end %>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

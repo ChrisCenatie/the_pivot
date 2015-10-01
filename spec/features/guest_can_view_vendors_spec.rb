@@ -10,6 +10,6 @@ RSpec.feature "all users" do
 
     expect(page).to have_link("Fontana")
     expect(page).to have_link("Sushi Supply")
-    expect(page).to have_link("El Mexican Restaurant")
+    expect(page).to have_link("El")
   end
 end
