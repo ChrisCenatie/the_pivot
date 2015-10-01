@@ -22,19 +22,11 @@ class User < ActiveRecord::Base
       "#{address.state} #{address.zip_code}"
   end
 
-  def update_all(u_a_params)
-    user_params = {email: u_a_params[:email],
-      password: u_a_params[:password],
-      phone_number: u_a_params[:phone_number],
-      first_name: u_a_params[:first_name],
-      last_name: u_a_params[:last_name] }.select {|_,v| v }.to_h
-
-    address_params = {street_address: u_a_params[:street_address],
-      apt: u_a_params[:apt],
-      city: u_a_params[:city],
-      state: u_a_params[:state],
-      zip_code: u_a_params[:zip_code],
-      user_id: self.id }.select {|_,v| v }.to_h
+  def update_all(user_information)
+    user_information = user_information.merge( { user_id: self.id } )
+    informer = UserInformationWrapper.new(user_information)
+    user_params = informer.user_params
+    address_params = informer.address_params
 
     if update(user_params) && update_or_create_address(address_params)
       return true
