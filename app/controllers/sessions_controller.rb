@@ -7,11 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:sessions][:email])
     if user && user.authenticate(params[:sessions][:password])
       session[:user_id] = user.id
-      if user.admin?
-        redirect_to(admin_dashboard_path)
-      else
-        redirect_to(redirect_path)
-      end
+      redirect_to admin_dashboard?(user)
     else
       flash.now[:errors] = "Invalid credentials, please try again"
       render :new
@@ -25,13 +21,21 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  private
+    private
 
-  def redirect_path
-    if previous_path == cart_path || previous_path == "/categories/*/items"
-      cart_path
-    else
-      user_path(current_user)
+    def admin_dashboard?(user)
+      if user.admin?
+        admin_dashboard_path
+      else
+        redirect_path
+      end
     end
-  end
+
+    def redirect_path
+      if previous_path == cart_path || previous_path == "/categories/*/items"
+        cart_path
+      else
+        user_path(current_user)
+      end
+    end
 end
