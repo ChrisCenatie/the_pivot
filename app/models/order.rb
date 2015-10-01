@@ -19,6 +19,10 @@ class Order < ActiveRecord::Base
     created_at.strftime("%b %e %Y")
   end
 
+  def time
+    created_at.strftime("%l:%M %P")
+  end
+
   def ordered
     Order.where(status: "ordered")
   end
