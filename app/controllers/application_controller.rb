@@ -19,7 +19,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_previous_path
-    session[:previous_path] = request.env["HTTP_REFERER"].gsub(/\w*\:\/\/[^\/]+/, '') rescue nil
+    session[:previous_path] =
+      request.env["HTTP_REFERER"].gsub(/\w*\:\/\/[^\/]+/, '') rescue nil
   end
 
   def not_logged_in?(message)
