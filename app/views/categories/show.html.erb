@@ -4,7 +4,11 @@
 <div class="container">
 
   <header id='categories'>
-    <h1><%= @category.name %></h1>
+  <div class = "row">
+    <div class="col-md-12">
+      <h1><%= @category.name %></h1>
+    </div>
+  </div>
     <div class="row">
       <div class="col-lg-12">
         <% if current_user && current_user.admin? %>
@@ -17,6 +21,7 @@
   <hr>
 
   <!-- Items -->
+  <div class = "row">
   <% @category.items.each do |i| %>
     <div class="col-sm-4">
       <div class="thumbnail caption text-center">
@@ -32,8 +37,14 @@
             <%= link_to "Delete Item", admin_item_path(i), method: :delete, data: {confirm: "Are you sure?"} %>
           <% end %>
       </div>
-    </div>
+      </div>
   <% end %>
+</div>
+  <div class = "row">
+    <div class = "col-md-offset-4 col-md-4 text-center">
+      <h3><%= link_to "Categories", categories_path, class: "btn btn-lg btn-primary" %></h3>
+      </div>
+  </div>
 </div>
   <!-- /.container -->
 
