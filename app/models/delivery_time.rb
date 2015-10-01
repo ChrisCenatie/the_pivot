@@ -10,7 +10,7 @@ class DeliveryTime
 
   def time
     # 0.05hr is abritrary food "prep" time
-    hr = ((distance)/70.0 + 0.05)
+    hr = ((distance)/70.0 + 0.25)
     (hr * 60).round(2)
   end
 

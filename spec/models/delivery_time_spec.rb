@@ -24,7 +24,7 @@ RSpec.describe User, type: :model do
   it "can calculate time" do
     time = DeliveryTime.new(@order).time
 
-    expect(time).to eq(4.33)
+    expect(time).to eq(16.33)
   end
 
   it "can calculate another time" do
@@ -35,6 +35,6 @@ RSpec.describe User, type: :model do
 
     time = DeliveryTime.new(order2).time
 
-    expect(time).to eq(4.1)
+    expect(time).to eq(16.1)
   end
 end
