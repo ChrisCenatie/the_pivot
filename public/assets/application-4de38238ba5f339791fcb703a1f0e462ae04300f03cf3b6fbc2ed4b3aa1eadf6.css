@@ -9249,6 +9249,11 @@ body {
   margin: 70px;
 }
 
+/* line 82, /Users/michael_wong/Turing/Module2/Projects/faster_food/app/assets/stylesheets/main.scss */
+#underline {
+  text-decoration: underline;
+}
+
 /*!
  * Start Bootstrap - SB Admin Bootstrap Admin Template (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
