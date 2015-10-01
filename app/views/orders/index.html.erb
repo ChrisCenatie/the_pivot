@@ -11,16 +11,18 @@
       <!-- Orders -->
       <table class='table table-bordered'>
         <tr>
-          <th>Order Id</th>
-          <th>Order Placed At</th>
-          <th>Order Total Price</th>
+          <th class="text-center"><h4>Order Id</h4></th>
+          <th class="text-center"><h4>Order Date<h4></th>
+          <th class="text-center"><h4>Order Time<h4></th>
+          <th class="text-center"><h4>Order Total<h4></th></u>
         </tr>
-      <% @orders.each do |order| %>
-          <tr>
-              <td><strong><%= link_to "Order #{order.id}", order_path(order) %></strong>
-              <td><strong> Created at:</strong>  <%= order.created_at %></td>
-              <td><strong> Total Price:</strong> <%= order.total_price %></td>
-          </tr>
+        <% @orders.each do |order| %>
+        <tr>
+          <td class="text-center"><strong><%= link_to "Order #{order.id}", order_path(order) %></strong></td>
+          <td class="text-center"><strong>Date Ordered:</strong> <%= order.date %></td>
+          <td class="text-center"><strong>Time Ordered:</strong> <%= order.time %></td>
+          <td class="text-center"><strong>Total Price:</strong> <%= order.total_price %></td>
+        </tr>
       <% end %>
       </table>
   </div>
