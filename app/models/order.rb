@@ -18,4 +18,24 @@ class Order < ActiveRecord::Base
   def date
     created_at.strftime("%b %e %Y")
   end
+
+  def time
+    created_at.strftime("%l:%M %P")
+  end
+
+  def ordered
+    Order.where(status: "ordered")
+  end
+
+  def paid
+    Order.where(status: "paid")
+  end
+
+  def cancelled
+    Order.where(status: "cancelled")
+  end
+
+  def completed
+    Order.where(status: "completed")
+  end
 end
