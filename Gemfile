@@ -18,6 +18,7 @@ gem 'stripe'
 gem 'figaro'
 gem 'geo-distance'
 gem 'twilio-ruby'
+gem 'bootswatch-rails'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
