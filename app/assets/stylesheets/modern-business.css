@@ -91,3 +91,7 @@ footer {
         height: 70%;
     }
 }
+
+.carousel-caption h2 {
+  font-size: 3em;
+}
