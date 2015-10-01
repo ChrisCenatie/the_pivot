@@ -1,4 +1,5 @@
 class CartItemsController < ApplicationController
+
   def create
     add_item_to_cart(item)
     redirect_to category_path(category)

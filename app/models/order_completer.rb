@@ -7,6 +7,7 @@ class OrderCompleter
 
   def process_order
     create_order_items
+    order.update(status: 1)
     delivery_time = "soon"
     if ENV["RAILS_ENV"] != "test"
       delivery_time = DeliveryTime.new(order).time
