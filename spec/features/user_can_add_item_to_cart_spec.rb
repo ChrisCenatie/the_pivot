@@ -49,7 +49,7 @@ RSpec.feature "user can add item to cart" do
     expect(page).to have_content("Successfully added Fries")
     click_on("Add Burger")
     click_on("Cart")
-    within(:css, "div#item_#{@item.id}") do
+    within(:css, "div#item_#{@item1.id}") do
       click_on("+")
     end
 
