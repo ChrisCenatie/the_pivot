@@ -2,9 +2,22 @@ require "rails_helper"
 
 RSpec.describe Cart, type: :model do
 
-  let(:item1) {Item.create(name: 'Seeds', description: 'Yummy', price: 100, category_id: 1)}
-  let(:item2) {Item.create(name: 'Almonds', description: 'Dericious', price: 200, category_id: 1)}
-  let(:item3) {Item.create(name: 'Cashews', description: 'Tasty', price: 300, category_id: 1)}
+  let(:farmer) {Farmer.create(name: "McDonald")}
+  let(:item1) {Item.create(name: 'Seeds',
+                           description: 'Yummy',
+                           price: 100,
+                           category_id: 1,
+                           farmer_id: farmer.id)}
+  let(:item2) {Item.create(name: 'Almonds',
+                           description: 'Dericious',
+                           price: 200,
+                           category_id: 1,
+                           farmer_id: farmer.id)}
+  let(:item3) {Item.create(name: 'Cashews',
+                           description: 'Tasty',
+                           price: 300,
+                           category_id: 1,
+                           farmer_id: farmer.id)}
 
   it "is empty by default" do
     cart = Cart.new
