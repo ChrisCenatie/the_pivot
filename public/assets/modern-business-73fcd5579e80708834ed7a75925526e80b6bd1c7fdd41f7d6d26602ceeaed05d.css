@@ -1,0 +1,105 @@
+/*!
+ * Start Bootstrap - Modern Business HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+/* Global Styles */
+/* line 10, /Users/davidstinnette/Turing/3module/the_pivot/app/assets/stylesheets/modern-business.scss */
+html,
+body {
+  height: 100%;
+}
+
+/* line 19, /Users/davidstinnette/Turing/3module/the_pivot/app/assets/stylesheets/modern-business.scss */
+.img-portfolio {
+  margin-bottom: 30px;
+}
+
+/* line 23, /Users/davidstinnette/Turing/3module/the_pivot/app/assets/stylesheets/modern-business.scss */
+.img-hover:hover {
+  opacity: 0.8;
+}
+
+/* Home Page Carousel */
+/* line 29, /Users/davidstinnette/Turing/3module/the_pivot/app/assets/stylesheets/modern-business.scss */
+header.carousel {
+  height: 50%;
+}
+
+/* line 33, /Users/davidstinnette/Turing/3module/the_pivot/app/assets/stylesheets/modern-business.scss */
+header.carousel .item,
+header.carousel .item.active,
+header.carousel .carousel-inner {
+  height: 100%;
+}
+
+/* line 39, /Users/davidstinnette/Turing/3module/the_pivot/app/assets/stylesheets/modern-business.scss */
+header.carousel .fill {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+/* 404 Page Styles */
+/* line 48, /Users/davidstinnette/Turing/3module/the_pivot/app/assets/stylesheets/modern-business.scss */
+.error-404 {
+  font-size: 100px;
+}
+
+/* Pricing Page Styles */
+/* line 54, /Users/davidstinnette/Turing/3module/the_pivot/app/assets/stylesheets/modern-business.scss */
+.price {
+  display: block;
+  font-size: 50px;
+  line-height: 50px;
+}
+
+/* line 60, /Users/davidstinnette/Turing/3module/the_pivot/app/assets/stylesheets/modern-business.scss */
+.price sup {
+  top: -20px;
+  left: 2px;
+  font-size: 20px;
+}
+
+/* line 66, /Users/davidstinnette/Turing/3module/the_pivot/app/assets/stylesheets/modern-business.scss */
+.period {
+  display: block;
+  font-style: italic;
+}
+
+/* Footer Styles */
+/* line 73, /Users/davidstinnette/Turing/3module/the_pivot/app/assets/stylesheets/modern-business.scss */
+footer {
+  margin: 50px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+  /* line 80, /Users/davidstinnette/Turing/3module/the_pivot/app/assets/stylesheets/modern-business.scss */
+  .customer-img,
+  .img-related {
+    margin-bottom: 30px;
+  }
+}
+@media (max-width: 767px) {
+  /* line 87, /Users/davidstinnette/Turing/3module/the_pivot/app/assets/stylesheets/modern-business.scss */
+  .img-portfolio {
+    margin-bottom: 15px;
+  }
+
+  /* line 91, /Users/davidstinnette/Turing/3module/the_pivot/app/assets/stylesheets/modern-business.scss */
+  header.carousel .carousel {
+    height: 70%;
+  }
+}
+/* line 96, /Users/davidstinnette/Turing/3module/the_pivot/app/assets/stylesheets/modern-business.scss */
+.carousel-caption h2 {
+  font-size: 5em;
+}
+
+/* line 100, /Users/davidstinnette/Turing/3module/the_pivot/app/assets/stylesheets/modern-business.scss */
+#myCarousel {
+  width: 1500px;
+  height: 400px;
+}
