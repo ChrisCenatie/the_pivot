@@ -43,6 +43,10 @@ RSpec.configure do |config|
     user
   end
 
+  def create_user2!
+    user2
+  end
+
   def user
     @user ||= User.create(email: "justin@example.com",
                           password: "password")
