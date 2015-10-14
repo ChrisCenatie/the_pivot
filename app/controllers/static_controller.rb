@@ -6,9 +6,9 @@ class StaticController < ApplicationController
   end
 
   def show
-    vendor_data = [ {name: "Sushi Supply", image_url: "http://orig04.deviantart.net/9b5f/f/2010/220/d/9/sushi_supply_by_gustavitos.png"},
-      { name: "Fontana", image_url: "http://static1.squarespace.com/static/5292c961e4b09bd017955724/529587bde4b01d85129152d0/529587c3e4b05d949cd64b17/1402483795792/20-Fontana_Logo_Hall_and_Lien.jpg"},
-      {name: "El", image_url: "http://www.blankisthenewblack.com/img/ourwork/3-1_EL-Logo_K1b.jpg"} ]
+    vendor_data = [ {name: "Willowcroft Farm", image_url: "http://www.oldhousedreams.com/wp-content/uploads/2010/07/3791hunter1.jpg"},
+      { name: "Zenger Farm", image_url: "https://lh4.googleusercontent.com/uoXwnXLYZqDFbqVdGEjvSEN2IrbPGYrdS_gD0wgVMwNSf6kXcu_evZKJQaOk0sNQCjrCwrvek1057vtkLn2bhyuNeXUnJxz4tKjumcMH-b3lfJA9wgQ"},
+      {name: "Black River Farm", image_url: "http://luxport.s3.amazonaws.com/53174/7285+East+Saanich+Road+Central+Saanich+BC+Canada+389546_1-EXT.JPG"} ]
 
     @vendors = vendor_data.map { |vendor| Vendor.new(vendor) }
 
