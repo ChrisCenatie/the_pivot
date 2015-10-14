@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.feature "user signs up" do
-  let(:user) { User.find_by(email: "Justin@example.com") }
 
   scenario "with correct credentials" do
     visit root_path
@@ -13,7 +12,7 @@ RSpec.feature "user signs up" do
     fill_in "Email", with: "Justin@example.com"
     fill_in "Password", with: "password"
     click_button "Create Account"
-    
+
     expect(page).to have_content("Hello, Justin")
     expect(current_path).to eq(dashboard_path)
   end

@@ -1,12 +1,8 @@
 require "rails_helper"
 
 RSpec.feature "user logs in" do
-  before(:each) do
-    @category = Category.create(name: "Meals")
-    User.create(email: "Justin@example.com", password: "password")
-  end
 
-  let(:user) { User.find_by(email: "Justin@example.com") }
+  before(:each) { create_user! }
 
   scenario "with valid credentials" do
     visit root_path
@@ -15,7 +11,7 @@ RSpec.feature "user logs in" do
     expect(page).to have_content("Login")
     expect(current_path).to eq(login_path)
 
-    fill_in "Email", with: "Justin@example.com"
+    fill_in "Email", with: "justin@example.com"
     fill_in "Password", with: "password"
     click_button("Login")
 
@@ -37,10 +33,10 @@ RSpec.feature "user logs in" do
   scenario "login persists across pages" do
     visit root_path
     click_link("Login")
-    fill_in "Email", with: "Justin@example.com"
+    fill_in "Email", with: "justin@example.com"
     fill_in "Password", with: "password"
     click_button("Login")
-    visit category_items_path(@category)
+    visit category_items_path(category)
 
     visit user_path(user.id)
 

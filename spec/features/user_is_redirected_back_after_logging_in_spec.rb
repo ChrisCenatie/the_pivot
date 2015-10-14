@@ -2,14 +2,8 @@ require "rails_helper"
 
 RSpec.feature "is redireceted from login" do
   before(:each) do
-    User.create(email: "justin@example.com", password: "password")
-    @category = Category.create(name: "Meals")
-    farmer = Farmer.create(name: "McDonald")
-    @item = Item.create(name: 'Fries',
-                        description: 'Fo Free',
-                        price: 4,
-                        category_id: @category.id,
-                        farmer_id: farmer.id)
+    create_user!
+    create_item!
   end
 
   scenario "after logging in from the cart" do

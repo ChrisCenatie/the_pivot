@@ -39,6 +39,10 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  def create_user!
+    user
+  end
+
   def user
     @user ||= User.create(email: "justin@example.com",
                           password: "password")
@@ -57,11 +61,19 @@ RSpec.configure do |config|
     @farmer ||= Farmer.create(name: "George")
   end
 
+  def category
+    @category ||= Category.create(name: "Meals")
+  end
+
+  def create_item!
+    item
+  end
+
   def item
     @item ||= Item.create(name: "Fries",
                           description: "Yummy",
                           price: 400,
-                          category_id: 1,
+                          category_id: category.id,
                           farmer_id: farmer.id)
   end
 
@@ -69,7 +81,7 @@ RSpec.configure do |config|
     @item1 ||= Item.create(name: 'Soda',
                            description: 'Sugary',
                            price: 100,
-                           category_id: 1,
+                           category_id: category.id,
                            farmer_id: farmer.id)
   end
 
