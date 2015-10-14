@@ -256,9 +256,6 @@ header .intro-text {
     padding-top: 100px;
     padding-bottom: 50px;
 }
-.drone-image {
-      background-image: url("https://s3-us-west-2.amazonaws.com/idea-box-rasensio/drone_darkest.jpg")
-    }
 
 header .intro-text .intro-lead-in {
     margin-bottom: 25px;
@@ -843,13 +840,45 @@ body {
   color: #33CCC;
 
 }
-.white {
-  color: #DDD;
+.splash-color {
+  color: #003300;
 }
+
+.splash-color2 {
+  color: #FFFFFF;
+}
+
 .intro-heading {
   letter-spacing: 6px;
 }
 
 .hidden-nav {
   opacity: 0;
+}
+
+.splash-hero {
+  height: 100%;
+  background: url(/assets/images/hero-bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.btn.outline {
+    background: none;
+    padding: 12px 22px;
+}
+.btn-primary.outline {
+    border: 2px solid #0099cc;
+    color: #0099cc;
+}
+.btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
+    color: #33a6cc;
+    border-color: #33a6cc;
+}
+.btn-primary.outline:active, .btn-primary.outline.active {
+    border-color: #007299;
+    color: #007299;
+    box-shadow: none;
 }
