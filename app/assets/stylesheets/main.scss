@@ -5,7 +5,7 @@ body {
 .video-section .pattern-overlay {
   background-color: rgba(71, 71, 71, 0.59);
   padding: 110px 0 32px;
-  min-height: 496px; 
+  min-height: 496px;
   /* Incase of overlay problems just increase the min-height*/
 }
 .video-section h1, .video-section h3{
@@ -46,10 +46,6 @@ background-size: cover;
 }
 .container h1 {
 color: white;
-}
-
-.outline {
-  -webkit-text-stroke: 1px black;
 }
 
 .tagline {

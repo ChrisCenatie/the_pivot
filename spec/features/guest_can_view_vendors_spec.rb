@@ -4,7 +4,7 @@ RSpec.feature "all users" do
 
   scenario "can see the splash page" do
     visit root_path
-    click_on("I'm Hungry")
+    click_on("Search by Farmer")
 
     expect(current_path).to eq(vendors_path)
 
