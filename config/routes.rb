@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "static#index"
 
   get "vendors",      to: "static#show"
+  resources :farmers, only: [:index]
 
   get "cart",          to: "cart_items#index"
   post "cart_items",   to: "cart_items#create"
@@ -30,4 +31,7 @@ Rails.application.routes.draw do
     post "dashboard",    to: "users#update"
   end
 
+  namespace :farmers, path: ":farmer", as: :farmer do
+    resources :items, only: [:index, :show]
+  end
 end

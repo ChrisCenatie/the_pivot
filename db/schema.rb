@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150930222043) do
+ActiveRecord::Schema.define(version: 20151013204103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20150930222043) do
     t.string   "image_url",  default: "http://questionarium.net/wp-content/uploads/sites/4/2014/01/Foods-That-Are-High-In-Cholesterol.jpg"
   end
 
+  create_table "farmers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "farmers", ["slug"], name: "index_farmers_on_slug", using: :btree
+
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -47,7 +56,10 @@ ActiveRecord::Schema.define(version: 20150930222043) do
     t.integer  "category_id"
     t.string   "image_url",           default: "http://questionarium.net/wp-content/uploads/sites/4/2014/01/Foods-That-Are-High-In-Cholesterol.jpg"
     t.integer  "status",              default: 0
+    t.integer  "farmer_id"
   end
+
+  add_index "items", ["farmer_id"], name: "index_items_on_farmer_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer "order_id"
@@ -77,5 +89,6 @@ ActiveRecord::Schema.define(version: 20150930222043) do
     t.string   "phone_number"
   end
 
+  add_foreign_key "items", "farmers"
   add_foreign_key "orders", "users"
 end

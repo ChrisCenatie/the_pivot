@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   let(:item) do
-    Item.new(name: 'Soda', description: 'Sugary', price: 350, category_id: 1)
+    farmer = Farmer.create(name: "McDonald")
+    Item.new(name: 'Soda', description: 'Sugary', price: 350, category_id: 1, farmer_id: farmer.id)
   end
 
   it 'is valid' do
@@ -28,7 +29,7 @@ RSpec.describe Item, type: :model do
     item.category_id = nil
     expect(item).to be_invalid
   end
-  
+
   it 'must have a price greater than 0' do
     item.price = -1
     expect(item).to be_invalid
@@ -44,6 +45,18 @@ RSpec.describe Item, type: :model do
   it 'has a default picture if not added' do
     item.save
 
-    expect(item.image_url).to eql("http://questionarium.net/wp-content/uploads/sites/4/2014/01/Foods-That-Are-High-In-Cholesterol.jpg") 
+    expect(item.image_url).to eql("http://questionarium.net/wp-content/uploads/sites/4/2014/01/Foods-That-Are-High-In-Cholesterol.jpg")
+  end
+
+  it 'is invalid without a farmer' do
+    item2 = Item.new(name: 'Soda', description: 'Sugary', price: 350, category_id: 1)
+
+    expect(item2).to be_invalid
+  end
+
+  it 'is valid with a farmer' do
+    item2 = Item.new(name: 'Soda', description: 'Sugary', price: 350, category_id: 1, farmer_id: 1)
+
+    expect(item2).to be_valid
   end
 end
