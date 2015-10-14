@@ -1,0 +1,3 @@
+<% @farmers.each do |farmer| %>
+  <%= link_to farmer.name, farmer_items_path(farmer.slug) %>
+<% end %>

@@ -42,6 +42,27 @@ RSpec.feature "user can add item to cart" do
     expect(current_path).to eq(cart_path)
   end
 
+  scenario "from multiple farmer index pages" do
+    visit farmers_path
+    click_on("McDonald")
+    expect(current_path).to eq("/mcdonald/items")
+    click_on("Add Fries")
+    expect(page).to have_content("Successfully added Fries")
+
+    visit farmers_path
+    click_on("Jebediah")
+    expect(current_path).to eq("/jebediah/items")
+    click_on("Add Burger")
+    expect(page).to have_content("Successfully added Burger")
+    click_on("Cart")
+
+    expect(page).to have_content("Fries")
+    expect(page).to have_content("1")
+    expect(page).to have_content("Burger")
+    expect(page).to have_content("1")
+    expect(current_path).to eq(cart_path)
+  end
+
   scenario "on cart page" do
     visit category_items_path(@category)
 
