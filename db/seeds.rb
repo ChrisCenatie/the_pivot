@@ -26,9 +26,10 @@ item = Item.create(name: 'Green Beans', description: 'Good and good for you!', p
 Item.create(name: 'Chicken Wings', description: 'One of the two major food groups', price: 7.99, category_id: 3, image_url: "http://www.trbimg.com/img-5204d7ed/turbine/k05sx5nc-recipe-db/800/16x10?q=1")
 Item.create(name: 'Fries', description: 'Now with no trans fat!', price: 1.99, category_id: 3, image_url: "http://www.kansastravel.org/10brgr3.JPG")
 
-Category.create(name: 'Meals', image_url: "http://i0.wp.com/www.eatgeekplay.com/wp-content/uploads/2015/04/5280-website.jpg")
-Category.create(name: 'Drinks', image_url: "http://www.restaurantdidar.com/bundles/statickarmadidar/img/drinks.jpg")
-Category.create(name: 'Sides', image_url: "http://cosmoscookeville.com/wp-content/uploads/2013/09/cheesestix-700x300.jpg")
+Category.create(name: 'Meat', image_url: "http://weddelswift.com/wp-content/blogs.dir/2/files/2012/04/Beef-Products.png")
+Category.create(name: 'Produce', image_url: "http://www.mtnlaurelchalets.com/blog/wp-content/uploads/2014/07/produce-700x300.jpg")
+Category.create(name: 'Dairy', image_url: "http://www.marketresearchreports.com/sites/default/files/styles/blog_pic_header/public/dairy_products.jpg?itok=nu-RXhb5")
+
 User.create(email: "admin@example.com", password: "password", role: 3)
 User.create(email: "david@example.com", password: "password")
     user = User.create(phone_number: "3335556666", email: "ryan@example.com", password: "password")
