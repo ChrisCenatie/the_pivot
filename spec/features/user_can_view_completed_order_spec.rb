@@ -36,7 +36,12 @@ RSpec.feature "user can view completed order" do
   before(:each) do
     User.create(email: "justin@example.com", password: "password")
     @category = Category.create(name: "Meals")
-    @item = Item.create(name: 'Fries', description: 'Fo Free', price: 4, category_id: @category.id)
+    farmer = Farmer.create(name: "McDonald")
+    @item = Item.create(name: 'Fries',
+                        description: 'Fo Free',
+                        price: 4,
+                        category_id: @category.id,
+                        farmer_id: farmer.id)
     Item.create(name: 'Burger', description: 'for a rabbi', price: 3.50, category_id: @category.id)
   end
 

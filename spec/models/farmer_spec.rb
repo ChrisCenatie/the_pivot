@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Farmer, type: :model do
-  let(:farmer) do
-    Farmer.new(name: 'McDonald')
-  end
+  let(:farmer) { Farmer.new(name: 'McDonald') }
 
   it "is valid" do
     expect(farmer).to be_valid
@@ -11,7 +9,7 @@ RSpec.describe Farmer, type: :model do
   end
 
   it "is invalid without a name" do
-    farmer.name=nil
+    farmer.name = nil
     expect(farmer).to be_invalid
   end
 

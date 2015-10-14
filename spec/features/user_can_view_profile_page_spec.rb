@@ -36,8 +36,17 @@ RSpec.feature "user can view profile page" do
   before(:each) do
     @category = Category.create(name: "Meals")
     User.create(email: "justin@example.com", password: "password")
-    @item = Item.create(name: 'Fries', description: 'Fo Free', price: 4, category_id: @category.id)
-    Item.create(name: 'Burger', description: 'for a rabbi', price: 3.5, category_id: @category.id)
+    farmer = Farmer.create(name: "McDonald")
+    @item = Item.create(name: 'Fries',
+                        description: 'Fo Free',
+                        price: 200,
+                        category_id: @category.id,
+                        farmer_id: farmer.id)
+    Item.create(name: 'Burger',
+                description: 'for a rabbi',
+                price: 650,
+                category_id: @category.id,
+                farmer_id: farmer.id)
     @user = User.first
   end
 

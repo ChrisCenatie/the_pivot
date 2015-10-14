@@ -2,22 +2,67 @@ require "rails_helper"
 
 RSpec.feature "admin can view orders" do
   before(:each) do
-    User.create(email: "admin@example.com", password: "password", role: 3)
-    user = User.create(email: "david@example.com", password: "password")
-    Address.create(user_id: user.id, street_address: "1510 Blake street",
-      apt: "basement", city: "Denver", state: "CO", zip_code: "80110")
-    user2 = User.create(email: "justin@example.com", password: "password")
+    User.create(email: "admin@example.com",
+                password: "password",
+                role: 3)
+
+    Address.create(user_id: user.id,
+                   street_address: "1510 Blake street",
+                   apt: "basement",
+                   city: "Denver",
+                   state: "CO",
+                   zip_code: "80110")
+
+    user = User.create(email: "david@example.com",
+                       password: "password")
+
+    user2 = User.create(email: "justin@example.com",
+                        password: "password")
+
     category = Category.create(name: "Meals")
-    item = Item.create(category_id: category.id, name: "Soda", description: "Teh bubbles", price:4)
-    item2 = Item.create(category_id: category.id, name: "Cake", description: "Its good", price: 7)
-    @order1 = Order.create(user_id: user.id, status: 0)
-    @order2 = Order.create(user_id: user.id, status: 1)
-    @order3 = Order.create(user_id: user2.id, status: 2)
-    @order4 = Order.create(user_id: user2.id, status: 3)
-    OrderItem.create(order_id: @order1.id, quantity: 3, price: 4, item_id: item.id)
-    OrderItem.create(order_id: @order2.id, quantity: 15, price: 4, item_id: item.id)
-    OrderItem.create(order_id: @order3.id, quantity: 4, price: 7, item_id: item2.id)
-    OrderItem.create(order_id: @order4.id, quantity: 25, price: 7, item_id: item2.id)
+
+    farmer = Farmer.create(name: "McDonald")
+
+    item = Item.create(category_id: category.id,
+                       name: "Soda",
+                       description: "Teh bubbles",
+                       price:4,
+                       farmer_id: farmer.id)
+
+    item2 = Item.create(category_id: category.id,
+                        name: "Cake",
+                        description: "Its good",
+                        price: 7,
+                        farmer_id: farmer.id)
+
+    @order1 = Order.create(user_id: user.id,
+                           status: 0)
+    @order2 = Order.create(user_id: user.id,
+                           status: 1)
+    @order3 = Order.create(user_id: user2.id,
+                           status: 2)
+    @order4 = Order.create(user_id: user2.id,
+                           status: 3)
+
+    OrderItem.create(order_id: @order1.id,
+                     quantity: 3,
+                     price: 4,
+                     item_id: item.id)
+
+    OrderItem.create(order_id: @order2.id,
+                     quantity: 15,
+                     price: 4,
+                     item_id: item.id)
+
+    OrderItem.create(order_id: @order3.id,
+                     quantity: 4,
+                     price: 7,
+                     item_id: item2.id)
+
+    OrderItem.create(order_id: @order4.id,
+                     quantity: 25,
+                     price: 7,
+                     item_id: item2.id)
   end
 
   scenario "when they go to the dashboard" do

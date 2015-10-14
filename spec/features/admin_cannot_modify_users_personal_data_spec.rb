@@ -2,8 +2,11 @@ require "rails_helper"
 
 RSpec.feature "admin cannot modify users personal data" do
   before(:each) do
-    User.create(email: "admin@example.com", password: "password", role: 3)
-    @user = User.create(email: "ryan@example.com", password: "password")
+    User.create(email: "admin@example.com",
+                password: "password",
+                role: 3)
+    @user = User.create(email: "ryan@example.com",
+                        password: "password")
   end
 
   def log_in_user

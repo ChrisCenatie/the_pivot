@@ -3,7 +3,9 @@ require "rails_helper"
 RSpec.feature "admin logs in" do
 
   def create_admin
-    User.create(email: "admin@example.com", password: "password", role: 3)
+    User.create(email: "admin@example.com",
+                password: "password",
+                role: 3)
   end
 
   scenario "with valid credentials and is redirected to dashboard" do

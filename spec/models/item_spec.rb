@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  let(:item) do
-    farmer = Farmer.create(name: "McDonald")
-    Item.new(name: 'Soda', description: 'Sugary', price: 350, category_id: 1, farmer_id: farmer.id)
-  end
+  let(:item) { Item.new(name: 'Soda',
+                        description: 'Sugary',
+                        price: 350,
+                        category_id: 1,
+                        farmer_id: farmer.id) }
 
   it 'is valid' do
     expect(item).to be_valid
@@ -37,7 +38,10 @@ RSpec.describe Item, type: :model do
 
   it 'name has to be unique' do
     item.save
-    item2 = Item.new(name: 'Soda', description: 'sweet', price: 350, category_id: 1)
+    item2 = Item.new(name: 'Soda',
+                    description: 'sweet',
+                    price: 350,
+                    category_id: 1)
 
     expect(item2).to be_invalid
   end
@@ -49,14 +53,12 @@ RSpec.describe Item, type: :model do
   end
 
   it 'is invalid without a farmer' do
-    item2 = Item.new(name: 'Soda', description: 'Sugary', price: 350, category_id: 1)
+    item2 = Item.new(name: 'Soda',
+                     description: 'Sugary',
+                     price: 350,
+                     category_id: 1)
 
     expect(item2).to be_invalid
   end
 
-  it 'is valid with a farmer' do
-    item2 = Item.new(name: 'Soda', description: 'Sugary', price: 350, category_id: 1, farmer_id: 1)
-
-    expect(item2).to be_valid
-  end
 end

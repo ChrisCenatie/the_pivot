@@ -39,6 +39,49 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  def user
+    @user ||= User.create(email: "justin@example.com",
+                          password: "password")
+  end
+
+  def user2
+    @user2 ||= User.create(email: "george@example.com",
+                password: "password")
+  end
+
+  def order
+    @order ||= Order.create(user_id: user.id)
+  end
+
+  def farmer
+    @farmer ||= Farmer.create(name: "George")
+  end
+
+  def item
+    @item ||= Item.create(name: "Fries",
+                          description: "Yummy",
+                          price: 400,
+                          category_id: 1,
+                          farmer_id: farmer.id)
+  end
+
+  def item1
+    @item1 ||= Item.create(name: 'Soda',
+                           description: 'Sugary',
+                           price: 100,
+                           category_id: 1,
+                           farmer_id: farmer.id)
+  end
+
+  def item2
+    @item2 ||= Item.create(name: 'Burger',
+                           description: 'beef',
+                           price: 850,
+                           category_id: 2,
+                           farmer_id: farmer.id)
+  end
+
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

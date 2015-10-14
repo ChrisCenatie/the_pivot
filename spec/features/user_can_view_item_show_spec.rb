@@ -2,10 +2,15 @@ require 'rails_helper'
 
 describe 'can view an item show page', type: :feature do
   let(:item) { Item.last }
+  let(:farmer) { Farmer.create(name: "McDonald") }
 
   before(:each) do
     @category = Category.create(name: "Meals")
-    Item.create(name: "Soda", description: "Teh bubbles", price: 1, category_id: @category.id)
+    Item.create(name: "Soda",
+                description: "Teh bubbles",
+                price: 1,
+                category_id: @category.id,
+                farmer_id: farmer.id)
     User.create(email: "david@example.com", password: "password")
   end
 

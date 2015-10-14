@@ -2,16 +2,6 @@ require "rails_helper"
 
 RSpec.describe OrderItem do
 
-  let(:farmer) { Farmer.create(name: "George") }
-  let(:item) { Item.create(name: "Fries",
-                           description: "Yummy",
-                           price: 400,
-                           category_id: 1,
-                           farmer_id: farmer.id) }
-  let(:user) { User.create(email: "justin@example.com",
-                           password: "password") }
-  let(:order) { Order.create(user_id: user.id) }
-
   it "has valid attributes" do
     order_item = OrderItem.new(order_id: order.id,
                                item_id: item.id,

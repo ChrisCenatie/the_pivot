@@ -3,7 +3,8 @@ require "rails_helper"
 RSpec.feature "user can enter address in dashboard" do
   let(:user) { User.last }
   before(:each) do
-    User.create(email: "david@example.com", password: "password")
+    User.create(email: "david@example.com",
+                password: "password")
   end
 
   def enter_name

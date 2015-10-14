@@ -34,10 +34,19 @@ RSpec.feature "user can receive a confirmation text message" do
   end
 
   before(:each) do
+    farmer = Farmer.create(name: "McDonald")
     User.create(email: "justin@example.com", password: "password")
     @category = Category.create(name: "Meals")
-    @item = Item.create(name: 'Fries', description: 'Fo Free', price: 4, category_id: @category.id)
-    Item.create(name: 'Burger', description: 'for a rabbi', price: 3.50, category_id: @category.id)
+    @item = Item.create(name: 'Fries',
+                        description: 'Fo Free',
+                        price: 4,
+                        category_id: @category.id,
+                        farmer_id: farmer.id)
+    Item.create(name: 'Burger',
+                description: 'for a rabbi',
+                price: 350,
+                category_id: @category.id,
+                farmer_id: farmer.id)
   end
 
   scenario "after placing order" do

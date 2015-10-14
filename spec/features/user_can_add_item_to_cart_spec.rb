@@ -5,8 +5,16 @@ RSpec.feature "user can add item to cart" do
     @category = Category.create(name: "Meals")
     @farmer1  = Farmer.create(name: "McDonald")
     @farmer2  = Farmer.create(name: "Jebediah")
-    @item1    = Item.create(name: "Fries", description: "Salty", price: 4, category_id: @category.id, farmer_id: @farmer1.id)
-    @item2    = Item.create(name: "Burger", description: "Beef", price: 1, category_id: @category.id, farmer_id: @farmer2.id)
+    @item1    = Item.create(name: "Fries",
+                            description: "Salty",
+                            price: 4,
+                            category_id: @category.id,
+                            farmer_id: @farmer1.id)
+    @item2    = Item.create(name: "Burger",
+                            description: "Beef",
+                            price: 1,
+                            category_id: @category.id,
+                            farmer_id: @farmer2.id)
   end
 
   scenario "on item index page" do

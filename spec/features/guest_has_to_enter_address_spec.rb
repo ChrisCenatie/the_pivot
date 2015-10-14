@@ -6,10 +6,17 @@ RSpec.feature "guest has to enter address" do
 
   before(:each) do
     category = Category.create(name: "Meals")
-    Item.create(category_id: category.id, name: "Burger",
-        description: "For a rabbi", price: 200)
-    Item.create(category_id: category.id, name: "Steak",
-        description: "Fo Free", price: 400)
+    farmer = Farmer.create(name: "McDonald")
+    Item.create(category_id: category.id,
+                name: "Burger",
+                description: "For a rabbi",
+                price: 200,
+                farmer_id: farmer.id)
+    Item.create(category_id: category.id,
+                name: "Steak",
+                description: "Fo Free",
+                price: 400,
+                farmer_id: farmer.id)
   end
 
   scenario "after clicking check out in cart page" do

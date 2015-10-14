@@ -10,8 +10,17 @@ RSpec.feature "user can view categories" do
 
   it "can view categories as a guest" do
     category = Category.create(name: "Meals")
-    Item.create(category_id: category.id, name: "Burger", description: "For a rabbi", price: 2)
-    Item.create(category_id: category.id, name: "Steak", description: "Fo Free", price: 4)
+    farmer = Farmer.create(name: "McDonald")
+    Item.create(category_id: category.id,
+                name: "Burger",
+                description: "For a rabbi",
+                price: 2,
+                farmer_id: farmer.id)
+    Item.create(category_id: category.id,
+                name: "Steak",
+                description: "Fo Free",
+                price: 4,
+                farmer_id: farmer.id)
 
     visit category_items_path(category)
 
