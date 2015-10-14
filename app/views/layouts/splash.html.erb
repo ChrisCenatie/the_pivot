@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FasterFood</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+<div class="splash-hero">
+
+<%= render "layouts/navbar" unless @disable_nav %>
+
+<% if flash[:errors] %>
+ <div class="alert alert-danger text-center"><%= flash[:errors] %></div>
+<% end %>
+
+<% if flash[:notice] %>
+  <div class="alert alert-success text-center"><%= flash[:notice] %></div>
+<% end %>
+
+<%= yield %>
+</div>
+</body>
+</html>
