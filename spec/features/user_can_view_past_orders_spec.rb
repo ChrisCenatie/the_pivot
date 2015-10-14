@@ -3,26 +3,12 @@ require "rails_helper"
 RSpec.feature "user can view past orders" do
 
   before(:each) do
-    @category = Category.create(name: "Meals")
-    farmer = Farmer.create(name: "McDonald")
-    Item.create(category_id: @category.id,
-                name: "Burger",
-                description: "For a rabbi",
-                price: 2,
-                farmer_id: farmer.id)
-    Item.create(category_id: @category.id,
-                name: "Steak",
-                description: "Fo Free",
-                price: 4,
-                farmer_id: farmer.id)
-
-    @user = User.create(email: "david@example.com", password: "password")
-    @user2 = User.create(email: "mike@example.com", password: "password")
+    create_item!
+    create_item1!
+    create_item2!
+    create_user!
+    create_user2!
   end
-
-
-
-
 
   scenario "when they visit /orders" do
     create_order!
@@ -48,25 +34,24 @@ RSpec.feature "user can view past orders" do
 
   scenario "for only their own cart" do
     create_order!
+    order1 = Order.last
+
     click_on("Logout")
 
-    visit login_path
-    fill_in("Email", with: "mike@example.com")
-    fill_in("Password", with: "password")
-    within(:css, "div#login_form") do
-      click_on("Login")
-    end
+    login_user2!
 
     visit category_items_path(@category)
     click_on("Add Burger")
     click_on("Cart")
     click_on("Check Out")
-    enter_address
-    visit orders_path
-    @order2 = Order.last
+    input_user_info!
+    click_on("Check Out")
+    order2 = Order.last
 
-    expect(page).to have_content("Order #{@order2.id}")
-    expect(page).to_not have_content("Order #{@order1.id}")
+    visit orders_path
+
+    expect(page).to have_content("Order #{order2.id}")
+    expect(page).to_not have_content("Order #{order1.id}")
   end
 
   scenario "only if logged in" do

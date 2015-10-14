@@ -1,40 +1,19 @@
 require "rails_helper"
 
 RSpec.feature "user can view profile page" do
-  def create_order
-    visit category_items_path(@category)
-
-    click_on("Add Fries")
-    click_on("Add Burger")
-    click_on("Cart")
-    within(:css, "div#item_#{@item.id}") do
-      click_on("+")
-    end
-    click_on("Check Out")
-  end
 
   before(:each) do
     login_user!
-    @category = Category.create(name: "Meals")
-    User.create(email: "justin@example.com", password: "password")
-    farmer = Farmer.create(name: "McDonald")
-    @item = Item.create(name: 'Fries',
-                        description: 'Fo Free',
-                        price: 200,
-                        category_id: @category.id,
-                        farmer_id: farmer.id)
-    Item.create(name: 'Burger',
-                description: 'for a rabbi',
-                price: 650,
-                category_id: @category.id,
-                farmer_id: farmer.id)
+    create_category!
+    create_user!
+    create_item!
+    create_item2!
     @user = User.first
   end
 
   scenario "and see past orders" do
     create_order!
     order = Order.last
-
     click_on("Past orders")
 
     expect(current_path).to eq(orders_path)

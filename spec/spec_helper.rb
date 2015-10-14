@@ -59,6 +59,18 @@ RSpec.configure do |config|
     end
   end
 
+  def login_user2!
+    create_user2!
+
+    visit login_path
+
+    fill_in("Email", with: "george@example.com")
+    fill_in("Password", with: "password")
+    within(:css, "div#login_form") do
+      click_on("Login")
+    end
+  end
+
   def user
     @user ||= User.create(email: "justin@example.com",
                           password: "password")
@@ -98,8 +110,20 @@ RSpec.configure do |config|
     @farmer ||= Farmer.create(name: "George")
   end
 
+  def create_category!
+    category
+  end
+
+  def create_category2!
+    category2
+  end
+
   def category
     @category ||= Category.create(name: "Meals")
+  end
+
+  def category2
+    @category ||= Category.create(name: "MoarMeals!")
   end
 
   def create_item!
@@ -114,6 +138,10 @@ RSpec.configure do |config|
                           farmer_id: farmer.id)
   end
 
+  def create_item1!
+    item1
+  end
+
   def item1
     @item1 ||= Item.create(name: 'Soda',
                            description: 'Sugary',
@@ -122,11 +150,15 @@ RSpec.configure do |config|
                            farmer_id: farmer.id)
   end
 
+  def create_item2!
+    item2
+  end
+
   def item2
     @item2 ||= Item.create(name: 'Burger',
                            description: 'beef',
                            price: 850,
-                           category_id: 2,
+                           category_id: category2.id,
                            farmer_id: farmer.id)
   end
 
