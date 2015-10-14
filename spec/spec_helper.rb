@@ -47,6 +47,18 @@ RSpec.configure do |config|
     user2
   end
 
+  def login_user!
+    create_user!
+
+    visit login_path
+
+    fill_in("Email", with: "justin@example.com")
+    fill_in("Password", with: "password")
+    within(:css, "div#login_form") do
+      click_on("Login")
+    end
+  end
+
   def user
     @user ||= User.create(email: "justin@example.com",
                           password: "password")
@@ -55,6 +67,27 @@ RSpec.configure do |config|
   def user2
     @user2 ||= User.create(email: "george@example.com",
                 password: "password")
+  end
+
+  def create_order!
+    login_user!
+    create_item!
+    visit category_items_path(@category)
+    click_on("Add Fries")
+    click_on("Cart")
+    click_on("Check Out")
+    input_user_info!
+    click_on("Check Out")
+  end
+
+  def input_user_info!
+    fill_in("First Name", with: "Josha")
+    fill_in("Last Name", with: "Mejia")
+    fill_in("Street", with: "1510 Blake Street")
+    fill_in("City", with: "Denver")
+    fill_in("State", with: "CO")
+    fill_in("Zip Code", with: "80010")
+    click_on("Update")
   end
 
   def order
