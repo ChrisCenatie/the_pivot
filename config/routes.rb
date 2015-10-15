@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root "static#index"
 
-  get "vendors",      to: "static#show"
   resources :farmers, only: [:index]
 
   get "cart",          to: "cart_items#index"

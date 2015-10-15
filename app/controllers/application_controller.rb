@@ -31,5 +31,9 @@ class ApplicationController < ActionController::Base
     return true
   end
 
-  helper_method :cart, :current_user, :previous_path
+  def current_farm
+    Farmer.find_by(slug: params[:farmer])
+  end
+
+  helper_method :cart, :current_user, :previous_path, :current_farm
 end
