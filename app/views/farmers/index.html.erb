@@ -1,3 +1,24 @@
-<% @farmers.each do |farmer| %>
-  <%= link_to farmer.name, farmer_items_path(farmer.slug) %>
-<% end %>
+<%= stylesheet_link_tag 'heroic-features', media: 'all', 'data-turbolinks-track' => true %>
+
+<!-- Page Content -->
+<div class="container">
+    <hr>
+    <header id='categories'>
+        <h1>All Farmers</h1>
+    </header>
+
+    <hr>
+
+    <!-- Categories -->
+    <% @farmers.each do |farmer| %>
+
+    <div class="col-md-4 col-sm-6 hero-feature">
+        <div class="thumbnail">
+            <img src=<%= farmer.image_url%> alt="">
+            <div class="caption text-center">
+              <h3><%= link_to farmer.name, farmer_items_path(farmer.slug) %></h3>
+            </div>
+        </div>
+    </div>
+    <% end %>
+</div>

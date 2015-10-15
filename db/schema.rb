@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151013204103) do
+ActiveRecord::Schema.define(version: 20151015161502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20151013204103) do
     t.string   "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image_url"
   end
 
   add_index "farmers", ["slug"], name: "index_farmers_on_slug", using: :btree
