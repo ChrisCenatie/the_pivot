@@ -39,6 +39,155 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  def create_admin!
+    User.create(email: "admin@example.com",
+                password: "password",
+                role: 3)
+  end
+
+  def login_admin!
+    create_admin!
+    visit login_path
+    fill_in("Email", with: "admin@example.com")
+    fill_in("Password", with: "password")
+    within(:css, "div#login_form") do
+      click_on("Login")
+    end
+  end
+
+  def create_user!
+    user
+  end
+
+  def create_user2!
+    user2
+  end
+
+  def login_user!
+    create_user!
+
+    visit login_path
+
+    fill_in("Email", with: "justin@example.com")
+    fill_in("Password", with: "password")
+    within(:css, "div#login_form") do
+      click_on("Login")
+    end
+  end
+
+  def login_user2!
+    create_user2!
+
+    visit login_path
+
+    fill_in("Email", with: "george@example.com")
+    fill_in("Password", with: "password")
+    within(:css, "div#login_form") do
+      click_on("Login")
+    end
+  end
+
+  def user
+    @user ||= User.create(email: "justin@example.com",
+                          password: "password")
+  end
+
+  def user2
+    @user2 ||= User.create(email: "george@example.com",
+                password: "password")
+  end
+
+  def create_order!
+    login_user!
+    create_item!
+    create_item1!
+    visit category_items_path(@category)
+    click_on("Add Fries")
+    click_on("Add Soda")
+    click_on("Cart")
+    within(:css, "div#item_#{item.id}") do
+      click_on("+")
+    end
+    click_on("Check Out")
+    input_user_info!
+    click_on("Check Out")
+  end
+
+  def input_user_info!
+    fill_in("First Name", with: "Josha")
+    fill_in("Last Name", with: "Mejia")
+    fill_in("Street", with: "1510 Blake Street")
+    fill_in("City", with: "Denver")
+    fill_in("State", with: "CO")
+    fill_in("Zip Code", with: "80010")
+    click_on("Update")
+  end
+
+  def order
+    @order ||= Order.create(user_id: user.id)
+  end
+
+  def farmer
+    @farmer ||= Farmer.create(name: "George")
+  end
+
+  def farmer2
+    @farmer2 ||= Farmer.create(name: "McDonald")
+  end
+
+  def create_category!
+    category
+  end
+
+  def create_category2!
+    category2
+  end
+
+  def category
+    @category ||= Category.create(name: "Meals")
+  end
+
+  def category2
+    @category2 ||= Category.create(name: "MoarMeals!")
+  end
+
+  def create_item!
+    item
+  end
+
+  def item
+    @item ||= Item.create(name: "Fries",
+                          description: "Yummy",
+                          price: 4.00,
+                          category_id: category.id,
+                          farmer_id: farmer.id)
+  end
+
+  def create_item1!
+    item1
+  end
+
+  def item1
+    @item1 ||= Item.create(name: 'Soda',
+                           description: 'Teh bubbles',
+                           price: 1.00,
+                           category_id: category.id,
+                           farmer_id: farmer2.id)
+  end
+
+  def create_item2!
+    item2
+  end
+
+  def item2
+    @item2 ||= Item.create(name: 'Burger',
+                           description: 'beef',
+                           price: 8.50,
+                           category_id: category2.id,
+                           farmer_id: farmer.id)
+  end
+
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

@@ -1,13 +1,10 @@
 require "rails_helper"
 
 RSpec.feature "user cannot view another users data" do
-  def create_users
-    User.create(email: "justin@example.com", password: "password")
-    @user2 = User.create(email: "david@example.com", password: "password")
-  end
 
   scenario "by visiting another users show route" do
-    create_users
+    create_user!
+    create_user2!
     visit root_url
     click_on("Login")
     fill_in("Email", with: "justin@example.com")

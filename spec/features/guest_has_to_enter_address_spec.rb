@@ -5,16 +5,13 @@ RSpec.feature "guest has to enter address" do
   let(:user)  { User.last }
 
   before(:each) do
-    category = Category.create(name: "Meals")
-    Item.create(category_id: category.id, name: "Burger",
-        description: "For a rabbi", price: 200)
-    Item.create(category_id: category.id, name: "Steak",
-        description: "Fo Free", price: 400)
+    create_item!
+    create_item1!
   end
 
   scenario "after clicking check out in cart page" do
-    visit category_items_path(Category.first)
-    click_on("Add Burger")
+    visit category_items_path(category)
+    click_on("Add Soda")
     click_on("Cart")
     click_on("Check Out")
     click_on("Sign up")

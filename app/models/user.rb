@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   enum role: [ :guest, :user, :vendor, :admin ]
 
   def name
-    email.gsub(/@.*/, '')
+    email.gsub(/@.*/, '').capitalize
   end
 
   def full_name

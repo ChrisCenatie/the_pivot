@@ -2,16 +2,11 @@ require "rails_helper"
 
 RSpec.feature "user can view categories" do
 
-  before(:each) do
-    User.create(email: "justin@example.com", password: "password")
+  it "can view categories as a guest" do
     Category.create(name: "Drinks")
     Category.create(name: "Sides")
-  end
-
-  it "can view categories as a guest" do
-    category = Category.create(name: "Meals")
-    Item.create(category_id: category.id, name: "Burger", description: "For a rabbi", price: 2)
-    Item.create(category_id: category.id, name: "Steak", description: "Fo Free", price: 4)
+    create_item!
+    create_item1!
 
     visit category_items_path(category)
 
@@ -25,10 +20,10 @@ RSpec.feature "user can view categories" do
     click_link("Meals")
 
     expect(current_path).to eq(category_path(category.id))
-    expect(page).to have_content("Burger")
-    expect(page).to have_content("Steak")
-    expect(page).to have_content("For a rabbi")
-    expect(page).to have_content("$2.00")
+    expect(page).to have_content("Fries")
+    expect(page).to have_content("Soda")
+    expect(page).to have_content("Yummy")
+    expect(page).to have_content("$4.00")
   end
 
 end
