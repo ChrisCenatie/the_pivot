@@ -1,4 +1,5 @@
 class Notification
+  TWILIO_PHONE_NUMBER = "9292266613"
   attr_reader :client
 
   def initialize
@@ -6,7 +7,7 @@ class Notification
   end
 
   def send_confirmation_message(phone_number, delivery_time)
-    client.messages.create from: "7203706615", to: phone_number,
+    client.messages.create from: TWILIO_PHONE_NUMBER, to: phone_number,
       body: "Your order will be there in #{delivery_time} mins."
   end
 end
