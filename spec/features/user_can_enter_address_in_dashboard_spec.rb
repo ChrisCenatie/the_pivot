@@ -1,11 +1,6 @@
 require "rails_helper"
 
 RSpec.feature "user can enter address in dashboard" do
-  let(:user) { User.last }
-  before(:each) do
-    User.create(email: "david@example.com",
-                password: "password")
-  end
 
   def enter_name
     fill_in("user_and_address[first_name]", with: "Josha")
@@ -22,13 +17,7 @@ RSpec.feature "user can enter address in dashboard" do
   end
 
   scenario "when logged in" do
-    visit root_path
-    click_on("Login")
-    fill_in "Email", with: "david@example.com"
-    fill_in "Password", with: "password"
-    within(:css, "div#login_form") do
-      click_on("Login")
-    end
+    login_user!
 
     click_on("Hello, #{user.name}")
     click_on("Edit Profile")
