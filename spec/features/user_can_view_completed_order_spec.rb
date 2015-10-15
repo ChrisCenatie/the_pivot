@@ -6,7 +6,7 @@ RSpec.feature "user can view completed order" do
     visit category_items_path(@category)
 
     click_on("Add Fries")
-    click_on("Add Burger")
+    click_on("Add Soda")
     click_on("Cart")
     within(:css, "div#item_#{@item.id}") do
       click_on("+")
@@ -19,30 +19,15 @@ RSpec.feature "user can view completed order" do
       click_on("Login")
     end
     click_on("Check Out")
-    enter_address
-  end
-
-  def enter_address
-    fill_in("First Name", with: "Josha")
-    fill_in("Last Name", with: "Mejia")
-    fill_in("Street", with: "1510 Blake Street")
-    fill_in("City", with: "Denver")
-    fill_in("State", with: "CO")
-    fill_in("Zip Code", with: "80010")
-    click_on("Update")
+    input_user_info!
     click_on("Check Out")
   end
 
   before(:each) do
-    User.create(email: "justin@example.com", password: "password")
-    @category = Category.create(name: "Meals")
-    farmer = Farmer.create(name: "McDonald")
-    @item = Item.create(name: 'Fries',
-                        description: 'Fo Free',
-                        price: 4,
-                        category_id: @category.id,
-                        farmer_id: farmer.id)
-    Item.create(name: 'Burger', description: 'for a rabbi', price: 3.50, category_id: @category.id)
+    create_user!
+    create_category!
+    create_item!
+    create_item1!
   end
 
   scenario "after clicking checkout and then logging in" do
@@ -67,7 +52,7 @@ RSpec.feature "user can view completed order" do
     expect(page).to have_content("2")
     expect(page).to have_content("$8.00")
     expect(page).to have_content("Ordered")
-    expect(page).to have_content("$11.50")
+    expect(page).to have_content("$9.00")
     expect(page).to have_content("#{order.date}")
 
     click_on("Fries")
