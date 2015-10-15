@@ -24,18 +24,8 @@ RSpec.feature "user logs out" do
   end
 
   scenario "and cart is cleared" do
-    @category = Category.create(name: "Meals")
-    @farmer = Farmer.create(name: "McDonald")
-    Item.create(name: "Fries",
-                description: "Salty",
-                price: 4,
-                category_id: @category.id,
-                farmer_id: @farmer.id)
-    Item.create(name: 'Burger',
-                description: 'for a rabbi',
-                price: 350,
-                category_id: @category.id,
-                farmer_id: @farmer.id)
+    create_item!
+    create_item1!
 
     visit root_path
     click_on("Sign up")
@@ -44,10 +34,10 @@ RSpec.feature "user logs out" do
     fill_in("Password", with: "password")
     click_on("Create Account")
 
-    visit category_items_path(@category)
+    visit category_items_path(category)
 
     click_on("Add Fries")
-    click_on("Add Burger")
+    click_on("Add Soda")
     click_on("Logout")
 
     click_on("Cart")

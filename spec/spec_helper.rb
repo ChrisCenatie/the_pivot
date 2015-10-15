@@ -84,9 +84,14 @@ RSpec.configure do |config|
   def create_order!
     login_user!
     create_item!
+    create_item1!
     visit category_items_path(@category)
     click_on("Add Fries")
+    click_on("Add Soda")
     click_on("Cart")
+    within(:css, "div#item_#{item.id}") do
+      click_on("+")
+    end
     click_on("Check Out")
     input_user_info!
     click_on("Check Out")
