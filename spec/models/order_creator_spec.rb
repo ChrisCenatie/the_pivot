@@ -12,7 +12,7 @@ RSpec.describe OrderCreator do
     order_creator = OrderCreator.new( { item1.id => 2, item2.id => 3}, user)
     result = order_creator.total_price
 
-    expect(result).to eq(2750)
+    expect(result).to eq(27.50)
   end
 
 end

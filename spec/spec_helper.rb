@@ -39,6 +39,21 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  def create_admin!
+    User.create(email: "admin@example.com",
+                password: "password",
+                role: 3)
+  end
+
+  def login_admin!
+    visit login_path
+    fill_in("Email", with: "admin@example.com")
+    fill_in("Password", with: "password")
+    within(:css, "div#login_form") do
+      click_on("Login")
+    end
+  end
+
   def create_user!
     user
   end
