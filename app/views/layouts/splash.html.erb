@@ -8,19 +8,19 @@
   <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-<div class="splash-hero">
+  <div class="splash-hero">
 
-<%= render "layouts/navbar" unless @disable_nav %>
+    <%= render "layouts/navbar" unless @disable_nav %>
 
-<% if flash[:errors] %>
- <div class="alert alert-danger text-center"><%= flash[:errors] %></div>
-<% end %>
+    <% if flash[:errors] %>
+     <div class="alert alert-danger text-center"><%= flash[:errors] %></div>
+    <% end %>
 
-<% if flash[:notice] %>
-  <div class="alert alert-success text-center"><%= flash[:notice] %></div>
-<% end %>
+    <% if flash[:notice] %>
+      <div class="alert alert-success text-center"><%= flash[:notice] %></div>
+    <% end %>
 
-<%= yield %>
-</div>
+    <%= yield %>
+  </div>
 </body>
 </html>
