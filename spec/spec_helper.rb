@@ -123,7 +123,7 @@ RSpec.configure do |config|
   end
 
   def category2
-    @category ||= Category.create(name: "MoarMeals!")
+    @category2 ||= Category.create(name: "MoarMeals!")
   end
 
   def create_item!
@@ -133,7 +133,7 @@ RSpec.configure do |config|
   def item
     @item ||= Item.create(name: "Fries",
                           description: "Yummy",
-                          price: 400,
+                          price: 4.00,
                           category_id: category.id,
                           farmer_id: farmer.id)
   end
@@ -144,8 +144,8 @@ RSpec.configure do |config|
 
   def item1
     @item1 ||= Item.create(name: 'Soda',
-                           description: 'Sugary',
-                           price: 100,
+                           description: 'Teh bubbles',
+                           price: 1.00,
                            category_id: category.id,
                            farmer_id: farmer.id)
   end
@@ -157,7 +157,7 @@ RSpec.configure do |config|
   def item2
     @item2 ||= Item.create(name: 'Burger',
                            description: 'beef',
-                           price: 850,
+                           price: 8.50,
                            category_id: category2.id,
                            farmer_id: farmer.id)
   end
