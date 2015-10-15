@@ -115,6 +115,10 @@ RSpec.configure do |config|
     @farmer ||= Farmer.create(name: "George")
   end
 
+  def farmer2
+    @farmer2 ||= Farmer.create(name: "McDonald")
+  end
+
   def create_category!
     category
   end
@@ -152,7 +156,7 @@ RSpec.configure do |config|
                            description: 'Teh bubbles',
                            price: 1.00,
                            category_id: category.id,
-                           farmer_id: farmer.id)
+                           farmer_id: farmer2.id)
   end
 
   def create_item2!
