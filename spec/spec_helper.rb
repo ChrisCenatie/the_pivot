@@ -46,6 +46,7 @@ RSpec.configure do |config|
   end
 
   def login_admin!
+    create_admin!
     visit login_path
     fill_in("Email", with: "admin@example.com")
     fill_in("Password", with: "password")

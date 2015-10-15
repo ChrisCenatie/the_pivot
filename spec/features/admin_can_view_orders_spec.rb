@@ -2,26 +2,12 @@ require "rails_helper"
 
 RSpec.feature "admin can view orders" do
   before(:each) do
-    User.create(email: "admin@example.com",
-                password: "password",
-                role: 3)
-
     Address.create(user_id: user.id,
                    street_address: "1510 Blake street",
                    apt: "basement",
                    city: "Denver",
                    state: "CO",
                    zip_code: "80110")
-
-    user = User.create(email: "david@example.com",
-                       password: "password")
-
-    user2 = User.create(email: "justin@example.com",
-                        password: "password")
-
-    category = Category.create(name: "Meals")
-
-    farmer = Farmer.create(name: "McDonald")
 
     item = Item.create(category_id: category.id,
                        name: "Soda",
@@ -66,13 +52,7 @@ RSpec.feature "admin can view orders" do
   end
 
   scenario "when they go to the dashboard" do
-    visit root_path
-    click_on("Login")
-    fill_in("Email", with: "admin@example.com")
-    fill_in("Password", with: "password")
-    within(:css, "div#login_form") do
-      click_on("Login")
-    end
+    login_admin!
 
     expect(current_path).to eq(admin_dashboard_path)
     expect(page).to have_content("Order ID: #{@order1.id}")
