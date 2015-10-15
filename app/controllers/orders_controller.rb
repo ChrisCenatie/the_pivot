@@ -14,17 +14,21 @@ class OrdersController < ApplicationController
   end
 
   def create
-    cart_empty? or return
-    not_logged_in?("Create an account to complete your order") or return
-    no_address? or return
-    creator = OrderCreator.new(cart.data, current_user)
-    order = creator.order
-    skip_stripe?(order)
-    already_paid?(order) or return
-    total_price = creator.total_price
+    if cart_empty?
+      return_to_cart or return
+    else
+      not_logged_in?("Create an account to complete your order") or return
+      no_address? or return
 
-    redirect_to new_charge_path(order_id: order.id, order_price: total_price,
-      cart_data: cart.data)
+      creator = OrderCreator.new(cart.data, current_user)
+      order = creator.order
+      skip_stripe?(order)
+      already_paid?(order) or return
+      total_price = creator.total_price
+      redirect_to new_charge_path(order_id: order.id,
+                                  order_price: total_price,
+                                  cart_data: cart.data)
+    end
   end
 
   def update
@@ -39,10 +43,12 @@ class OrdersController < ApplicationController
     end
 
     def cart_empty?
-      if cart.data == {}
-        flash[:errors] = "Cart is empty! Fill it up with some goodies"
-        redirect_to cart_path
-      end
+      cart.data == {}
+    end
+
+    def return_to_cart
+      flash[:errors] = "Cart is empty! Fill it up with some fast flying farm fresh food!"
+      redirect_to cart_path
       return true
     end
 
