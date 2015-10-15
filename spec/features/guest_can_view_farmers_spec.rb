@@ -2,14 +2,10 @@ require "rails_helper"
 
 RSpec.feature "all users" do
 
-  def create_farmers
+  scenario "can see the splash page" do
     farmer
     farmer2
-  end
-
-  scenario "can see the splash page" do
-    create_farmers
-
+    
     visit root_path
     click_on("Search by Farmer")
 
