@@ -17,6 +17,7 @@ RSpec.feature "user can add item to cart" do
 
     expect(page).to have_content("Fries")
     expect(page).to have_content("1")
+    expect(page).to have_content("Offered by George")
     expect(page).to have_content("Soda")
     expect(page).to have_content("1")
     expect(current_path).to eq(cart_path)

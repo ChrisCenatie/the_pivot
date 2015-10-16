@@ -27,6 +27,7 @@
           </div>
           <div class="col-md-3">
               <h2><%= link_to item.name, category_item_path(item.category, item) %></h2>
+              <p>Offered by <%= item.farmer.name %></p>
               <h4><%= item.description %></h4>
               <br>
               <h5>Unit Price: <%= number_to_currency(item.price) %></h5>
