@@ -8,6 +8,9 @@ RSpec.feature "user logs out" do
 
     fill_in "Email", with: "Justin@example.com"
     fill_in "Password", with: "password"
+    fill_in "First name", with: "Justin"
+    fill_in "Last name", with: "Beiber"
+    fill_in "Phone number", with: "5555555555"
     click_button("Create Account")
 
     expect(page).to have_content("Hello, Justin")
@@ -30,8 +33,11 @@ RSpec.feature "user logs out" do
     visit root_path
     click_on("Sign up")
 
-    fill_in("Email", with: "justin@example.com")
-    fill_in("Password", with: "password")
+    fill_in "Email", with: "Justin@example.com"
+    fill_in "Password", with: "password"
+    fill_in "First name", with: "Justin"
+    fill_in "Last name", with: "Beiber"
+    fill_in "Phone number", with: "5555555555"
     click_on("Create Account")
 
     visit category_items_path(category)

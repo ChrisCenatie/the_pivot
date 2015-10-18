@@ -27,12 +27,16 @@ Category.create(name: 'Meat', image_url: "http://weddelswift.com/wp-content/blog
 Category.create(name: 'Produce', image_url: "http://www.mtnlaurelchalets.com/blog/wp-content/uploads/2014/07/produce-700x300.jpg")
 Category.create(name: 'Dairy', image_url: "http://www.marketresearchreports.com/sites/default/files/styles/blog_pic_header/public/dairy_products.jpg?itok=nu-RXhb5")
 
-User.create(email: "admin@example.com", password: "password", role: 3)
-User.create(email: "david@example.com", password: "password")
-    user = User.create(phone_number: "3335556666", email: "ryan@example.com", password: "password")
+User.create(email: "admin@example.com", password: "password", first_name: "null",
+            last_name: "null", phone_number: "null", role: 3)
+User.create(email: "david@example.com", password: "password", first_name: "David",
+            last_name: "Dude", phone_number: "555-555-5555")
+    user = User.create(phone_number: "3335556666", email: "ryan@example.com", password: "password",
+                       first_name: "Ryan", last_name: "Dude")
     Address.create(user_id: user.id, street_address: "123 Gumdrop lane", city: "Denver",
       state: "CO", zip_code: "80211")
-    user2 = User.create(phone_number: "2225557777", email: "justin@example.com", password: "password")
+    user2 = User.create(phone_number: "2225557777", email: "justin@example.com", password: "password",
+                        first_name: "Justin", last_name: "Beiber")
     Address.create(user_id: user2.id, street_address: "456 Dreary lane", city: "Denver", state: "CO", zip_code: "80211")
     @order1 = Order.create(user_id: user.id, status: 0)
     @order2 = Order.create(user_id: user.id, status: 1)

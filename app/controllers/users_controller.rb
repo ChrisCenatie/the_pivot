@@ -11,11 +11,8 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       redirect_to dashboard_path(id: @user.id)
-    elsif User.find_by(params[:email])
-      flash[:errors] = "That email address is taken"
-      redirect_to new_user_path
     else
-      flash[:errors] = "Invalid login attempt"
+      flash[:errors] = @user.errors.full_messages
       redirect_to new_user_path
     end
   end
