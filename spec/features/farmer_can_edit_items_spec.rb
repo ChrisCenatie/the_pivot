@@ -11,7 +11,6 @@ RSpec.feature "farmer admin can" do
     visit category_items_path(category)
 
     expect(page).to have_content("Edit")
-
     click_on("Edit")
 
     expect(current_path).to eq(edit_farmer_admin_item_path(Item.last))
