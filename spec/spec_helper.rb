@@ -45,6 +45,12 @@ RSpec.configure do |config|
                 role: 3)
   end
 
+  def create_farmer_admin!
+    User.create(email: "farmer@example.com",
+                password: "password",
+                role: 2)
+  end
+
   def login_admin!
     create_admin!
     visit login_path

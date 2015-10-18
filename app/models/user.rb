@@ -4,13 +4,19 @@ class User < ActiveRecord::Base
     length: { in: 6..30 },
     format: { with:
       /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+.[a-zA-Z0-9._%+-]+\z/ }
+  validates :farmer_id, presence: true, if: :farmer_admin?
   has_many :orders
+  belongs_to :farmer
   has_one :address
 
-  enum role: [ :guest, :user, :vendor, :admin ]
+  enum role: [ :guest, :user, :farmer_admin, :admin ]
 
   def name
     email.gsub(/@.*/, '').capitalize
+  end
+
+  def farmer_admin?
+    role == "farmer_admin"
   end
 
   def full_name

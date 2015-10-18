@@ -59,4 +59,19 @@ RSpec.describe User, type: :model do
       expect(user.full_address).to eq("1510 Blake street basement Denver, CO 80110")
     end
   end
+
+  describe "farmer role" do
+    it "must belong to farm if farmer admin" do
+      farmer_admin = User.new(email: "farmer@example.com", password: "password", role: 2)
+      expect(farmer_admin).to be_invalid
+    end
+
+    it "something" do
+      farm = Farmer.create(name: "Willowcroft Farm")
+      farmer_admin = User.new(email: "farmer@example.com", password: "password", role: 2, farmer_id: farm.id)
+
+      expect(farmer_admin).to be_valid
+      expect(farmer_admin.farmer.name).to eq("Willowcroft Farm")
+    end
+  end
 end

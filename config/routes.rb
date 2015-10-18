@@ -30,6 +30,12 @@ Rails.application.routes.draw do
     post "dashboard",    to: "users#update"
   end
 
+  namespace :farmer_admin do
+    resources :items
+    get "dashboard",    to: "users#show"
+    post "dashboard",    to: "users#update"
+  end
+
   namespace :farmers, path: ":farmer", as: :farmer do
     resources :items, only: [:index, :show]
   end
