@@ -46,17 +46,26 @@ RSpec.configure do |config|
   end
 
   def create_farmer_admin!
-    farm = Farmer.create(name: "Doesn't Matter")
     User.create(email: "farmer@example.com",
                 password: "password",
                 role: 2,
-                farmer_id: farm.id)
+                farmer_id: farmer.id)
   end
 
   def login_admin!
     create_admin!
     visit login_path
     fill_in("Email", with: "admin@example.com")
+    fill_in("Password", with: "password")
+    within(:css, "div#login_form") do
+      click_on("Login")
+    end
+  end
+
+  def login_farmer_admin!
+    create_farmer_admin!
+    visit login_path
+    fill_in("Email", with: "farmer@example.com")
     fill_in("Password", with: "password")
     within(:css, "div#login_form") do
       click_on("Login")

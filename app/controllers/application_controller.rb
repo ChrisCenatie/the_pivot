@@ -35,5 +35,18 @@ class ApplicationController < ActionController::Base
     Farmer.find_by(slug: params[:farmer])
   end
 
-  helper_method :cart, :current_user, :previous_path, :current_farm
+  def admin_authorized?
+    current_user && current_user.admin?
+  end
+
+  def farmer_admin_authorized?
+    current_user && current_user.farmer_admin?
+  end
+
+  helper_method :cart,
+                :current_user,
+                :previous_path,
+                :current_farm,
+                :admin_authorized?,
+                :farmer_admin_authorized?
 end
