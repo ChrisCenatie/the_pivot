@@ -12,7 +12,7 @@ RSpec.feature "farmer admin logs in" do
     end
 
     expect(current_path).to eq(farmer_admin_dashboard_path)
-    expect(page).to have_content("Dashboard")
+    expect(page).to have_content("Doesn't Matter Dashboard")
   end
 
 end

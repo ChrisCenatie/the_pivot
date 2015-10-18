@@ -46,9 +46,11 @@ RSpec.configure do |config|
   end
 
   def create_farmer_admin!
+    farm = Farmer.create(name: "Doesn't Matter")
     User.create(email: "farmer@example.com",
                 password: "password",
-                role: 2)
+                role: 2,
+                farmer_id: farm.id)
   end
 
   def login_admin!

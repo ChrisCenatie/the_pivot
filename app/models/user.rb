@@ -15,10 +15,6 @@ class User < ActiveRecord::Base
     email.gsub(/@.*/, '').capitalize
   end
 
-  def farmer_admin?
-    role == "farmer_admin"
-  end
-
   def full_name
     "#{first_name} #{last_name}"
   end
