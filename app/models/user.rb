@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
     length: { in: 6..30 },
     format: { with:
       /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+.[a-zA-Z0-9._%+-]+\z/ }
+  validates :last_name, :first_name, :phone_number, presence: true
   has_many :orders
   has_one :address
 

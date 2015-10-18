@@ -12,7 +12,17 @@
 <%= render "layouts/navbar" unless @disable_nav %>
 
 <% if flash[:errors] %>
- <div class="alert alert-danger text-center"><%= flash[:errors] %></div>
+  <% if flash[:errors].class == Array %>
+  <div class="alert alert-danger text-center">
+    <ul>
+      <% flash[:errors].each do |message| %>
+       <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% else %>
+    <div class="alert alert-danger text-center"><%= flash[:errors] %></div>
+  <% end %>
 <% end %>
 
 <% if flash[:notice] %>

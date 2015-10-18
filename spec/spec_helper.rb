@@ -42,6 +42,9 @@ RSpec.configure do |config|
   def create_admin!
     User.create(email: "admin@example.com",
                 password: "password",
+                first_name: "null",
+                last_name: "null",
+                phone_number: "null",
                 role: 3)
   end
 
@@ -89,12 +92,16 @@ RSpec.configure do |config|
 
   def user
     @user ||= User.create(email: "justin@example.com",
-                          password: "password")
+                          password: "password",
+                          first_name: "Justin",
+                          last_name: "Beiber",
+                          phone_number: "555-555-5555")
   end
 
   def user2
     @user2 ||= User.create(email: "george@example.com",
-                password: "password")
+                password: "password", first_name: "George",
+                last_name: "Clooney", phone_number: "555-555-5555")
   end
 
   def create_order!
@@ -116,6 +123,7 @@ RSpec.configure do |config|
   def input_user_info!
     fill_in("First Name", with: "Josha")
     fill_in("Last Name", with: "Mejia")
+    fill_in("Phone Number", with: "9292266613")
     fill_in("Street", with: "1510 Blake Street")
     fill_in("City", with: "Denver")
     fill_in("State", with: "CO")

@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Order, type: :model do
 
-  let(:user) { User.create(email: "justin@example.com", password: "password") }
+  let(:user) { User.create(email: "justin@example.com", password: "password",
+    first_name: "Justin", last_name: "Beiber", phone_number: "555-555-5555") }
   let(:order) { Order.new(user_id: user.id) }
 
   it "is valid" do

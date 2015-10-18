@@ -3,7 +3,8 @@ require "rails_helper"
 RSpec.describe DashboardFormatter do
   before(:each) do
     10.times do |n|
-      user = User.create(email: "sample#{n}@example.com", password: "password")
+      user = User.create(email: "sample#{n}@example.com", password: "password",
+        first_name: "Justin#{n}", last_name: "Beiber#{n}", phone_number: "#{n}")
       user.orders.create
       user.orders.create(status: 1)
       user.orders.create(status: 2)
