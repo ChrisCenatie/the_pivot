@@ -27,6 +27,7 @@ Category.create(name: 'Meat', image_url: "http://weddelswift.com/wp-content/blog
 Category.create(name: 'Produce', image_url: "http://www.mtnlaurelchalets.com/blog/wp-content/uploads/2014/07/produce-700x300.jpg")
 Category.create(name: 'Dairy', image_url: "http://www.marketresearchreports.com/sites/default/files/styles/blog_pic_header/public/dairy_products.jpg?itok=nu-RXhb5")
 
+User.create(email: "farmer@example.com", password: "password", role: 2, farmer_id: 1)
 User.create(email: "admin@example.com", password: "password", role: 3)
 User.create(email: "david@example.com", password: "password")
     user = User.create(phone_number: "3335556666", email: "ryan@example.com", password: "password")
