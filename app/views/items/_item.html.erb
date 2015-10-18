@@ -1,7 +1,7 @@
 <div class="col-sm-4">
     <div class="thumbnail">
       <img src=<%= item.image_url %> alt="">
-        <div class="caption text-center" id="item">
+        <div class="caption text-center" id="item<%= item.id %>">
             <h3><%= item.name %></h3>
             <p>Offered by <%= item.farmer.name %></p>
             <p><%= item.description %></p>
@@ -16,7 +16,7 @@
                 item.category.id), method: :delete %>
             <% end %>
 
-            <% if farmer_admin_authorized? %>
+            <% if farmer_admin_authorized? && current_user.farmer.id == item.farmer.id %>
               <%= link_to "Edit", edit_farmer_admin_item_path(item) %>
               <%= link_to "Delete", farmer_admin_item_path(item, category_id:
                 item.category.id), method: :delete %>
