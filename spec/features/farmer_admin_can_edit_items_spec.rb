@@ -15,10 +15,10 @@ RSpec.feature "farmer admin can" do
 
     expect(current_path).to eq(edit_farmer_admin_item_path(Item.last))
 
-    fill_in("Name", with: "Roast Beef")
-    fill_in("Description", with: "Just like Pa's")
-    fill_in("Price", with: "15.00")
-    fill_in("Image Url", with: "http://www.reservoirhillsfamilybutchery.co.za/wp-content/uploads/2015/03/RoastChicken.jpg")
+    fill_in("item[name]", with: "Roast Beef")
+    fill_in("item[description]", with: "Just like Pa's")
+    fill_in("item[price]", with: "15.00")
+    fill_in("item[image_url]", with: "http://www.reservoirhillsfamilybutchery.co.za/wp-content/uploads/2015/03/RoastChicken.jpg")
     click_on("Update Item")
 
     expect(current_path).to eq(category_items_path(category))
@@ -30,10 +30,10 @@ RSpec.feature "farmer admin can" do
   scenario "edit item with invalid params" do
     visit category_items_path(category)
     click_on("Edit")
-    fill_in("Name", with: "Roast Beef")
-    fill_in("Description", with: "Just like Pa's")
-    fill_in("Price", with: "hello")
-    fill_in("Image Url", with: "http://www.reservoirhillsfamilybutchery.co.za/wp-content/uploads/2015/03/RoastChicken.jpg")
+    fill_in("item[name]", with: "Roast Beef")
+    fill_in("item[description]", with: "Just like Pa's")
+    fill_in("item[price]", with: "hello")
+    fill_in("item[image_url]", with: "http://www.reservoirhillsfamilybutchery.co.za/wp-content/uploads/2015/03/RoastChicken.jpg")
     click_on("Update Item")
 
     expect(current_path).to eq(edit_farmer_admin_item_path(Item.last))
