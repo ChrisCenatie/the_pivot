@@ -72,7 +72,8 @@ RSpec.feature "guest has to enter address" do
     click_on("Update")
 
     expect(page).to have_content("Address successfully added")
-
+    expect(current_path).to eq("/addresses/new")
+    click_on("Cart")
     click_on("Check Out")
 
     expect(current_path).to eq(order_path(order))

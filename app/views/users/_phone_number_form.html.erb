@@ -1,7 +1,8 @@
 <div class="well">
   <%= form_for :user_and_address, url: user_path, method: :patch do |f| %>
     <div class="form-group">
-      <%= f.text_field :phone_number, class: "form-control input-md", placeholder: "Phone Number" %>
+      <%= f.label "Phone Number" %>
+      <%= f.text_field :phone_number, class: "form-control input-md", placeholder: current_user.phone_number %>
     </div>
     <%= f.submit "Update Phone Number", class: "btn btn-primary" %>
   <% end %>

@@ -28,14 +28,33 @@ RSpec.feature "user can view profile page" do
     expect(User.first.email).to eq("ryan@example.com")
   end
 
-  scenario "and change their address" do
+  scenario "and add their address" do
     click_on("Edit Profile")
+    click_on("Add Address")
     fill_in("Street", with: "1501 Blake St")
     fill_in("City", with: "Denver")
     fill_in("State", with: "CO")
     fill_in("Zip Code", with: "80202")
+    click_on("Update")
+
+    expect(page).to have_content("Address successfully added")
+    expect(current_path).to eq(edit_user_path(user.id))
+    expect(User.first.full_address).to eq("1501 Blake St  Denver, CO 80202")
+  end
+
+  scenario "and update their address" do
+    Address.create(user_id: @user.id,
+      street_address: "111 Blake Street",
+      city: "Denver", zip_code: 80203, state: "CO")
+    click_on("Edit Profile")
+    fill_in("111 Blake Street", with: "1501 Blake St")
+    fill_in("Denver", with: "Denver")
+    fill_in("CO", with: "CO")
+    fill_in("80203", with: "80202")
     click_on("Update Address")
 
+    expect(page).to have_content("Address successfully updated")
+    expect(current_path).to eq(edit_user_path(user.id))
     expect(User.first.full_address).to eq("1501 Blake St  Denver, CO 80202")
   end
 

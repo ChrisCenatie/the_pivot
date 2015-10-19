@@ -13,7 +13,7 @@ RSpec.feature "user can enter address in dashboard" do
     fill_in("City", with: "Denver")
     fill_in("State", with: "CO")
     fill_in("Zip Code", with: "80010")
-    click_on("Update Address")
+    click_on("Update")
   end
 
   scenario "when logged in" do
@@ -22,10 +22,10 @@ RSpec.feature "user can enter address in dashboard" do
     click_on("Hello, #{user.name}")
     click_on("Edit Profile")
     enter_name
-    click_on("Edit Profile")
+    click_on("Add Address")
     enter_address
 
-    expect(current_path).to eq(user_path(user))
-    expect(page).to have_content("1510 Blake Street")
+    expect(current_path).to eq(edit_user_path(user.id))
+    expect(page).to have_content("Address successfully added")
   end
 end
