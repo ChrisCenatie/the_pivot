@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "static#index"
 
   resources :farmers, only: [:index]
+  resources :addresses, only: [:create, :new, :create]
 
   get "cart",          to: "cart_items#index"
   post "cart_items",   to: "cart_items#create"
