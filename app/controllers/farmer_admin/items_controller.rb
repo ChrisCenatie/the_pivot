@@ -6,7 +6,7 @@ class FarmerAdmin::ItemsController < FarmerAdminController
     @item = Item.new(item_params)
     if @item.save
       flash[:notice] = "Successfully created item"
-      redirect_to category_items_path(@item.category)
+      redirect_to category_path(@item.category)
     else
       flash[:errors] = @item.errors.full_messages
       render :new
