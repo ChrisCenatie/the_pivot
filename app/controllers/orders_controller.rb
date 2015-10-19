@@ -55,7 +55,7 @@ class OrdersController < ApplicationController
     def no_address?
       if !current_user.address
         flash[:errors] = "Please enter your address to complete your order"
-        redirect_to edit_user_path(current_user) and return
+        redirect_to new_address_path and return
       end
       return true
     end
