@@ -3,13 +3,15 @@
 <div class="container">
 <h1 id='profile'>Edit Profile</h1>
 <br>
-<% if previous_path == cart_path %>
-  <%= render partial: "name_and_address_form" %>
-<% else %>
-  <%= render partial: "email_form" %>
-  <%= render partial: "name_form" %>
-  <%= render partial: "phone_number_form" %>
-  <%= render partial: "password_form" %>
+<%= render partial: "email_form" %>
+<%= render partial: "name_form" %>
+<%= render partial: "phone_number_form" %>
+<%= render partial: "password_form" %>
+<% if current_user.address %>
   <%= render partial: "address_form" %>
+<% else %>
+<div class="well">
+  <h4><%= link_to("Add Address", new_address_path) %></h4>
+</div>
 <% end %>
 </div>

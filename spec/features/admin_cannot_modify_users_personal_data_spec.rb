@@ -19,14 +19,14 @@ RSpec.feature "admin cannot modify users personal data" do
     fill_in("City", with: "Denver")
     fill_in("State", with: "CO")
     fill_in("Zip Code", with: "80010")
-    click_on("Update Address")
+    click_on("Update")
   end
 
   scenario "from their profile" do
     login_user!
     click_on("Edit Profile")
     enter_name
-    click_on("Edit Profile")
+    click_on("Add Address")
     enter_address
     click_on("Logout")
     login_admin!

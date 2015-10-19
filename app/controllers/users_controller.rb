@@ -26,10 +26,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_all(user_and_address_params)
-      redirect_to previous_path
+      redirect_to edit_user_path(current_user.id)
     else
-      flash.now[:errors] = "Invalid input params"
-      render :edit
+      flash[:errors] = "Invalid input params"
+      redirect_to edit_user_path(current_user.id)
     end
   end
 
