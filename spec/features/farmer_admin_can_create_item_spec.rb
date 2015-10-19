@@ -29,7 +29,8 @@ RSpec.feature "farmer admin can" do
   end
 
   scenario "get to new item path from their farmer path" do
-    visit farmer_items_path(farmer)
+    visit farmers_path
+    click_on("George")
 
     expect(page).to have_content("Add Item")
     click_on("Add Item")
@@ -44,14 +45,20 @@ RSpec.feature "farmer admin can" do
     fill_in("Description", with: "my price isn't in the right format")
     fill_in("Price", with: "hello")
     fill_in("Image Url", with: "http://www.reservoirhillsfamilybutchery.co.za/wp-content/uploads/2015/03/RoastChicken.jpg")
+
     click_on("Create Item")
+
+
 
     expect(current_path).to eq(new_farmer_admin_item_path)
     expect(page).to have_content("Price is not a number")
   end
 
   scenario "not create item from another farmer's page" do
-    visit farmer_items_path(farmer1)
+    other_farmer = farmer2
+    visit farmers_path
+    click_on "McDonald"
+
 
     expect(page).to_not have_content("Add Item")
   end

@@ -9,7 +9,7 @@ class FarmerAdmin::ItemsController < FarmerAdminController
       redirect_to category_path(@item.category)
     else
       flash[:errors] = @item.errors.full_messages
-      render :new
+      redirect_to new_farmer_admin_item_path
     end
   end
 

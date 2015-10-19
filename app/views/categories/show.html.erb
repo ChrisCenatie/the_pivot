@@ -14,7 +14,7 @@
   </div>
     <div class="row">
       <div class="col-lg-12">
-        <% if current_user && current_user.farmer_admin? %>
+        <% if farmer_admin_authorized? %>
           <p><%= link_to "Add Item", new_farmer_admin_item_path(@item, category_id: @category.id), class: "btn btn-primary" %></p>
         <% end %>
       </div>

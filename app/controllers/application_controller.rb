@@ -43,10 +43,15 @@ class ApplicationController < ActionController::Base
     current_user && current_user.farmer_admin?
   end
 
+  def current_farmers_farm?
+    farmer_admin_authorized? && current_user.farmer == current_farm
+  end
+
   helper_method :cart,
                 :current_user,
                 :previous_path,
                 :current_farm,
                 :admin_authorized?,
-                :farmer_admin_authorized?
+                :farmer_admin_authorized?,
+                :current_farmers_farm?
 end
