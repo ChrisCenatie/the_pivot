@@ -12,7 +12,7 @@
 
         <br>
 
-        <%= form_for [:admin, @item] do |f| %>
+        <%= form_for [:farmer_admin, @item] do |f| %>
           <div class="form-group">
             <%= f.text_field :name, class: "form-control input-md", placeholder: "Name" %>
           </div>
@@ -25,20 +25,12 @@
           <div class="form-group">
             <%= f.text_field :image_url, class: "form-control input-md", placeholder: "Image Url" %>
           </div>
-          <%= f.hidden_field :category_id, value: @category.id %>
+          <%= f.hidden_field :category_id, value: params[:category_id] %>
+          <div class="form-group">
+          <%= f.hidden_field :farmer_id, value: current_user.farmer.id %>
           <div class="form-group">
             <%= f.submit "Create Item" %>
           </div>
         <% end %>
-
-
   </div>
-
 </div>
-  <!-- /.container -->
-
-  <!-- jQuery -->
-  <script src="js/jquery.js"></script>
-
-  <!-- Bootstrap Core JavaScript -->
-  <script src="js/bootstrap.min.js"></script>

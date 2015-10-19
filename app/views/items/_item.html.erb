@@ -20,6 +20,8 @@
               <%= link_to "Edit", edit_farmer_admin_item_path(item) %>
               <%= link_to "Delete", farmer_admin_item_path(item, category_id:
                 item.category.id), method: :delete %>
+            <% else %>
+              <br>
             <% end %>
         </div>
     </div>

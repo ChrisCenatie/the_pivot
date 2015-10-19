@@ -8,7 +8,8 @@ class FarmerAdmin::ItemsController < FarmerAdminController
       flash[:notice] = "Successfully created item"
       redirect_to category_items_path(@item.category)
     else
-     render :new
+      flash[:errors] = @item.errors.full_messages
+      render :new
     end
   end
 
@@ -47,6 +48,6 @@ class FarmerAdmin::ItemsController < FarmerAdminController
 
     def item_params
       params.require(:item).permit(:name, :description, :price, :category_id,
-        :image_url)
+        :image_url, :farmer_id)
     end
 end
