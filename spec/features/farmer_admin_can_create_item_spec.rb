@@ -19,6 +19,7 @@ RSpec.feature "farmer admin can" do
     fill_in("Description", with: "it's new!")
     fill_in("Price", with: "12.01")
     fill_in("Image Url", with: "http://www.reservoirhillsfamilybutchery.co.za/wp-content/uploads/2015/03/RoastChicken.jpg")
+    #selct category
     click_on("Create Item")
 
     expect(current_path).to eq(category_path(category))
