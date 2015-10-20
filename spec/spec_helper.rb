@@ -160,9 +160,22 @@ RSpec.configure do |config|
     @farmer2 ||= Farmer.create(name: "McDonald", active: true)
   end
 
+  def farmer3
+    @farmer3 ||= Farmer.create(name: "Reginald")
+  end
+
+  def farmer4
+    @farmer4 ||= Farmer.create(name: "Jebediah")
+  end
+
   def create_farmers!
     farmer
     farmer2
+  end
+
+  def create_new_farmers!
+    farmer3
+    farmer4
   end
 
   def create_category!
