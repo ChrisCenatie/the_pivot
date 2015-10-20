@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   namespace :farmer_admin do
     resources :items
+    resources :farmers, only: [:edit, :update]
     get "dashboard",    to: "users#show"
     post "dashboard",    to: "users#update"
   end
