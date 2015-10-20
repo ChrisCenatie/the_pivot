@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :items, except: [:show, :index]
+    resources :farmers, only: [:index, :update]
     get "dashboard",    to: "users#show"
     post "dashboard",    to: "users#update"
   end
