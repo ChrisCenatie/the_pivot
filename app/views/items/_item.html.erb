@@ -16,7 +16,7 @@
                 item.category.id), method: :delete %>
             <% end %>
 
-            <% if current_farmers_item? %>
+            <% if current_farmers_item?(item) %>
               <%= link_to "Edit", edit_farmer_admin_item_path(item) %>
               <%= link_to "Delete", farmer_admin_item_path(item, category_id:
                 item.category.id), method: :delete %>
