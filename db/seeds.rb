@@ -33,6 +33,9 @@ User.create(email: "david@example.com", password: "password", first_name: "David
             last_name: "Dude", phone_number: "555-555-5555")
     user = User.create(phone_number: "3335556666", email: "ryan@example.com", password: "password",
                        first_name: "Ryan", last_name: "Dude")
+User.create(email: "farmer@example.com", password: "password", role: 2,
+            farmer_id: 1, first_name: "Old", last_name: "McDonald", phone_number: "null")
+
     Address.create(user_id: user.id, street_address: "123 Gumdrop lane", city: "Denver",
       state: "CO", zip_code: "80211")
     user2 = User.create(phone_number: "2225557777", email: "justin@example.com", password: "password",
