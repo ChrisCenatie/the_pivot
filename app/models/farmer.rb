@@ -1,6 +1,7 @@
 class Farmer < ActiveRecord::Base
   has_many :items
-
+  has_many :users
+  
   validates :slug, presence: true, uniqueness: true,
             length: { in: 6..30 }
 

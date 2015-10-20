@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     User.find(session[:user_id]) rescue nil
   end
 
+  def current_admin?
+    current_user && current_user.admin?
+  end
+
   def previous_path
     session[:previous_path]
   end
@@ -35,5 +39,29 @@ class ApplicationController < ActionController::Base
     Farmer.find_by(slug: params[:farmer])
   end
 
-  helper_method :cart, :current_user, :previous_path, :current_farm
+  def admin_authorized?
+    current_user && current_user.admin?
+  end
+
+  def farmer_admin_authorized?
+    current_user && current_user.farmer_admin?
+  end
+
+  def current_farmers_farm?
+    farmer_admin_authorized? && current_user.farmer == current_farm
+  end
+
+  def current_farmers_item?(item)
+    farmer_admin_authorized? && (current_user.farmer.id == item.farmer.id)
+  end
+
+  helper_method :cart,
+                :current_user,
+                :current_admin?,
+                :previous_path,
+                :current_farm,
+                :admin_authorized?,
+                :farmer_admin_authorized?,
+                :current_farmers_farm?,
+                :current_farmers_item?
 end

@@ -1,7 +1,7 @@
 <div class="col-sm-4">
     <div class="thumbnail">
       <img src=<%= item.image_url %> alt="">
-        <div class="caption text-center" id="item">
+        <div class="caption text-center" id="item<%= item.id %>">
             <h3><%= item.name %></h3>
             <p>Offered by <%= item.farmer.name %></p>
             <p><%= item.description %></p>
@@ -10,10 +10,18 @@
                 <%= button_to "Add #{item.name}" , cart_items_path(item_id: item.id, category_id: item.category.id), class: "btn btn-primary outline" %>
             </p>
 
-            <% if current_user && current_user.admin? %>
+            <% if admin_authorized? %>
               <%= link_to "Edit", edit_admin_item_path(item) %>
               <%= link_to "Delete", admin_item_path(item, category_id:
                 item.category.id), method: :delete %>
+            <% end %>
+
+            <% if current_farmers_item?(item) %>
+              <%= link_to "Edit", edit_farmer_admin_item_path(item) %>
+              <%= link_to "Delete", farmer_admin_item_path(item, category_id:
+                item.category.id), method: :delete %>
+            <% else %>
+              <br>
             <% end %>
         </div>
     </div>

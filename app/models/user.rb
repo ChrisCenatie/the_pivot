@@ -5,10 +5,13 @@ class User < ActiveRecord::Base
     format: { with:
       /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+.[a-zA-Z0-9._%+-]+\z/ }
   validates :last_name, :first_name, :phone_number, presence: true
+  validates :farmer_id, presence: true, if: :farmer_admin?
+
   has_many :orders
+  belongs_to :farmer
   has_one :address
 
-  enum role: [ :guest, :user, :vendor, :admin ]
+  enum role: [ :guest, :user, :farmer_admin, :admin ]
 
   def name
     email.gsub(/@.*/, '').capitalize
