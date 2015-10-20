@@ -1,0 +1,22 @@
+<div id="<%= farmer.name %>">
+  <tr>
+    <td><h3><%= link_to farmer.name, farmer_items_path(farmer) %></h3></td>
+      <% if farmer.active? %>
+          <td class="text-center">
+            <h3>Active</h3>
+          </td>
+          <td class="text-center">
+            <%= link_to "Deactivate", admin_farmer_path(farmer, active: false),
+            method: :patch, class: "btn btn-danger" %>
+          </td>
+          <% else %>
+          <td class="text-center">
+            <h3>Inactive</h3>
+          </td>
+          <td class="text-center">
+            <%= link_to "Activate", admin_farmer_path(farmer, active: true),
+            method: :patch, class: "btn btn-success" %>
+          </td>
+      <% end %>
+  </tr>
+</div>

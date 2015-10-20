@@ -153,11 +153,16 @@ RSpec.configure do |config|
   end
 
   def farmer
-    @farmer ||= Farmer.create(name: "George")
+    @farmer ||= Farmer.create(name: "George", active: true)
   end
 
   def farmer2
-    @farmer2 ||= Farmer.create(name: "McDonald")
+    @farmer2 ||= Farmer.create(name: "McDonald", active: true)
+  end
+
+  def create_farmers!
+    farmer
+    farmer2
   end
 
   def create_category!
