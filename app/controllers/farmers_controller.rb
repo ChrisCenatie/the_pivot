@@ -1,5 +1,5 @@
 class FarmersController < ApplicationController
   def index
-    @farmers = Farmer.all
+    @farmers = Farmer.where(active: true)
   end
 end
