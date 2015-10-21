@@ -18,8 +18,9 @@ Item.create(name: 'Old Fashioned', description: 'Put some hair on your chest', p
 
 Item.create(name: 'Mozzarella Sticks', description: 'Golden cheese logs from heaven', price: 2.59, category_id: 3, farmer_id: 1, image_url: "http://dishinwithrebelle.com/wp-content/uploads/2013/06/PankoMozzarellaSticks-Ninja.jpg")
 Item.create(name: 'Crab Cakes', description: "It's what Maryland does", price: 4.99, category_id: 3, farmer_id: 1, image_url: "http://www.trbimg.com/img-5334ca77/turbine/la-dd-easy-dinner-recipes-its-friday-celebrate-with-crab-cakes-20140327")
-item2 = Item.create(name: 'Onion Rings', description: 'Deep fried, deep pleasure', price: 2.99, category_id: 3, farmer_id: 2, image_url: "https://lh3.googleusercontent.com/-xT2o5NUey3E/VY1JxkEtufI/AAAAAAAABkE/_hAiOPqRL0A/w800-h800/Spicy_Indian_Style_Onion_Rings_Recipe_thumbnail_1280x800.jpg")
 item = Item.create(name: 'Green Beans', description: 'Good and good for you!', price: 2.99, category_id: 3, farmer_id: 2, image_url: "http://postcards.thepurplepassport.com/wp-content/uploads/2013/07/Green-Beans-with-Pork-at-Din-Tai-Fung_7026358825_l-e1372871437478.jpg")
+item2 = Item.create(name: 'Onion Rings', description: 'Deep fried, deep pleasure', price: 2.99, category_id: 3, farmer_id: 2, image_url: "https://lh3.googleusercontent.com/-xT2o5NUey3E/VY1JxkEtufI/AAAAAAAABkE/_hAiOPqRL0A/w800-h800/Spicy_Indian_Style_Onion_Rings_Recipe_thumbnail_1280x800.jpg")
+item3 = Item.create(name: 'Fried Chicken Waffles', description: 'Deep fried, deep pleasure', price: 5.00, category_id: 3, farmer_id: 1, image_url: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Popeye's_Fried_Chicken_and_Crispy_Waffle.jpg")
 Item.create(name: 'Chicken Wings', description: 'One of the two major food groups', price: 7.99, category_id: 3, farmer_id: 3, image_url: "http://www.trbimg.com/img-5204d7ed/turbine/k05sx5nc-recipe-db/800/16x10?q=1")
 Item.create(name: 'Fries', description: 'Now with no trans fat!', price: 1.99, category_id: 3, farmer_id: 3, image_url: "http://www.kansastravel.org/10brgr3.JPG")
 
@@ -34,7 +35,7 @@ User.create(email: "david@example.com", password: "password", first_name: "David
     user = User.create(phone_number: "3335556666", email: "ryan@example.com", password: "password",
                        first_name: "Ryan", last_name: "Dude")
 User.create(email: "farmer@example.com", password: "password", role: 2,
-            farmer_id: 1, first_name: "Old", last_name: "McDonald", phone_number: "null")
+            farmer_id: 2, first_name: "Old", last_name: "McDonald", phone_number: "null")
 
     Address.create(user_id: user.id, street_address: "123 Gumdrop lane", city: "Denver",
       state: "CO", zip_code: "80211")
@@ -46,10 +47,13 @@ User.create(email: "farmer@example.com", password: "password", role: 2,
     @order3 = Order.create(user_id: user2.id, status: 2)
     @order4 = Order.create(user_id: user2.id, status: 3)
     OrderItem.create(order_id: @order1.id, quantity: 3, price: item.price, item_id: item.id)
+    OrderItem.create(order_id: @order1.id, quantity: 5, price: item2.price, item_id: item2.id)
     OrderItem.create(order_id: @order2.id, quantity: 15, price: item.price, item_id: item.id)
     OrderItem.create(order_id: @order3.id, quantity: 4, price: item2.price, item_id: item2.id)
     OrderItem.create(order_id: @order4.id, quantity: 25, price: item2.price, item_id: item2.id)
+    OrderItem.create(order_id: @order4.id, quantity: 10, price: item3.price, item_id: item3.id)
     FarmerOrder.create(order_id: @order1.id, farmer_id: 2)
     FarmerOrder.create(order_id: @order2.id, farmer_id: 2)
     FarmerOrder.create(order_id: @order3.id, farmer_id: 2)
     FarmerOrder.create(order_id: @order4.id, farmer_id: 2)
+    FarmerOrder.create(order_id: @order4.id, farmer_id: 1)

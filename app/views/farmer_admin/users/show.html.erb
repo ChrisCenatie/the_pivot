@@ -16,18 +16,18 @@
                   </div>
               </div>
               <div class="row">
-                <div class="col-lg-8 col-md-4 text-center">
+                <!-- <div class="col-lg-8 col-md-4 text-center">
                   <h2 class="order-filter"><%= link_to("All Orders", farmer_admin_dashboard_path(filter: nil), method: :post) %></h2>
                   <hr>
-                </div>
-                <div class="col-lg-4">
+                </div> -->
+                <!-- <div class="col-lg-4"> -->
                   <h2 class="text-center">Tasks</h2>
                   <hr>
-                </div>
+                <!-- </div> -->
               </div>
               </br>
               <div class="row">
-                  <div class="col-lg-2 col-md-4">
+                  <!-- <div class="col-lg-2 col-md-4">
                       <div class="panel panel-yellow">
                           <div class="panel-heading">
                               <div class="row">
@@ -93,9 +93,9 @@
                                 <% end %>
                               </div>
                           </div>
-                      </div>
-                  </div>
-                  <div class="col-md-4 text-center" id="farm_management">
+                      </div> -->
+                  <!-- </div> -->
+                  <div class="col-md text-center" id="farm_management">
                       <h4><%= link_to("Edit #{current_user.farmer.name} Info", edit_farmer_admin_farmer_path(current_user.farmer)) %></h4>
                       <br>
                       <h4><%= link_to("Add Farmer Admin", new_farmer_admin_user_path) %></h4>
@@ -108,7 +108,7 @@
                   </div>
               </div>
               <br>
-              <h2>Orders</h2>
+              <h2 class="text-center">Orders</h2>
                   <div class="col-lg-12">
                       <div class="table-responsive">
                           <table class="table table-bordered table-hover table-striped">
@@ -117,12 +117,14 @@
                                       <th>Order #</th>
                                       <th>Order Date</th>
                                       <th>Order Total</th>
-                                      <th>Change Order Status</th>
+                                      <th>Order Items</th>
+                                      <th>Order Status</th>
+                                      <!-- <th>Change Order Status</th> -->
                                   </tr>
                               </thead>
                               <tbody>
-                                <% if @order %>
-                                  <%= render partial: "order", collection: @orders %>
+                                <% if @orders_data %>
+                                  <%= render partial: "order" %>
                                 <% end %>
                               </tbody>
                           </table>
