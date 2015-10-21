@@ -2,6 +2,7 @@
 
 <div class="container">
 <h1 id='profile'>Edit Profile</h1>
+<h2><%= link_to "Back to Profile", user_path(current_user) %></h2> 
 <br>
 <%= render partial: "email_form" %>
 <%= render partial: "name_form" %>
