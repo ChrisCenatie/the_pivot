@@ -1,0 +1,52 @@
+<div class="container text-center">
+
+
+  <br>
+
+  <div class="row">
+    <div class="col-md-6 well" id="login_form">
+      <h2>Create New <%= current_user.farmer.name %> Admin Account</h2>
+      <hr>
+      <%= bootstrap_form_for [:farmer_admin, @user] do |f| %>
+        <div class="form-group">
+          <%= f.text_field :email %>
+        </div>
+
+        <div class="form-group">
+          <%= f.password_field :password, icon: "lock" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.text_field :first_name %>
+        </div>
+
+        <div class="form-group">
+          <%= f.text_field :last_name %>
+        </div>
+
+        <div class="form-group">
+          <%= f.text_field :phone_number %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Create Account", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5 well">
+      <h2>Do they already have an account with us?</h2>
+      <br>
+      <hr>
+      <h3>Enter their email here</h3>
+      <%= bootstrap_form_for @user, url: farmer_admin_user_path(current_user), method: :patch do |f| %>
+        <div class="form-group">
+          <%= f.text_field :email %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Add Administrator", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

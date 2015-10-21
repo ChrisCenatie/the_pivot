@@ -79,8 +79,16 @@
                           </div>
                       </div>
                   </div>
-                  <div class="text-center">
+                  <div class="col-md-4 text-center" id="farm_management">
                       <h4><%= link_to("Edit #{current_user.farmer.name} Info", edit_farmer_admin_farmer_path(current_user.farmer)) %></h4>
+                      <br>
+                      <h4><%= link_to("Add Farmer Admin", new_farmer_admin_user_path) %></h4>
+                      <br>
+                      <h4>Current <%=current_user.farmer.name%> Admins</h3>
+                      <hr>
+                      <% @farmer_admins.each do |farm_admin| %>
+                        <p><%= farm_admin.full_name %></p>
+                      <% end %>
                   </div>
               </div>
               <br>
