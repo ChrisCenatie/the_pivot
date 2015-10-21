@@ -26,7 +26,19 @@ RSpec.feature "farmer admin adds new farmer admin" do
     end
   end
 
-  scenario "creating new account" do
+  scenario "with invalid email" do
+    create_user!
+    click_on("Add Farmer Admin")
+
+    within("#new_farm_admin_email") do
+      fill_in("Email", with: "xxsxtin@example.com")
+      click_on("Add Administrator")
+    end
+    expect(current_path).to eq(new_farmer_admin_user_path)
+    expect(page).to have_content("Couldn't find a user with that email")
+  end
+
+  scenario "by creating new account with valid parameters" do
     within("#farm_management") do
       expect(page).to_not have_content("Ezekiel")
     end
@@ -47,5 +59,24 @@ RSpec.feature "farmer admin adds new farmer admin" do
       expect(page).to have_content("Ezekiel")
     end
   end
+
+  scenario "by creating new account with invalid parameters" do
+    click_on("Add Farmer Admin")
+
+    within("#login_form") do
+      click_on("Create Account")
+    end
+
+    expect(current_path).to eq(new_farmer_admin_user_path)
+    expect(page).to have_content("Password can't be blank")
+    expect(page).to have_content("Email can't be blank")
+    expect(page).to have_content("Email is too short (minimum is 6 characters)")
+    expect(page).to have_content("Email is invalid")
+    expect(page).to have_content("Last name can't be blank")
+    expect(page).to have_content("First name can't be blank")
+    expect(page).to have_content("Phone number can't be blank")
+  end
+
+
 
 end
