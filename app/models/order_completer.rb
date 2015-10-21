@@ -7,6 +7,7 @@ class OrderCompleter
 
   def process_order
     create_order_items
+    create_farmer_orders
     order.update(status: 1)
     delivery_time = "soon"
     if ENV["RAILS_ENV"] != "test"
@@ -28,6 +29,14 @@ class OrderCompleter
                        item_id:  item_id)
     end
     empty_cart
+  end
+
+  def create_farmer_orders
+    items = @order.items
+    items.each do |item|
+      farmer_id = item.farmer.id
+      FarmerOrder.create(order_id: order.id, farmer_id: farmer_id)
+    end
   end
 
   private
