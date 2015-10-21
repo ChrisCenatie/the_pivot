@@ -9,7 +9,15 @@ class FarmerAdmin::UsersController < FarmerAdminController
   end
 
   def update
-
+    if user = User.find_by(email: params[:user][:email])
+      user.update(role: 2,
+                  farmer_id: current_user.farmer.id) unless (user.admin? || user.farmer_admin?)
+      flash[:notice] = "New Farmer Admin, #{user.name} Added for #{current_user.farmer.name}!"
+      redirect_to farmer_admin_dashboard_path
+    else
+      flash[:errors] = "Couldn't find a user with that email"
+      redirect_to new_farmer_admin_user_path
+    end
   end
 
   def new

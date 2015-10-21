@@ -7,11 +7,23 @@ RSpec.feature "farmer admin adds new farmer admin" do
   end
 
   scenario "from existing user" do
+    create_user!
+
+    within("#farm_management") do
+      expect(page).to_not have_content("Justin Beiber")
+    end
     expect(page).to have_link("Add Farmer Admin")
     click_on("Add Farmer Admin")
 
     expect(current_path).to eq(new_farmer_admin_user_path)
-
+    within("#new_farm_admin_email") do
+      fill_in("Email", with: "justin@example.com")
+      click_on("Add Administrator")
+    end
+    expect(current_path).to eq(farmer_admin_dashboard_path)
+    within("#farm_management") do
+      expect(page).to have_content("Justin Beiber")
+    end
   end
 
   scenario "creating new account" do
