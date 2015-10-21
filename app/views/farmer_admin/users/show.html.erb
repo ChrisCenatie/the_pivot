@@ -16,85 +16,11 @@
                   </div>
               </div>
               <div class="row">
-                <!-- <div class="col-lg-8 col-md-4 text-center">
-                  <h2 class="order-filter"><%= link_to("All Orders", farmer_admin_dashboard_path(filter: nil), method: :post) %></h2>
-                  <hr>
-                </div> -->
-                <!-- <div class="col-lg-4"> -->
                   <h2 class="text-center">Tasks</h2>
                   <hr>
-                <!-- </div> -->
               </div>
               </br>
               <div class="row">
-                  <!-- <div class="col-lg-2 col-md-4">
-                      <div class="panel panel-yellow">
-                          <div class="panel-heading">
-                              <div class="row">
-                                <%= link_to(admin_dashboard_path(filter: 0), method: :post) do %>
-                                  <div class="col-md-12 ">
-                                    <% if @orders %>
-                                    <h4 class="order-filter"><%= "Ordered: #{DashboardFormatter.ordered?}" %></h4>
-                                    <% else %>
-                                    <h4 class="order-filter"><%= "Ordered: 0" %></h4>
-                                    <% end %>
-                                  </div>
-                                <% end %>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-lg-2 col-md-4">
-                      <div class="panel panel-primary">
-                          <div class="panel-heading">
-                              <div class="row">
-                                <%= link_to(admin_dashboard_path(filter: 1), method: :post) do %>
-                                  <div class="col-md-12 ">
-                                    <% if @orders %>
-                                    <h4 class="order-filter"><%= "Paid: #{DashboardFormatter.paid?}" %></h4>
-                                    <% else %>
-                                    <h4 class="order-filter"><%= "Paid: 0" %></h4>
-                                    <% end %>
-                                  </div>
-                                <% end %>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-lg-2 col-md-4">
-                      <div class="panel panel-red">
-                          <div class="panel-heading">
-                              <div class="row">
-                                <%= link_to(admin_dashboard_path(filter: 2), method: :post) do %>
-                                  <div class="col-md-12 ">
-                                    <% if @orders %>
-                                    <h4 class="order-filter"><%= "Cancelled: #{DashboardFormatter.cancelled?}" %></h4>
-                                    <% else %>
-                                    <h4 class="order-filter"><%= "Cancelled: 0" %></h4>
-                                    <% end %>
-                                  </div>
-                                <% end %>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-lg-2 col-md-4">
-                      <div class="panel panel-green">
-                          <div class="panel-heading">
-                              <div class="row">
-                                <%= link_to(admin_dashboard_path(filter: 3), method: :post) do %>
-                                  <div class="col-md-12 ">
-                                    <% if @orders %>
-                                    <h4 class="order-filter"><%= "Completed: #{DashboardFormatter.completed?}" %></h4>
-                                    <% else %>
-                                    <h4 class="order-filter"><%= "Completed: 0" %></h4>
-                                    <% end %>
-                                  </div>
-                                <% end %>
-                              </div>
-                          </div>
-                      </div> -->
-                  <!-- </div> -->
                   <div class="col-md text-center" id="farm_management">
                       <h4><%= link_to("Edit #{current_user.farmer.name} Info", edit_farmer_admin_farmer_path(current_user.farmer)) %></h4>
                       <br>
@@ -119,7 +45,6 @@
                                       <th>Order Total</th>
                                       <th>Order Items</th>
                                       <th>Order Status</th>
-                                      <!-- <th>Change Order Status</th> -->
                                   </tr>
                               </thead>
                               <tbody>
