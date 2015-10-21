@@ -21,10 +21,6 @@ class Admin::ItemsController < AdminController
     redirect_to category_items_path(@item.category)
   end
 
-  def new
-    @item = Item.new
-  end
-
     private
 
     def find_item
