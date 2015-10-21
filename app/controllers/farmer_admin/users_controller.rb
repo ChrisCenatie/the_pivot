@@ -2,9 +2,11 @@ class FarmerAdmin::UsersController < FarmerAdminController
   def show
     @farmer_admins = User.where(farmer: current_user.farmer.id)
     if session[:filter]
-      @orders = Order.where(status: session[:filter]).order(:id)
+      @orders = @farmer_admins.orders.where(status: session[:filter]).order(:id)
+    elsif !@farmer_admins.orders.empty?
+      @orders = @farmer_admins.orders.all.order(:id)
     else
-      @orders = Order.all.order(:id)
+      @orders = nil
     end
   end
 

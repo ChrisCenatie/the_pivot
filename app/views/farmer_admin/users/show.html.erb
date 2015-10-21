@@ -33,7 +33,11 @@
                               <div class="row">
                                 <%= link_to(admin_dashboard_path(filter: 0), method: :post) do %>
                                   <div class="col-md-12 ">
+                                    <% if @orders %>
                                     <h4 class="order-filter"><%= "Ordered: #{DashboardFormatter.ordered?}" %></h4>
+                                    <% else %>
+                                    <h4 class="order-filter"><%= "Ordered: 0" %></h4>
+                                    <% end %>
                                   </div>
                                 <% end %>
                               </div>
@@ -46,7 +50,11 @@
                               <div class="row">
                                 <%= link_to(admin_dashboard_path(filter: 1), method: :post) do %>
                                   <div class="col-md-12 ">
+                                    <% if @orders %>
                                     <h4 class="order-filter"><%= "Paid: #{DashboardFormatter.paid?}" %></h4>
+                                    <% else %>
+                                    <h4 class="order-filter"><%= "Paid: 0" %></h4>
+                                    <% end %>
                                   </div>
                                 <% end %>
                               </div>
@@ -59,7 +67,11 @@
                               <div class="row">
                                 <%= link_to(admin_dashboard_path(filter: 2), method: :post) do %>
                                   <div class="col-md-12 ">
+                                    <% if @orders %>
                                     <h4 class="order-filter"><%= "Cancelled: #{DashboardFormatter.cancelled?}" %></h4>
+                                    <% else %>
+                                    <h4 class="order-filter"><%= "Cancelled: 0" %></h4>
+                                    <% end %>
                                   </div>
                                 <% end %>
                               </div>
@@ -72,7 +84,11 @@
                               <div class="row">
                                 <%= link_to(admin_dashboard_path(filter: 3), method: :post) do %>
                                   <div class="col-md-12 ">
+                                    <% if @orders %>
                                     <h4 class="order-filter"><%= "Completed: #{DashboardFormatter.completed?}" %></h4>
+                                    <% else %>
+                                    <h4 class="order-filter"><%= "Completed: 0" %></h4>
+                                    <% end %>
                                   </div>
                                 <% end %>
                               </div>
@@ -105,7 +121,9 @@
                                   </tr>
                               </thead>
                               <tbody>
+                                <% if @order %>
                                   <%= render partial: "order", collection: @orders %>
+                                <% end %>
                               </tbody>
                           </table>
                       </div>
