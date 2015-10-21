@@ -49,3 +49,7 @@ User.create(email: "farmer@example.com", password: "password", role: 2,
     OrderItem.create(order_id: @order2.id, quantity: 15, price: item.price, item_id: item.id)
     OrderItem.create(order_id: @order3.id, quantity: 4, price: item2.price, item_id: item2.id)
     OrderItem.create(order_id: @order4.id, quantity: 25, price: item2.price, item_id: item2.id)
+    FarmerOrder.create(order_id: @order1.id, farmer_id: 2)
+    FarmerOrder.create(order_id: @order2.id, farmer_id: 2)
+    FarmerOrder.create(order_id: @order3.id, farmer_id: 2)
+    FarmerOrder.create(order_id: @order4.id, farmer_id: 2)

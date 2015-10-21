@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020022447) do
+ActiveRecord::Schema.define(version: 20151020233420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 20151020022447) do
     t.datetime "updated_at",                                                                                                                null: false
     t.string   "image_url",  default: "http://questionarium.net/wp-content/uploads/sites/4/2014/01/Foods-That-Are-High-In-Cholesterol.jpg"
   end
+
+  create_table "farmer_orders", force: :cascade do |t|
+    t.integer "farmer_id"
+    t.integer "order_id"
+  end
+
+  add_index "farmer_orders", ["farmer_id"], name: "index_farmer_orders_on_farmer_id", using: :btree
+  add_index "farmer_orders", ["order_id"], name: "index_farmer_orders_on_order_id", using: :btree
 
   create_table "farmers", force: :cascade do |t|
     t.string   "name"

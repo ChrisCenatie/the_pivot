@@ -14,5 +14,4 @@ RSpec.describe OrderCreator do
 
     expect(result).to eq(27.50)
   end
-
 end
