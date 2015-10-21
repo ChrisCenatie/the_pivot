@@ -2,6 +2,12 @@ class Order < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   belongs_to :user
 
+  has_many :order_items
+  has_many :items, through: :order_items
+
+  has_many :farmer_orders
+  has_many :farmers, through: :farmer_orders
+
   enum status: [ :ordered, :paid, :cancelled, :completed ]
   enum notification: [ :unsent, :sent ]
 
