@@ -15,4 +15,5 @@ class OrderCreator
       sum += Item.find(id_quantity[0]).price * id_quantity[1]
     end
   end
+
 end
