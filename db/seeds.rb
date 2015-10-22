@@ -9,12 +9,12 @@ Item.create(name: 'Smoked Salmon', description: "Fan-smokin-tastic", price: 13.9
 Item.create(name: 'Bone-in Rib Eye', description: "Vegetarianism's downfall", price: 12.99, category_id: 1, farmer_id: 3, image_url: "http://rothmanns2.dtpcreative.com/wp-content/uploads/2014/05/steak-btn.jpg")
 Item.create(name: 'Beef Tenderloin', description: "Tastes so good make you wanna slap yo Mama", price: 14.99, category_id: 1, farmer_id: 3, image_url: "http://www.desktopimages.org/pictures/steak-meat-meal-dinner-wallpaper-154633.jpg")
 
-Item.create(name: 'Lemonade', description: 'Made from the lemons life gave you', price: 1.69, category_id: 2, farmer_id: 1, image_url: "http://roodepoortrecord.co.za/wp-content/uploads/sites/20/2015/08/6800363-lemonade-wallpaper-Medium.jpg?2a5d20")
-Item.create(name: 'Bottled Water', description: 'Oh you fancy huh?', price: 1.99, category_id: 2, farmer_id: 1, image_url: "http://news.wtmlondon.com/wp-content/uploads/2015/01/xBottled-Water-800x500_c.jpg.pagespeed.ic.miFiLsM1b6.jpg")
-Item.create(name: 'Beer', description: 'Proof God wants us to be happy', price: 3.99, category_id: 2, farmer_id: 2, image_url: "http://cdn.thedailybeast.com/content/dailybeast/articles/2014/04/05/wine-snobs-there-s-a-beer-for-you/jcr:content/image.crop.800.500.jpg/46659654.cached.jpg")
-Item.create(name: 'Milk', description: 'Grow big and strong', price: 1.99, category_id: 2, farmer_id: 2, image_url: "http://nohealthnolife.net/wp-content/uploads/2015/07/1111.jpg")
-Item.create(name: 'Soda', description: 'Bubbly & definitely not pop', price: 1.59, category_id: 2, farmer_id: 3, image_url: "http://www.wall321.com/thumbnails/detail/20120306/drink%20macro%20ice%20cubes%201920x1200%20wallpaper_www.wall321.com_47.jpg")
-Item.create(name: 'Old Fashioned', description: 'Put some hair on your chest', price: 4.99, category_id: 2, farmer_id: 3, image_url: "http://vinepair.com/wp-content/uploads/2015/09/old-fashioned.jpg")
+Item.create(name: 'Apples', description: 'Keep the doctor away', price: 3.99, category_id: 2, farmer_id: 1, image_url: "http://www.wall321.com/thumbnails/detail/20120416/nature%20apples%202560x1600%20wallpaper_www.wallpaperto.com_100.jpg")
+Item.create(name: 'Kale', description: 'Not just for obnoxious Crossfitters anymore', price: 4.99, category_id: 2, farmer_id: 1, image_url: "https://ragstodishes.files.wordpress.com/2013/12/kale.jpg")
+Item.create(name: 'Edamame', description: 'Oh you fancy huh?', price: 4.59, category_id: 2, farmer_id: 3, image_url: "http://celebrityglitter.com/wp-content/uploads/2015/08/img_55c025732bd32.jpg")
+Item.create(name: 'Oranges', description: '100 bones to the first person to tell me what rhymes with these', price: 1.99, category_id: 2, farmer_id: 2, image_url: "http://freehdw.com/images/800/3d-abstract_other_oranges_29621.jpg")
+Item.create(name: 'Wheatgrass Smoothie', description: "You should drink this but you won't because you don't hate yourself", price: 3.99, category_id: 2, farmer_id: 2, image_url: "http://dentalwellness.com.au/wp-content/uploads/2014/09/DentalWellness_SpirulinaSuperfood.jpg")
+Item.create(name: 'Old Fashioned', description: 'What? It has an orange in it - that totally counts', price: 4.99, category_id: 2, farmer_id: 3, image_url: "http://vinepair.com/wp-content/uploads/2015/09/old-fashioned.jpg")
 
 Item.create(name: 'Mozzarella Sticks', description: 'Golden cheese logs from heaven', price: 2.59, category_id: 3, farmer_id: 1, image_url: "http://dishinwithrebelle.com/wp-content/uploads/2013/06/PankoMozzarellaSticks-Ninja.jpg")
 Item.create(name: 'Cheese Curds', description: "Straight from Milwaukee to your mouth", price: 4.99, category_id: 3, farmer_id: 1, image_url: "https://urbanful.org/wp-content/uploads/2014/09/iconic-food.wis_.jpg")
