@@ -17,11 +17,11 @@ Item.create(name: 'Soda', description: 'Bubbly & definitely not pop', price: 1.5
 Item.create(name: 'Old Fashioned', description: 'Put some hair on your chest', price: 4.99, category_id: 2, farmer_id: 3, image_url: "http://vinepair.com/wp-content/uploads/2015/09/old-fashioned.jpg")
 
 Item.create(name: 'Mozzarella Sticks', description: 'Golden cheese logs from heaven', price: 2.59, category_id: 3, farmer_id: 1, image_url: "http://dishinwithrebelle.com/wp-content/uploads/2013/06/PankoMozzarellaSticks-Ninja.jpg")
-Item.create(name: 'Crab Cakes', description: "It's what Maryland does", price: 4.99, category_id: 3, farmer_id: 1, image_url: "http://www.trbimg.com/img-5334ca77/turbine/la-dd-easy-dinner-recipes-its-friday-celebrate-with-crab-cakes-20140327")
-item2 = Item.create(name: 'Onion Rings', description: 'Deep fried, deep pleasure', price: 2.99, category_id: 3, farmer_id: 2, image_url: "https://lh3.googleusercontent.com/-xT2o5NUey3E/VY1JxkEtufI/AAAAAAAABkE/_hAiOPqRL0A/w800-h800/Spicy_Indian_Style_Onion_Rings_Recipe_thumbnail_1280x800.jpg")
-item = Item.create(name: 'Green Beans', description: 'Good and good for you!', price: 2.99, category_id: 3, farmer_id: 2, image_url: "http://postcards.thepurplepassport.com/wp-content/uploads/2013/07/Green-Beans-with-Pork-at-Din-Tai-Fung_7026358825_l-e1372871437478.jpg")
-Item.create(name: 'Chicken Wings', description: 'One of the two major food groups', price: 7.99, category_id: 3, farmer_id: 3, image_url: "http://www.trbimg.com/img-5204d7ed/turbine/k05sx5nc-recipe-db/800/16x10?q=1")
-Item.create(name: 'Fries', description: 'Now with no trans fat!', price: 1.99, category_id: 3, farmer_id: 3, image_url: "http://www.kansastravel.org/10brgr3.JPG")
+Item.create(name: 'Cheese Curds', description: "Straight from Milwaukee to your mouth", price: 4.99, category_id: 3, farmer_id: 1, image_url: "https://urbanful.org/wp-content/uploads/2014/09/iconic-food.wis_.jpg")
+item2 = Item.create(name: 'Milk', description: 'Grow big and strong', price: 2.99, category_id: 3, farmer_id: 2, image_url: "http://nohealthnolife.net/wp-content/uploads/2015/07/1111.jpg")
+item = Item.create(name: 'Ice Cream', description: 'Go ahead, you deserve it', price: 2.99, category_id: 3, farmer_id: 2, image_url: "http://www.togashistudio.com/data/photos/832_1ice_cream_bar_01_kiyoshi_togashi.jpg")
+Item.create(name: 'Cheese for Days', description: 'Days and days', price: 7.99, category_id: 3, farmer_id: 3, image_url: "http://www.slurrpy.com/wp-content/uploads/2013/01/cheese-day-800x500.jpg")
+Item.create(name: 'Milkshake', description: 'Damn. You gonna finish that?', price: 1.99, category_id: 3, farmer_id: 3, image_url: "http://www.jojopix.info/wp-content/uploads/2014/12/177144-milkshakes-strawberry-milkshake-800x500.jpg")
 
 Category.create(name: 'Meat', image_url: "http://weddelswift.com/wp-content/blogs.dir/2/files/2012/04/Beef-Products.png")
 Category.create(name: 'Produce', image_url: "http://gerlinginternational.com/images/divisions/produce/mainproduce.jpg")
