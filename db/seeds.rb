@@ -2,12 +2,12 @@ Farmer.create(name: "Willowcroft Farm", active: true, image_url: "http://www.old
 Farmer.create(name: "Zenger Farm", active: true, image_url: "https://lh4.googleusercontent.com/uoXwnXLYZqDFbqVdGEjvSEN2IrbPGYrdS_gD0wgVMwNSf6kXcu_evZKJQaOk0sNQCjrCwrvek1057vtkLn2bhyuNeXUnJxz4tKjumcMH-b3lfJA9wgQ")
 Farmer.create(name: "Black River Farm", active: true, image_url: "http://luxport.s3.amazonaws.com/53174/7285+East+Saanich+Road+Central+Saanich+BC+Canada+389546_1-EXT.JPG")
 
-Item.create(name: 'Pizza', description: "Every pie wishes it was deep dish", price: 11.99, category_id: 1, farmer_id: 1, image_url: "http://freehdw.com/images/800/pizza-wide.jpg")
+Item.create(name: 'Chicken and Waffles', description: "You're welcome", price: 11.99, category_id: 1, farmer_id: 1, image_url: "http://honolulumagazine-images.dashdigital.com/web-nook-chicken-waffles.jpg?ver=1433983605")
 Item.create(name: 'Burger', description: "Beef city, population: you", price: 6.99, category_id: 1, farmer_id: 1, image_url: "http://www.slurrpy.com/wp-content/uploads/2015/09/chicken-burger-800x500.jpg")
 Item.create(name: 'Seared Salmon', description: "This was swimming an hour ago", price: 10.99, category_id: 1, farmer_id: 2, image_url: "http://curves.co.nz/sites/default/files/styles/main_image/public/CUR16617_Curves%20News_posts_Salmon.jpg?itok=KIJwI3oo")
-Item.create(name: 'Lasagna', description: "Just like your granny made it", price: 7.99, category_id: 1, farmer_id: 2, image_url: "http://cdn.thedailybeast.com/content/dailybeast/cheats/2013/02/09/french-gov-vows-to-punish-horsemeat-pushers/jcr:content/image.crop.800.500.jpg/45347925.cached.jpg")
+Item.create(name: 'Smoked Salmon', description: "Fan-smokin-tastic", price: 13.99, category_id: 1, farmer_id: 2, image_url: "http://www.seasonedkitchen.com/wp-content/uploads/2012/11/Smoked-salmon.jpg")
 Item.create(name: 'Bone-in Rib Eye', description: "Vegetarianism's downfall", price: 12.99, category_id: 1, farmer_id: 3, image_url: "http://rothmanns2.dtpcreative.com/wp-content/uploads/2014/05/steak-btn.jpg")
-Item.create(name: 'Country Fried Steak', description: "Bring your own fiddle", price: 8.99, category_id: 1, farmer_id: 3, image_url: "http://www.thehautemeal.com/wp-content/uploads/2015/03/Chicken_Schnitz_Main.jpg")
+Item.create(name: 'Beef Tenderloin', description: "Tastes so good make you wanna slap yo Mama", price: 14.99, category_id: 1, farmer_id: 3, image_url: "http://www.desktopimages.org/pictures/steak-meat-meal-dinner-wallpaper-154633.jpg")
 
 Item.create(name: 'Lemonade', description: 'Made from the lemons life gave you', price: 1.69, category_id: 2, farmer_id: 1, image_url: "http://roodepoortrecord.co.za/wp-content/uploads/sites/20/2015/08/6800363-lemonade-wallpaper-Medium.jpg?2a5d20")
 Item.create(name: 'Bottled Water', description: 'Oh you fancy huh?', price: 1.99, category_id: 2, farmer_id: 1, image_url: "http://news.wtmlondon.com/wp-content/uploads/2015/01/xBottled-Water-800x500_c.jpg.pagespeed.ic.miFiLsM1b6.jpg")
@@ -24,7 +24,7 @@ Item.create(name: 'Chicken Wings', description: 'One of the two major food group
 Item.create(name: 'Fries', description: 'Now with no trans fat!', price: 1.99, category_id: 3, farmer_id: 3, image_url: "http://www.kansastravel.org/10brgr3.JPG")
 
 Category.create(name: 'Meat', image_url: "http://weddelswift.com/wp-content/blogs.dir/2/files/2012/04/Beef-Products.png")
-Category.create(name: 'Produce', image_url: "http://www.mtnlaurelchalets.com/blog/wp-content/uploads/2014/07/produce-700x300.jpg")
+Category.create(name: 'Produce', image_url: "http://gerlinginternational.com/images/divisions/produce/mainproduce.jpg")
 Category.create(name: 'Dairy', image_url: "http://www.marketresearchreports.com/sites/default/files/styles/blog_pic_header/public/dairy_products.jpg?itok=nu-RXhb5")
 
 User.create(email: "admin@example.com", password: "password", first_name: "null",
