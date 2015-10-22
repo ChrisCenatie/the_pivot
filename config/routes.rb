@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     resources :farmers, only: [:edit, :update]
     resources :users, only: [:new, :create, :update]
     get "dashboard",    to: "users#show"
-    post "dashboard",    to: "orders#update"
+    resources :orders, only: [:update]
   end
 
   namespace :farmers, path: ":farmer", as: :farmer do
