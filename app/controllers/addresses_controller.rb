@@ -10,8 +10,8 @@ class AddressesController < ApplicationController
       flash[:notice] = "Address successfully added"
       redirect_to previous_path
     else
-      flash.now[:errors] = address.errors.full_messages
-      render :new
+      flash[:errors] = address.errors.full_messages
+      redirect_to new_address_path
     end
   end
 

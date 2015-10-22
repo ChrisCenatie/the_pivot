@@ -20,7 +20,7 @@ Item.create(name: 'Mozzarella Sticks', description: 'Golden cheese logs from hea
 Item.create(name: 'Cheese Curds', description: "Straight from Milwaukee to your mouth", price: 4.99, category_id: 3, farmer_id: 1, image_url: "https://urbanful.org/wp-content/uploads/2014/09/iconic-food.wis_.jpg")
 item2 = Item.create(name: 'Milk', description: 'Grow big and strong', price: 2.99, category_id: 3, farmer_id: 2, image_url: "http://nohealthnolife.net/wp-content/uploads/2015/07/1111.jpg")
 item = Item.create(name: 'Ice Cream', description: 'Go ahead, you deserve it', price: 2.99, category_id: 3, farmer_id: 2, image_url: "http://www.togashistudio.com/data/photos/832_1ice_cream_bar_01_kiyoshi_togashi.jpg")
-Item.create(name: 'Cheese for Days', description: 'Days and days', price: 7.99, category_id: 3, farmer_id: 3, image_url: "http://www.slurrpy.com/wp-content/uploads/2013/01/cheese-day-800x500.jpg")
+item3 = Item.create(name: 'Cheese for Days', description: 'Days and days', price: 7.99, category_id: 3, farmer_id: 3, image_url: "http://www.slurrpy.com/wp-content/uploads/2013/01/cheese-day-800x500.jpg")
 Item.create(name: 'Milkshake', description: 'Damn. You gonna finish that?', price: 1.99, category_id: 3, farmer_id: 3, image_url: "http://www.jojopix.info/wp-content/uploads/2014/12/177144-milkshakes-strawberry-milkshake-800x500.jpg")
 
 Category.create(name: 'Meat', image_url: "http://weddelswift.com/wp-content/blogs.dir/2/files/2012/04/Beef-Products.png")
@@ -34,7 +34,7 @@ User.create(email: "david@example.com", password: "password", first_name: "David
     user = User.create(phone_number: "3335556666", email: "ryan@example.com", password: "password",
                        first_name: "Ryan", last_name: "Dude")
 User.create(email: "farmer@example.com", password: "password", role: 2,
-            farmer_id: 1, first_name: "Old", last_name: "McDonald", phone_number: "null")
+            farmer_id: 2, first_name: "Old", last_name: "McDonald", phone_number: "null")
 
     Address.create(user_id: user.id, street_address: "123 Gumdrop lane", city: "Denver",
       state: "CO", zip_code: "80211")
@@ -46,6 +46,13 @@ User.create(email: "farmer@example.com", password: "password", role: 2,
     @order3 = Order.create(user_id: user2.id, status: 2)
     @order4 = Order.create(user_id: user2.id, status: 3)
     OrderItem.create(order_id: @order1.id, quantity: 3, price: item.price, item_id: item.id)
+    OrderItem.create(order_id: @order1.id, quantity: 5, price: item2.price, item_id: item2.id)
     OrderItem.create(order_id: @order2.id, quantity: 15, price: item.price, item_id: item.id)
     OrderItem.create(order_id: @order3.id, quantity: 4, price: item2.price, item_id: item2.id)
     OrderItem.create(order_id: @order4.id, quantity: 25, price: item2.price, item_id: item2.id)
+    OrderItem.create(order_id: @order4.id, quantity: 10, price: item3.price, item_id: item3.id)
+    FarmerOrder.create(order_id: @order1.id, farmer_id: 2)
+    FarmerOrder.create(order_id: @order2.id, farmer_id: 2)
+    FarmerOrder.create(order_id: @order3.id, farmer_id: 2)
+    FarmerOrder.create(order_id: @order4.id, farmer_id: 2)
+    FarmerOrder.create(order_id: @order4.id, farmer_id: 1)

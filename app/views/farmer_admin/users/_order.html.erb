@@ -1,13 +1,18 @@
-<div id="order_<%= order.id %>">
-  <tr>
-    <td><%= link_to "Order ID: #{order.id}", order_path(order) %></td>
-    <td><%= "#{order.created_at}" %></td>
-    <td><%= order.total_price %></td>
-    <td class="text-center">
-      <% DashboardFormatter.new(order).find_links.each do |link| %>
-        <%= link_to link[0], order_path(order, status:
-          link[1]), method: :patch, class: "btn btn-danger" %>
+<% @orders_data.each do |order, data| %>
+  <div id="order_<%= order.id %>">
+    <tr class="<%= order.status %>">
+      <td>Order ID: <%= order.id %></td>
+      <td><%= "#{order.created_at}" %></td>
+      <td><%= number_to_currency(data.first) %></td>
+      <td><%= data.last.join(', ') %></td>
+      <td><%= order.status %></td>
+      <% if order.status != "cancelled" %>
+        <td><%= link_to("Cancel Order", farmer_admin_order_path(order.id), method: :patch,
+                        data: { confirm: "Are you sure? Items related to this order will be cancelled!" }) %></td>
+      <% else %>
+      <td> - </td>
       <% end %>
-    </td>
-  </tr>
-</div>
+      </td>
+    </tr>
+  </div>
+<% end %>

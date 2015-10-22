@@ -62,7 +62,7 @@ RSpec.feature "guest has to enter address" do
     fill_in("Zip Code", with: "80010")
     click_on("Update")
 
-    expect(current_path).to eq("/addresses")
+    expect(current_path).to eq(new_address_path)
     expect(page).to have_content("City can't be blank")
 
     fill_in("Street", with: "1510 Blake Street")
@@ -72,8 +72,7 @@ RSpec.feature "guest has to enter address" do
     click_on("Update")
 
     expect(page).to have_content("Address successfully added")
-    expect(current_path).to eq("/addresses/new")
-    click_on("Cart")
+    
     click_on("Check Out")
 
     expect(current_path).to eq(order_path(order))
