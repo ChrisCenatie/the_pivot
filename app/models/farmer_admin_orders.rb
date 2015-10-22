@@ -42,7 +42,8 @@ class FarmerAdminOrders
   end
 
   def self.remove_farmer_order(farmer, order_params)
-    FarmerOrder.find_by(order_id: order_params[:id],
-                        farmer_id: farmer.id).delete
+    farmer_order = FarmerOrder.find_by(order_id: order_params[:id],
+                        farmer_id: farmer.id)
+    farmer_order.delete
   end
 end
