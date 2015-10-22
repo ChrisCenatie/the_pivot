@@ -7,7 +7,8 @@
       <td><%= data.last.join(', ') %></td>
       <td><%= order.status %></td>
       <% if order.status != "cancelled" %>
-        <td><%= link_to("Cancel Order", farmer_admin_order_path(order.id), method: :patch) %></td>
+        <td><%= link_to("Cancel Order", farmer_admin_order_path(order.id), method: :patch,
+                        data: { confirm: "Are you sure? Items related to this order will be cancelled!" }) %></td>
       <% else %>
       <td> - </td>
       <% end %>
